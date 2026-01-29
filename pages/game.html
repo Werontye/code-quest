@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень - CodeQuest</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/editor.css">
+    <link rel="stylesheet" href="../css/components/game.css">
+    <link rel="stylesheet" href="../css/components/progress.css">
+    <link rel="stylesheet" href="../css/components/animations.css">
+    <link rel="stylesheet" href="../css/themes/html-theme.css">
+    <link rel="stylesheet" href="../css/themes/css-theme.css">
+    <link rel="stylesheet" href="../css/themes/js-theme.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="grid-lines"></div>
+    </div>
+
+    <div class="app game-page" id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <a href="../index.html" class="logo-link">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">CodeQuest</span>
+                </a>
+            </div>
+            <div class="level-counter" id="levelCounter">
+                Уровень 1 / 35
+            </div>
+            <nav class="header__nav">
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+                        <span class="theme-icon">&#9728;</span>
+                    </button>
+                </div>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon">&#9733;</span>
+                    <span class="nav-xp" id="headerXP">0 XP</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Game Container -->
+        <main class="game-container fade-in-up">
+            <!-- Left Panel - Instructions & Visual -->
+            <div class="game-left">
+                <!-- Level Info -->
+                <div class="level-info" id="levelInfo">
+                    <div class="level-header">
+                        <span class="level-number" id="levelNumber">Уровень 1</span>
+                        <div class="level-difficulty" id="levelDifficulty">
+                            <!-- Stars will be inserted by JS -->
+                        </div>
+                    </div>
+                    <h2 class="level-title" id="levelTitle">Загрузка...</h2>
+                    <p class="level-description" id="levelDescription"></p>
+
+                    <div class="task-box">
+                        <span class="task-label">Задание</span>
+                        <p class="task-text" id="taskText"></p>
+                    </div>
+                </div>
+
+                <!-- Visual Area -->
+                <div class="visual-area" id="visualArea">
+                    <div class="visual-content" id="visualContent">
+                        <!-- Visual representation will be inserted by JS -->
+                    </div>
+                </div>
+
+                <!-- Hint Box (hidden by default) -->
+                <div class="hint-box hidden" id="hintBox">
+                    <div class="hint-header">
+                        <span class="hint-icon">&#128161;</span>
+                        <span>Подсказка</span>
+                    </div>
+                    <p class="hint-text" id="hintText"></p>
+                </div>
+            </div>
+
+            <!-- Right Panel - Editor -->
+            <div class="game-right">
+                <!-- Code Editor -->
+                <div class="code-editor" id="codeEditor">
+                    <div class="editor-header">
+                        <div class="editor-tabs">
+                            <button class="editor-tab active" data-tab="code">Код</button>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="btn btn-hint" id="btnHint" title="Показать подсказку">
+                                &#128161; Подсказка
+                            </button>
+                            <button class="btn btn-reset" id="btnReset" title="Сбросить код">
+                                &#8634; Сбросить
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="editor-body">
+                        <!-- Fill-blank mode -->
+                        <div class="fill-blank-editor" id="fillBlankEditor">
+                            <div class="code-template" id="codeTemplate">
+                                <!-- Template with inputs will be inserted by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Full editor mode -->
+                        <div class="full-editor hidden" id="fullEditor">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <div class="code-input-wrapper">
+                                <textarea class="code-input" id="codeInput" spellcheck="false" placeholder="Напиши свой код здесь..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="editor-footer">
+                        <div class="editor-status">
+                            <span class="status-icon" id="statusIcon"></span>
+                            <span id="statusText">Готов к проверке</span>
+                        </div>
+                        <button class="btn btn-run" id="btnRun">
+                            &#9654; Проверить
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output Area -->
+                <div class="output-area" id="outputArea">
+                    <div class="output-header">
+                        <span class="output-title">Результат</span>
+                    </div>
+                    <div class="output-content">
+                        <div class="result-preview" id="resultPreview">
+                            <!-- Result will be shown here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="game-nav">
+            <button class="nav-btn" id="btnPrev" disabled>
+                &#9664; Назад
+            </button>
+            <a href="#" class="nav-btn" id="btnLevels">
+                &#9776; Все уровни
+            </a>
+            <button class="nav-btn" id="btnNext">
+                Далее &#9654;
+            </button>
+        </nav>
+
+        <!-- Success Overlay (hidden by default) -->
+        <div class="success-overlay hidden" id="successOverlay">
+            <div class="success-content">
+                <div class="success-icon">&#127881;</div>
+                <h2 class="success-title">Отлично!</h2>
+                <p class="success-subtitle">Уровень пройден</p>
+                <div class="success-stats">
+                    <div class="success-stat">
+                        <span class="stat-value" id="earnedXP">+10</span>
+                        <span class="stat-label">XP</span>
+                    </div>
+                    <div class="success-stat">
+                        <span class="stat-value" id="attemptCount">1</span>
+                        <span class="stat-label">Попытка</span>
+                    </div>
+                </div>
+                <div class="success-actions">
+                    <button class="btn btn-next" id="btnNextLevel">
+                        Следующий уровень &#9654;
+                    </button>
+                    <button class="btn btn-retry" id="btnRetry">
+                        Попробовать ещё
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievement Popup (hidden by default) -->
+        <div class="achievement-popup hidden" id="achievementPopup">
+            <span class="achievement-icon">&#127942;</span>
+            <div class="achievement-info">
+                <h4>Достижение!</h4>
+                <p id="achievementName">Первые шаги</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+    </style>
+
+    <script src="../js/modules/storage.js"></script>
+    <script src="../js/modules/i18n.js"></script>
+    <script src="../js/levels/html-levels.js"></script>
+    <script src="../js/levels/css-levels.js"></script>
+    <script src="../js/levels/js-levels.js"></script>
+    <script src="../js/modules/codeValidator.js"></script>
+    <script src="../js/modules/achievements.js"></script>
+    <script src="../js/modules/levelManager.js"></script>
+    <script>
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const icon = document.querySelector('.theme-icon');
+            icon.innerHTML = document.body.classList.contains('light-theme') ? '&#9790;' : '&#9728;';
+            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+            document.querySelector('.theme-icon').innerHTML = '&#9790;';
+        }
+    </script>
+</body>
+</html>

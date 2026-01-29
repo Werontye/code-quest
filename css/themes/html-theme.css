@@ -1,0 +1,295 @@
+/* ===================================
+   HTML Theme - "Строитель"
+   Construction / Architecture Style
+   =================================== */
+
+.theme-html {
+    --theme-primary: #e44d26;
+    --theme-primary-light: #f16529;
+    --theme-primary-dark: #c73d1a;
+    --theme-bg: #1a1410;
+    --theme-bg-secondary: #2d1f1a;
+    --theme-bg-card: #3d2a20;
+    --theme-accent: #f5a623;
+    --theme-accent-light: #ffc107;
+}
+
+/* Theme Background */
+.theme-html .game-page {
+    background:
+        linear-gradient(180deg, var(--theme-bg) 0%, var(--theme-bg-secondary) 100%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e44d26' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Construction Scene */
+.theme-html .visual-area {
+    background: var(--theme-bg-secondary);
+    border: 2px solid var(--theme-primary);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-html .visual-area::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, #5c4033, transparent);
+}
+
+/* Building Blocks Animation */
+.theme-html .building-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.theme-html .block {
+    background: var(--theme-primary);
+    border: 2px solid var(--theme-primary-light);
+    border-radius: var(--radius-sm);
+    margin: 2px;
+    transition: all 0.3s ease;
+    box-shadow:
+        inset 0 -5px 0 rgba(0,0,0,0.2),
+        0 2px 5px rgba(0,0,0,0.3);
+}
+
+.theme-html .block.active {
+    background: var(--theme-accent);
+    border-color: var(--theme-accent-light);
+    animation: blockPlace 0.5s ease;
+}
+
+@keyframes blockPlace {
+    0% { transform: translateY(-50px); opacity: 0; }
+    60% { transform: translateY(10px); }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Crane Animation */
+.theme-html .crane-arm {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 100px;
+    height: 5px;
+    background: var(--theme-accent);
+    transform-origin: right center;
+    animation: craneMove 3s ease-in-out infinite;
+}
+
+.theme-html .crane-cable {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 2px;
+    height: 50px;
+    background: #888;
+}
+
+.theme-html .crane-hook {
+    position: absolute;
+    bottom: -15px;
+    left: -8px;
+    width: 18px;
+    height: 18px;
+    border: 3px solid var(--theme-accent);
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+}
+
+@keyframes craneMove {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-15deg); }
+}
+
+/* Construction Worker (Mascot) */
+.theme-html .mascot {
+    position: absolute;
+    bottom: 70px;
+    left: 30px;
+    width: 60px;
+    height: 80px;
+}
+
+.theme-html .mascot-body {
+    width: 40px;
+    height: 50px;
+    background: var(--theme-accent);
+    border-radius: 10px 10px 5px 5px;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+
+.theme-html .mascot-head {
+    width: 35px;
+    height: 35px;
+    background: #ffd5b5;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 45px;
+    left: 12px;
+}
+
+.theme-html .mascot-helmet {
+    width: 40px;
+    height: 20px;
+    background: var(--theme-accent);
+    border-radius: 20px 20px 5px 5px;
+    position: absolute;
+    bottom: 65px;
+    left: 10px;
+}
+
+/* Level Info Panel */
+.theme-html .level-info {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-primary);
+}
+
+.theme-html .level-number {
+    color: var(--theme-primary);
+}
+
+/* Code Editor Styling */
+.theme-html .code-editor {
+    border: 2px solid var(--theme-primary);
+    background: #1e1410;
+}
+
+.theme-html .editor-header {
+    background: var(--theme-bg-card);
+    border-bottom: 1px solid var(--theme-primary);
+}
+
+.theme-html .btn-run {
+    background: var(--theme-primary);
+}
+
+.theme-html .btn-run:hover {
+    background: var(--theme-primary-light);
+}
+
+/* Progress Indicator */
+.theme-html .progress-indicator {
+    background: var(--theme-bg-card);
+}
+
+.theme-html .progress-indicator .fill {
+    background: linear-gradient(90deg, var(--theme-primary), var(--theme-accent));
+}
+
+/* Success State */
+.theme-html .success-overlay {
+    background: radial-gradient(circle, rgba(228, 77, 38, 0.9), rgba(26, 20, 16, 0.95));
+}
+
+.theme-html .success-icon {
+    color: var(--theme-accent);
+}
+
+/* Hint Styling */
+.theme-html .hint-box {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-accent);
+}
+
+/* Tag Visualization */
+.theme-html .tag-visual {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--theme-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    margin: 2px;
+}
+
+.theme-html .tag-visual.opening::before {
+    content: '<';
+}
+
+.theme-html .tag-visual.opening::after {
+    content: '>';
+}
+
+.theme-html .tag-visual.closing::before {
+    content: '</';
+}
+
+.theme-html .tag-visual.closing::after {
+    content: '>';
+}
+
+/* Structure Visualization */
+.theme-html .structure-tree {
+    padding: var(--spacing-md);
+}
+
+.theme-html .tree-node {
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-xs) 0;
+    background: var(--theme-bg-card);
+    border-left: 3px solid var(--theme-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: all 0.3s ease;
+}
+
+.theme-html .tree-node:hover {
+    background: var(--theme-bg-secondary);
+    border-left-color: var(--theme-accent);
+}
+
+.theme-html .tree-node.active {
+    background: var(--theme-primary);
+    color: white;
+}
+
+/* Floor Indicator */
+.theme-html .floor-indicator {
+    position: absolute;
+    left: 10px;
+    font-size: 0.8rem;
+    color: var(--theme-accent);
+    font-weight: bold;
+}
+
+/* Construction Progress */
+.theme-html .construction-progress {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: var(--spacing-md);
+}
+
+.theme-html .progress-block {
+    width: 30px;
+    height: 20px;
+    background: var(--color-bg);
+    border: 2px dashed var(--theme-primary);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.theme-html .progress-block.completed {
+    background: var(--theme-primary);
+    border-style: solid;
+    animation: blockComplete 0.5s ease;
+}
+
+@keyframes blockComplete {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

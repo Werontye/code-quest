@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuest - Изучай Web-разработку играя</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="grid-lines"></div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <span class="logo-icon">&lt;/&gt;</span>
+                <span class="logo-text">CodeQuest</span>
+            </div>
+            <nav class="header__nav">
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+                        <span class="theme-icon">&#9728;</span>
+                    </button>
+                    <button class="lang-toggle" id="langToggle" title="Change language">
+                        <span>RU</span>
+                    </button>
+                </div>
+                <a href="pages/profile.html" class="nav-link" id="profileLink">
+                    <span class="nav-icon">&#9733;</span>
+                    <span class="nav-xp" id="headerXP">0 XP</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Hero Section - Improved -->
+            <section class="hero fade-in-up">
+                <div class="hero-badge">
+                    <span class="badge-icon">&#127891;</span>
+                    <span>Бесплатное обучение</span>
+                </div>
+                <h1 class="hero__title gradient-text-animated">
+                    Научись программировать<br>играя
+                </h1>
+                <p class="hero__subtitle">
+                    160+ интерактивных уроков по HTML, CSS и JavaScript.<br>
+                    От новичка до профессионала.
+                </p>
+                <div class="hero-actions">
+                    <a href="#languages" class="btn-hero btn-primary-hero">
+                        <span>Начать обучение</span>
+                        <span class="btn-arrow">&#8594;</span>
+                    </a>
+                    <a href="pages/profile.html" class="btn-hero btn-secondary-hero">
+                        <span>Мой профиль</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">160+</span>
+                        <span class="hero-stat-label">Уровней</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">3</span>
+                        <span class="hero-stat-label">Языка</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">30+</span>
+                        <span class="hero-stat-label">Достижений</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Stats Banner -->
+            <section class="quick-stats stagger" id="quickStats">
+                <div class="quick-stat-card">
+                    <div class="quick-stat-icon">&#128293;</div>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="streakDays">0</span>
+                        <span class="quick-stat-label">Дней подряд</span>
+                    </div>
+                </div>
+                <div class="quick-stat-card">
+                    <div class="quick-stat-icon">&#11088;</div>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="totalXPHero">0</span>
+                        <span class="quick-stat-label">Очков XP</span>
+                    </div>
+                </div>
+                <div class="quick-stat-card">
+                    <div class="quick-stat-icon">&#127942;</div>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="currentRankHero">Новичок</span>
+                        <span class="quick-stat-label">Ваш ранг</span>
+                    </div>
+                </div>
+                <div class="quick-stat-card">
+                    <div class="quick-stat-icon">&#128640;</div>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="totalLevelsHero">0</span>
+                        <span class="quick-stat-label">Уровней пройдено</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Language Selection - Improved -->
+            <section class="languages" id="languages">
+                <div class="section-header">
+                    <h2 class="section-title">Выбери свой путь</h2>
+                    <p class="section-subtitle">Три языка - три уникальных мира. Начни своё путешествие!</p>
+                </div>
+
+                <div class="language-cards stagger">
+                    <!-- HTML Card -->
+                    <a href="pages/levels.html?lang=html" class="language-card language-card--html glow-hover">
+                        <div class="card__glow"></div>
+                        <div class="card__icon">
+                            <div class="building-icon">
+                                <div class="building-block"></div>
+                                <div class="building-block"></div>
+                                <div class="building-block"></div>
+                                <div class="crane"></div>
+                            </div>
+                        </div>
+                        <h3 class="card__title">HTML</h3>
+                        <p class="card__subtitle">&#128679; Строитель</p>
+                        <p class="card__description">Построй структуру веб-страниц с нуля. Теги - твои кирпичи!</p>
+                        <div class="card__tags">
+                            <span class="card__tag">Теги</span>
+                            <span class="card__tag">Атрибуты</span>
+                            <span class="card__tag">Формы</span>
+                        </div>
+                        <div class="card__progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="htmlProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text"><span id="htmlCompleted">0</span>/35 уровней</span>
+                        </div>
+                        <div class="card__footer">
+                            <span class="card__badge">35 уровней</span>
+                            <span class="card__action">Начать &#8594;</span>
+                        </div>
+                    </a>
+
+                    <!-- CSS Card -->
+                    <a href="pages/levels.html?lang=css" class="language-card language-card--css glow-hover">
+                        <div class="card__glow"></div>
+                        <div class="card__icon">
+                            <div class="artist-icon">
+                                <div class="palette"></div>
+                                <div class="brush"></div>
+                                <div class="paint-splash"></div>
+                            </div>
+                        </div>
+                        <h3 class="card__title">CSS</h3>
+                        <p class="card__subtitle">&#127912; Художник</p>
+                        <p class="card__description">Раскрась и оживи свои страницы. Стили - твои краски!</p>
+                        <div class="card__tags">
+                            <span class="card__tag">Flexbox</span>
+                            <span class="card__tag">Grid</span>
+                            <span class="card__tag">Анимации</span>
+                        </div>
+                        <div class="card__progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="cssProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text"><span id="cssCompleted">0</span>/55 уровней</span>
+                        </div>
+                        <div class="card__footer">
+                            <span class="card__badge">55 уровней</span>
+                            <span class="card__action">Начать &#8594;</span>
+                        </div>
+                    </a>
+
+                    <!-- JavaScript Card -->
+                    <a href="pages/levels.html?lang=js" class="language-card language-card--js glow-hover">
+                        <div class="card__glow"></div>
+                        <div class="card__icon">
+                            <div class="space-icon">
+                                <div class="rocket"></div>
+                                <div class="stars">
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                    <span class="star"></span>
+                                </div>
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <h3 class="card__title">JavaScript</h3>
+                        <p class="card__subtitle">&#128640; Космонавт</p>
+                        <p class="card__description">Запрограммируй интерактивность. Код - твоё топливо!</p>
+                        <div class="card__tags">
+                            <span class="card__tag">Функции</span>
+                            <span class="card__tag">DOM</span>
+                            <span class="card__tag">Async</span>
+                        </div>
+                        <div class="card__progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="jsProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text"><span id="jsCompleted">0</span>/70 уровней</span>
+                        </div>
+                        <div class="card__footer">
+                            <span class="card__badge">70 уровней</span>
+                            <span class="card__action">Начать &#8594;</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Learning Path Section -->
+            <section class="learning-path">
+                <div class="section-header">
+                    <h2 class="section-title">Путь обучения</h2>
+                    <p class="section-subtitle">Структурированный курс от основ до мастерства</p>
+                </div>
+                <div class="path-timeline stagger">
+                    <div class="path-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>HTML Основы</h4>
+                            <p>Изучи структуру веб-страниц, теги и семантику</p>
+                        </div>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="path-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>CSS Стилизация</h4>
+                            <p>Научись оформлять страницы, освой Flexbox и Grid</p>
+                        </div>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="path-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>JavaScript Логика</h4>
+                            <p>Добавь интерактивность, работай с DOM и API</p>
+                        </div>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="path-step path-step--final">
+                        <div class="step-number">&#127942;</div>
+                        <div class="step-content">
+                            <h4>Fullstack Разработчик</h4>
+                            <p>Создавай полноценные веб-приложения!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section - Improved -->
+            <section class="features">
+                <div class="section-header">
+                    <h2 class="section-title">Почему CodeQuest?</h2>
+                    <p class="section-subtitle">Уникальный подход к обучению программированию</p>
+                </div>
+                <div class="features-grid stagger">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <span class="feature-icon">&#127919;</span>
+                        </div>
+                        <h3 class="feature-title">Игровой подход</h3>
+                        <p class="feature-text">Учись программированию через интерактивные задания и мини-игры. Каждый уровень - новый вызов!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <span class="feature-icon">&#128202;</span>
+                        </div>
+                        <h3 class="feature-title">Отслеживай прогресс</h3>
+                        <p class="feature-text">XP, ранги, достижения и таблица лидеров мотивируют двигаться вперёд к мастерству</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <span class="feature-icon">&#128218;</span>
+                        </div>
+                        <h3 class="feature-title">160+ уровней</h3>
+                        <p class="feature-text">От основ до продвинутых тем - полное покрытие HTML, CSS и JavaScript</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <span class="feature-icon">&#9889;</span>
+                        </div>
+                        <h3 class="feature-title">Мгновенный результат</h3>
+                        <p class="feature-text">Пиши код и сразу видь результат своей работы в реальном времени</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Preview -->
+            <section class="achievements-preview">
+                <div class="section-header">
+                    <h2 class="section-title">Собирай достижения</h2>
+                    <p class="section-subtitle">30+ уникальных наград за твои успехи</p>
+                </div>
+                <div class="achievements-showcase stagger">
+                    <div class="achievement-card">
+                        <span class="achievement-emoji">&#128095;</span>
+                        <span class="achievement-name">Первые шаги</span>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-emoji">&#127942;</span>
+                        <span class="achievement-name">Ветеран</span>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-emoji">&#9889;</span>
+                        <span class="achievement-name">Скорострел</span>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-emoji">&#127919;</span>
+                        <span class="achievement-name">Перфекционист</span>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-emoji">&#128293;</span>
+                        <span class="achievement-name">Недельный марафон</span>
+                    </div>
+                    <div class="achievement-card achievement-card--more">
+                        <span class="achievement-emoji">+25</span>
+                        <span class="achievement-name">И многое другое...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="cta-content">
+                    <h2 class="cta-title">Готов начать?</h2>
+                    <p class="cta-text">Присоединяйся к тысячам разработчиков, которые уже учатся с CodeQuest</p>
+                    <a href="pages/levels.html?lang=html" class="btn-cta pulse-ring">
+                        Начать бесплатно &#8594;
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">CodeQuest</span>
+                </div>
+                <p class="footer__text">Изучай. Играй. Создавай.</p>
+                <div class="footer-links">
+                    <a href="pages/profile.html">Профиль</a>
+                    <a href="pages/achievements.html">Достижения</a>
+                    <a href="#">О проекте</a>
+                </div>
+            </div>
+            <p class="footer-copyright">&copy; 2024 CodeQuest. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <!-- Login Modal (Hidden by default) -->
+    <div class="modal hidden" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 class="modal-title">Войти в аккаунт</h2>
+            <p class="modal-subtitle">Сохрани свой прогресс в облаке</p>
+
+            <div class="auth-buttons">
+                <button class="auth-btn auth-btn--github">
+                    <span class="auth-icon">&#128025;</span>
+                    Войти через GitHub
+                </button>
+                <button class="auth-btn auth-btn--google">
+                    <span class="auth-icon">G</span>
+                    Войти через Google
+                </button>
+            </div>
+
+            <div class="auth-divider">
+                <span>или</span>
+            </div>
+
+            <form class="auth-form" id="emailAuthForm">
+                <input type="email" placeholder="Email" class="auth-input" required>
+                <input type="password" placeholder="Пароль" class="auth-input" required>
+                <button type="submit" class="auth-submit">Войти</button>
+            </form>
+
+            <p class="auth-note">Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a></p>
+        </div>
+    </div>
+
+    <script src="js/modules/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Page transition on load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+
+            // Update hero stats
+            const userData = Storage.getUserData();
+            document.getElementById('totalXPHero').textContent = userData.xp || 0;
+            document.getElementById('currentRankHero').textContent = Storage.getRankName(userData.rank);
+            document.getElementById('totalLevelsHero').textContent = userData.stats?.totalLevels || 0;
+            document.getElementById('streakDays').textContent = userData.stats?.streakDays || 0;
+        });
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const icon = document.querySelector('.theme-icon');
+            icon.innerHTML = document.body.classList.contains('light-theme') ? '&#9790;' : '&#9728;';
+            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+            document.querySelector('.theme-icon').innerHTML = '&#9790;';
+        }
+
+        // Language toggle
+        document.getElementById('langToggle').addEventListener('click', () => {
+            const current = localStorage.getItem('lang') || 'ru';
+            const newLang = current === 'ru' ? 'en' : 'ru';
+            localStorage.setItem('lang', newLang);
+            document.getElementById('langToggle').querySelector('span').textContent = newLang.toUpperCase();
+            // Reload page to apply language
+            // location.reload();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+/* ===================================
+   Progress & Achievements Component Styles
+   =================================== */
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--color-bg);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar.large {
+    height: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* XP Progress */
+.xp-progress {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.xp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.xp-current {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-warning);
+}
+
+.xp-next {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.xp-bar {
+    margin-bottom: var(--spacing-sm);
+}
+
+.xp-bar .progress-fill {
+    background: linear-gradient(90deg, var(--color-warning), var(--color-primary));
+}
+
+.xp-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* Rank Display */
+.rank-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.rank-badge {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-css));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+}
+
+.rank-info {
+    flex: 1;
+}
+
+.rank-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+}
+
+.rank-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.rank-xp {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* Level Progress Grid */
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+}
+
+.level-dot {
+    aspect-ratio: 1;
+    background: var(--color-bg);
+    border: 2px solid var(--color-bg-card);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.level-dot:hover {
+    transform: scale(1.1);
+    border-color: var(--color-primary);
+}
+
+.level-dot.completed {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
+}
+
+.level-dot.current {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.level-dot.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.level-dot.locked:hover {
+    transform: none;
+}
+
+.level-dot .checkmark {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 16px;
+    height: 16px;
+    background: var(--color-success);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: white;
+}
+
+/* Module Progress */
+.module-progress {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.module-header:hover {
+    background: var(--color-bg-secondary);
+}
+
+.module-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.module-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+}
+
+.module-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.module-count {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.module-expand {
+    transition: transform var(--transition-fast);
+}
+
+.module-header.expanded .module-expand {
+    transform: rotate(180deg);
+}
+
+.module-content {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    display: none;
+}
+
+.module-content.expanded {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Achievements Grid */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.achievement-card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-bg);
+}
+
+.achievement-card.unlocked::before {
+    background: linear-gradient(90deg, var(--color-warning), var(--color-primary));
+}
+
+.achievement-card:hover {
+    transform: translateY(-4px);
+}
+
+.achievement-card.locked {
+    opacity: 0.6;
+}
+
+.achievement-card.locked .achievement-icon {
+    filter: grayscale(100%);
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.achievement-name {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.achievement-description {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.achievement-progress {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.achievement-progress .progress-bar {
+    height: 4px;
+    margin-top: var(--spacing-xs);
+}
+
+.achievement-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-sm);
+}
+
+/* Stats Cards */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.stat-card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* Streak Display */
+.streak-display {
+    background: linear-gradient(135deg, var(--color-warning), var(--color-primary));
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: white;
+}
+
+.streak-icon {
+    font-size: 2.5rem;
+}
+
+.streak-count {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.streak-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.streak-days {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+}
+
+.streak-day {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.streak-day.active {
+    background: white;
+    color: var(--color-primary);
+}
+
+/* Leaderboard */
+.leaderboard {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-bg);
+}
+
+.leaderboard-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.leaderboard-tab {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.leaderboard-tab:hover {
+    background: var(--color-bg);
+}
+
+.leaderboard-tab.active {
+    background: var(--color-primary);
+    color: white;
+}
+
+.leaderboard-list {
+    padding: var(--spacing-md);
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    transition: var(--transition-fast);
+}
+
+.leaderboard-item:hover {
+    background: var(--color-bg-secondary);
+}
+
+.leaderboard-item.current-user {
+    background: rgba(108, 99, 255, 0.1);
+    border: 1px solid var(--color-primary);
+}
+
+.leaderboard-rank {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--color-text-muted);
+}
+
+.leaderboard-rank.top-1 {
+    color: #ffd700;
+    font-size: 1.25rem;
+}
+
+.leaderboard-rank.top-2 {
+    color: #c0c0c0;
+    font-size: 1.1rem;
+}
+
+.leaderboard-rank.top-3 {
+    color: #cd7f32;
+    font-size: 1rem;
+}
+
+.leaderboard-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.leaderboard-info {
+    flex: 1;
+}
+
+.leaderboard-name {
+    font-weight: 600;
+}
+
+.leaderboard-level {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.leaderboard-xp {
+    font-weight: 700;
+    color: var(--color-warning);
+}
+
+/* Daily Challenge */
+.daily-challenge {
+    background: linear-gradient(135deg, var(--color-bg-card), var(--color-bg-secondary));
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-challenge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(108, 99, 255, 0.2), transparent);
+}
+
+.daily-badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-md);
+}
+
+.daily-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.daily-description {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.daily-reward {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-warning);
+    font-weight: 600;
+}
+
+.daily-timer {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-md);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leaderboard-item {
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .streak-display {
+        flex-direction: column;
+        text-align: center;
+    }
+}

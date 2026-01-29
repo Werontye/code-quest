@@ -1,0 +1,377 @@
+/* ===================================
+   CSS Theme - "Художник"
+   Artist / Creative Studio Style
+   =================================== */
+
+.theme-css {
+    --theme-primary: #9b59b6;
+    --theme-primary-light: #bb6bd9;
+    --theme-primary-dark: #7d3c98;
+    --theme-bg: #1a1020;
+    --theme-bg-secondary: #2d1f3d;
+    --theme-bg-card: #3d2a4d;
+    --theme-accent: #e91e8c;
+    --theme-accent-light: #ff4da6;
+    --theme-palette-1: #ff6b6b;
+    --theme-palette-2: #4ecdc4;
+    --theme-palette-3: #45b7d1;
+    --theme-palette-4: #f9ca24;
+    --theme-palette-5: #6c5ce7;
+}
+
+/* Theme Background */
+.theme-css .game-page {
+    background:
+        linear-gradient(135deg, var(--theme-bg) 0%, var(--theme-bg-secondary) 100%),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239b59b6' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Art Studio Scene */
+.theme-css .visual-area {
+    background: var(--theme-bg-secondary);
+    border: 2px solid var(--theme-primary);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Canvas/Easel */
+.theme-css .canvas-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.theme-css .easel {
+    position: relative;
+    width: 80%;
+    max-width: 300px;
+    aspect-ratio: 4/3;
+    background: white;
+    border: 8px solid #8b4513;
+    border-radius: var(--radius-sm);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4),
+        inset 0 0 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.theme-css .easel::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 15px;
+    background: #654321;
+    border-radius: var(--radius-sm);
+}
+
+/* Paint Splashes */
+.theme-css .paint-splash {
+    position: absolute;
+    border-radius: 50% 60% 40% 70%;
+    opacity: 0.7;
+    animation: splashIn 0.5s ease forwards;
+}
+
+@keyframes splashIn {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); opacity: 0.7; }
+}
+
+/* Color Palette */
+.theme-css .palette-widget {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #654321;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.theme-css .palette-color {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.theme-css .palette-color:hover {
+    transform: scale(1.2);
+}
+
+.theme-css .palette-color:nth-child(1) { background: var(--theme-palette-1); }
+.theme-css .palette-color:nth-child(2) { background: var(--theme-palette-2); }
+.theme-css .palette-color:nth-child(3) { background: var(--theme-palette-3); }
+.theme-css .palette-color:nth-child(4) { background: var(--theme-palette-4); }
+.theme-css .palette-color:nth-child(5) { background: var(--theme-palette-5); }
+
+/* Brush Cursor */
+.theme-css .brush-cursor {
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    pointer-events: none;
+    transition: all 0.1s ease;
+}
+
+.theme-css .brush-handle {
+    width: 8px;
+    height: 40px;
+    background: linear-gradient(to bottom, #deb887, #8b4513);
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.theme-css .brush-tip {
+    width: 15px;
+    height: 20px;
+    background: var(--theme-primary);
+    border-radius: 3px 3px 50% 50%;
+    margin: 0 auto;
+}
+
+/* Mascot - Chameleon Artist */
+.theme-css .mascot {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    height: 50px;
+}
+
+.theme-css .chameleon-body {
+    width: 45px;
+    height: 35px;
+    background: var(--theme-primary);
+    border-radius: 50% 30% 30% 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+.theme-css .chameleon-eye {
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.theme-css .chameleon-eye::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+.theme-css .chameleon-tail {
+    width: 20px;
+    height: 20px;
+    border: 4px solid var(--theme-primary);
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    position: absolute;
+    bottom: 10px;
+    left: -5px;
+    transform: rotate(-45deg);
+}
+
+/* Level Info Panel */
+.theme-css .level-info {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-primary);
+}
+
+.theme-css .level-number {
+    color: var(--theme-primary);
+}
+
+/* Code Editor Styling */
+.theme-css .code-editor {
+    border: 2px solid var(--theme-primary);
+    background: #1e1020;
+}
+
+.theme-css .editor-header {
+    background: var(--theme-bg-card);
+    border-bottom: 1px solid var(--theme-primary);
+}
+
+.theme-css .btn-run {
+    background: var(--theme-primary);
+}
+
+.theme-css .btn-run:hover {
+    background: var(--theme-primary-light);
+}
+
+/* Style Preview Box */
+.theme-css .style-preview {
+    padding: var(--spacing-lg);
+    background: white;
+    border-radius: var(--radius-md);
+    min-height: 100px;
+    transition: all 0.3s ease;
+}
+
+.theme-css .style-preview.styled {
+    box-shadow: 0 0 20px var(--theme-accent);
+}
+
+/* Property Visualization */
+.theme-css .property-visual {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--theme-bg-card);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-xs) 0;
+}
+
+.theme-css .property-name {
+    color: var(--theme-palette-3);
+    font-family: var(--font-mono);
+}
+
+.theme-css .property-value {
+    color: var(--theme-palette-1);
+    font-family: var(--font-mono);
+}
+
+/* Color Picker Visual */
+.theme-css .color-picker-visual {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    padding: var(--spacing-md);
+}
+
+.theme-css .color-swatch {
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.theme-css .color-swatch:hover {
+    transform: scale(1.1);
+    border-color: white;
+}
+
+.theme-css .color-swatch.selected {
+    border-color: white;
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Success State */
+.theme-css .success-overlay {
+    background: radial-gradient(circle, rgba(155, 89, 182, 0.9), rgba(26, 16, 32, 0.95));
+}
+
+.theme-css .success-icon {
+    color: var(--theme-accent);
+}
+
+/* Box Model Visualization */
+.theme-css .box-model-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.theme-css .box-margin {
+    padding: 20px;
+    background: rgba(255, 193, 7, 0.3);
+    border: 2px dashed var(--theme-palette-4);
+}
+
+.theme-css .box-border {
+    padding: 15px;
+    background: rgba(78, 205, 196, 0.3);
+    border: 3px solid var(--theme-palette-2);
+}
+
+.theme-css .box-padding {
+    padding: 15px;
+    background: rgba(108, 92, 231, 0.3);
+    border: 2px dashed var(--theme-palette-5);
+}
+
+.theme-css .box-content {
+    padding: 20px;
+    background: var(--theme-palette-1);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Hint Styling */
+.theme-css .hint-box {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-accent);
+}
+
+/* Animation Preview */
+.theme-css .animation-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
+
+.theme-css .animated-element {
+    width: 60px;
+    height: 60px;
+    background: var(--theme-primary);
+    border-radius: var(--radius-md);
+}
+
+.theme-css .animated-element.rotate {
+    animation: cssRotate 2s linear infinite;
+}
+
+.theme-css .animated-element.bounce {
+    animation: cssBounce 1s ease infinite;
+}
+
+.theme-css .animated-element.pulse {
+    animation: cssPulse 1.5s ease infinite;
+}
+
+@keyframes cssRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes cssBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+@keyframes cssPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+}

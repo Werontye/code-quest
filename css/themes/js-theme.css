@@ -1,0 +1,534 @@
+/* ===================================
+   JavaScript Theme - "Космонавт"
+   Space / Sci-Fi Style
+   =================================== */
+
+.theme-js {
+    --theme-primary: #f0db4f;
+    --theme-primary-light: #f5e663;
+    --theme-primary-dark: #d4c23f;
+    --theme-bg: #0a0a1a;
+    --theme-bg-secondary: #0f1629;
+    --theme-bg-card: #1a2744;
+    --theme-accent: #00d4ff;
+    --theme-accent-light: #4ddfff;
+    --theme-neon-green: #39ff14;
+    --theme-neon-pink: #ff00ff;
+    --theme-star: #ffffff;
+}
+
+/* Theme Background - Space */
+.theme-js .game-page {
+    background:
+        radial-gradient(ellipse at top, #1a1a4e 0%, var(--theme-bg) 50%),
+        var(--theme-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Stars Background */
+.theme-js .stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.theme-js .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+.theme-js .star:nth-child(odd) {
+    animation-duration: 2s;
+}
+
+.theme-js .star:nth-child(3n) {
+    width: 3px;
+    height: 3px;
+    animation-duration: 4s;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Space Station Scene */
+.theme-js .visual-area {
+    background: var(--theme-bg-secondary);
+    border: 2px solid var(--theme-accent);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 0 30px rgba(0, 212, 255, 0.2),
+        inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.theme-js .visual-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(90deg, transparent 49%, rgba(0, 212, 255, 0.1) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(0, 212, 255, 0.1) 50%, transparent 51%);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+/* Control Panel */
+.theme-js .control-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+}
+
+.theme-js .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--theme-accent);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.theme-js .panel-title {
+    color: var(--theme-accent);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.theme-js .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.theme-js .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: statusBlink 1.5s infinite;
+}
+
+.theme-js .status-dot.online {
+    background: var(--theme-neon-green);
+    box-shadow: 0 0 10px var(--theme-neon-green);
+}
+
+.theme-js .status-dot.offline {
+    background: #ff4444;
+    box-shadow: 0 0 10px #ff4444;
+}
+
+@keyframes statusBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Console Output */
+.theme-js .console-output {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--theme-accent);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    overflow-y: auto;
+}
+
+.theme-js .console-line {
+    margin: var(--spacing-xs) 0;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.theme-js .console-line.log {
+    color: var(--theme-star);
+}
+
+.theme-js .console-line.error {
+    color: #ff4444;
+}
+
+.theme-js .console-line.success {
+    color: var(--theme-neon-green);
+}
+
+.theme-js .console-prompt {
+    color: var(--theme-accent);
+}
+
+.theme-js .console-prompt::before {
+    content: '> ';
+    color: var(--theme-neon-green);
+}
+
+/* Rocket Ship */
+.theme-js .rocket-container {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.theme-js .rocket {
+    width: 40px;
+    height: 80px;
+    position: relative;
+    animation: rocketFloat 3s ease-in-out infinite;
+}
+
+.theme-js .rocket-body {
+    width: 30px;
+    height: 60px;
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    border-radius: 50% 50% 10% 10%;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+}
+
+.theme-js .rocket-window {
+    width: 15px;
+    height: 15px;
+    background: var(--theme-accent);
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 12px;
+    box-shadow: 0 0 10px var(--theme-accent);
+}
+
+.theme-js .rocket-fin-left,
+.theme-js .rocket-fin-right {
+    width: 15px;
+    height: 25px;
+    background: var(--theme-primary);
+    position: absolute;
+    bottom: 5px;
+}
+
+.theme-js .rocket-fin-left {
+    left: -5px;
+    border-radius: 50% 0 0 50%;
+    transform: skewY(-20deg);
+}
+
+.theme-js .rocket-fin-right {
+    right: -5px;
+    border-radius: 0 50% 50% 0;
+    transform: skewY(20deg);
+}
+
+.theme-js .rocket-flame {
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    bottom: -25px;
+    left: 10px;
+    background: linear-gradient(to bottom, var(--theme-primary), #ff6600, #ff0000);
+    border-radius: 50% 50% 50% 50%;
+    animation: flame 0.2s infinite alternate;
+}
+
+@keyframes rocketFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes flame {
+    0% { height: 30px; opacity: 1; }
+    100% { height: 40px; opacity: 0.8; }
+}
+
+/* Planet */
+.theme-js .planet {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    box-shadow:
+        inset -10px -10px 20px rgba(0,0,0,0.3),
+        0 0 30px rgba(102, 126, 234, 0.5);
+}
+
+.theme-js .planet-ring {
+    position: absolute;
+    width: 90px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(70deg);
+}
+
+/* Robot Mascot */
+.theme-js .mascot {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 80px;
+}
+
+.theme-js .robot-head {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #4a4a4a, #2a2a2a);
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    border: 2px solid var(--theme-accent);
+}
+
+.theme-js .robot-eyes {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 8px;
+}
+
+.theme-js .robot-eye {
+    width: 10px;
+    height: 10px;
+    background: var(--theme-accent);
+    border-radius: 50%;
+    animation: robotBlink 3s infinite;
+    box-shadow: 0 0 10px var(--theme-accent);
+}
+
+@keyframes robotBlink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+
+.theme-js .robot-body {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(135deg, #3a3a3a, #1a1a1a);
+    border-radius: 10px;
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    border: 2px solid var(--theme-primary);
+}
+
+.theme-js .robot-screen {
+    width: 30px;
+    height: 20px;
+    background: var(--theme-bg);
+    border: 1px solid var(--theme-neon-green);
+    border-radius: 3px;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--theme-neon-green);
+}
+
+/* Level Info Panel */
+.theme-js .level-info {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-primary);
+}
+
+.theme-js .level-number {
+    color: var(--theme-primary);
+}
+
+/* Code Editor Styling */
+.theme-js .code-editor {
+    border: 2px solid var(--theme-primary);
+    background: #0d0d1a;
+}
+
+.theme-js .editor-header {
+    background: var(--theme-bg-card);
+    border-bottom: 1px solid var(--theme-primary);
+}
+
+.theme-js .btn-run {
+    background: var(--theme-primary);
+    color: #000;
+}
+
+.theme-js .btn-run:hover {
+    background: var(--theme-primary-light);
+    box-shadow: 0 0 20px var(--theme-primary);
+}
+
+/* Variable Container Visual */
+.theme-js .variable-container {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--theme-bg-card);
+    border: 2px solid var(--theme-accent);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-xs);
+    font-family: var(--font-mono);
+}
+
+.theme-js .variable-name {
+    color: var(--theme-accent);
+    margin-right: var(--spacing-sm);
+}
+
+.theme-js .variable-value {
+    color: var(--theme-neon-green);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(57, 255, 20, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+/* Function Visual */
+.theme-js .function-visual {
+    background: var(--theme-bg-card);
+    border: 2px solid var(--theme-primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+}
+
+.theme-js .function-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--theme-primary);
+    font-family: var(--font-mono);
+    margin-bottom: var(--spacing-sm);
+}
+
+.theme-js .function-body {
+    padding-left: var(--spacing-lg);
+    border-left: 2px solid var(--theme-primary);
+}
+
+/* Loop Orbit Visual */
+.theme-js .loop-visual {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: var(--spacing-lg) auto;
+}
+
+.theme-js .orbit {
+    position: absolute;
+    border: 2px dashed var(--theme-accent);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.theme-js .orbit-center {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--theme-primary);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px var(--theme-primary);
+}
+
+.theme-js .orbit-item {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--theme-accent);
+    border-radius: 50%;
+    animation: orbit 3s linear infinite;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+/* Success State */
+.theme-js .success-overlay {
+    background: radial-gradient(circle, rgba(240, 219, 79, 0.9), rgba(10, 10, 26, 0.95));
+}
+
+.theme-js .success-icon {
+    color: var(--theme-neon-green);
+    text-shadow: 0 0 20px var(--theme-neon-green);
+}
+
+/* Hint Styling */
+.theme-js .hint-box {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-accent);
+}
+
+/* Data Flow Animation */
+.theme-js .data-flow {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+.theme-js .data-node {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--theme-bg-card);
+    border: 2px solid var(--theme-accent);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+}
+
+.theme-js .data-arrow {
+    width: 30px;
+    height: 2px;
+    background: var(--theme-accent);
+    position: relative;
+}
+
+.theme-js .data-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    border: 5px solid transparent;
+    border-left-color: var(--theme-accent);
+}
+
+/* Terminal Animation */
+.theme-js .terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background: var(--theme-neon-green);
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

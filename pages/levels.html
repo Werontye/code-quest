@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор уровня - CodeQuest</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/progress.css">
+    <link rel="stylesheet" href="../css/themes/html-theme.css">
+    <link rel="stylesheet" href="../css/themes/css-theme.css">
+    <link rel="stylesheet" href="../css/themes/js-theme.css">
+</head>
+<body>
+    <div class="app" id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <a href="../index.html" class="logo-link">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">CodeQuest</span>
+                </a>
+            </div>
+            <nav class="header__nav">
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon">&#9733;</span>
+                    <span class="nav-xp" id="headerXP">0 XP</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main levels-page">
+            <!-- Language Header -->
+            <section class="language-header" id="languageHeader">
+                <div class="language-icon" id="languageIcon">
+                    <!-- Icon will be inserted by JS -->
+                </div>
+                <div class="language-info">
+                    <h1 class="language-title" id="languageTitle">HTML</h1>
+                    <p class="language-subtitle" id="languageSubtitle">Строитель</p>
+                </div>
+                <div class="language-progress">
+                    <div class="progress-stats">
+                        <span class="completed-count"><span id="completedCount">0</span> / <span id="totalCount">35</span></span>
+                        <span class="progress-percent" id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar large">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modules List -->
+            <section class="modules-section">
+                <div class="modules-list" id="modulesList">
+                    <!-- Modules will be inserted by JS -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer__text">CodeQuest &copy; 2024</p>
+        </footer>
+    </div>
+
+    <style>
+        /* Levels Page Specific Styles */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .levels-page {
+            padding: var(--spacing-xl);
+        }
+
+        .language-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .language-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-lg);
+            font-size: 3rem;
+        }
+
+        .language-info {
+            flex: 1;
+        }
+
+        .language-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .language-subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .language-progress {
+            min-width: 200px;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.9rem;
+        }
+
+        .completed-count {
+            font-weight: 600;
+        }
+
+        .progress-percent {
+            color: var(--color-text-muted);
+        }
+
+        /* Theme specific colors */
+        .levels-page[data-lang="html"] .language-icon {
+            background: var(--color-html-bg);
+            color: var(--color-html);
+        }
+
+        .levels-page[data-lang="html"] .language-title {
+            color: var(--color-html);
+        }
+
+        .levels-page[data-lang="html"] .progress-fill {
+            background: var(--color-html);
+        }
+
+        .levels-page[data-lang="css"] .language-icon {
+            background: var(--color-css-bg);
+            color: var(--color-css);
+        }
+
+        .levels-page[data-lang="css"] .language-title {
+            color: var(--color-css);
+        }
+
+        .levels-page[data-lang="css"] .progress-fill {
+            background: var(--color-css);
+        }
+
+        .levels-page[data-lang="js"] .language-icon {
+            background: var(--color-js-bg);
+            color: var(--color-js);
+        }
+
+        .levels-page[data-lang="js"] .language-title {
+            color: var(--color-js);
+        }
+
+        .levels-page[data-lang="js"] .progress-fill {
+            background: var(--color-js);
+        }
+
+        /* Modules */
+        .modules-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .module-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .module-header:hover {
+            background: var(--color-bg-secondary);
+        }
+
+        .module-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .module-number {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg);
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .levels-page[data-lang="html"] .module-number {
+            background: var(--color-html-bg);
+            color: var(--color-html);
+        }
+
+        .levels-page[data-lang="css"] .module-number {
+            background: var(--color-css-bg);
+            color: var(--color-css);
+        }
+
+        .levels-page[data-lang="js"] .module-number {
+            background: var(--color-js-bg);
+            color: var(--color-js);
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .module-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .module-stats {
+            text-align: right;
+        }
+
+        .module-count {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .module-xp {
+            font-size: 0.85rem;
+            color: var(--color-warning);
+        }
+
+        .module-arrow {
+            font-size: 1.2rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .module-card.expanded .module-arrow {
+            transform: rotate(180deg);
+        }
+
+        .module-content {
+            display: none;
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+        }
+
+        .module-card.expanded .module-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Levels Grid */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .level-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border-radius: var(--radius-md);
+            transition: var(--transition-fast);
+            border: 2px solid transparent;
+        }
+
+        .level-card:hover:not(.locked) {
+            border-color: var(--color-primary);
+            transform: translateX(5px);
+        }
+
+        .level-card.completed {
+            border-color: var(--color-success);
+            background: rgba(0, 210, 106, 0.1);
+        }
+
+        .level-card.current {
+            border-color: var(--color-primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .level-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .level-num {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg-card);
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .level-card.completed .level-num {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .level-card.current .level-num {
+            background: var(--color-primary);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .level-info {
+            flex: 1;
+        }
+
+        .level-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .level-type {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .level-xp {
+            font-size: 0.85rem;
+            color: var(--color-warning);
+            font-weight: 600;
+        }
+
+        .level-status {
+            font-size: 1.2rem;
+        }
+
+        .level-card.completed .level-status::after {
+            content: '\\2713';
+            color: var(--color-success);
+        }
+
+        .level-card.locked .level-status::after {
+            content: '\\1F512';
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .language-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .language-progress {
+                width: 100%;
+            }
+
+            .levels-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="../js/modules/storage.js"></script>
+    <script src="../js/levels/html-levels.js"></script>
+    <script src="../js/levels/css-levels.js"></script>
+    <script src="../js/levels/js-levels.js"></script>
+    <script>
+        // Levels Page Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get language from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'html';
+
+            // Language configurations
+            const langConfig = {
+                html: {
+                    title: 'HTML',
+                    subtitle: 'Строитель',
+                    icon: '&#127959;',
+                    levels: typeof htmlLevels !== 'undefined' ? htmlLevels : [],
+                    total: 35
+                },
+                css: {
+                    title: 'CSS',
+                    subtitle: 'Художник',
+                    icon: '&#127912;',
+                    levels: typeof cssLevels !== 'undefined' ? cssLevels : [],
+                    total: 55
+                },
+                js: {
+                    title: 'JavaScript',
+                    subtitle: 'Космонавт',
+                    icon: '&#128640;',
+                    levels: typeof jsLevels !== 'undefined' ? jsLevels : [],
+                    total: 70
+                }
+            };
+
+            const config = langConfig[lang];
+            if (!config) {
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Set page data
+            const levelsPage = document.querySelector('.levels-page');
+            levelsPage.setAttribute('data-lang', lang);
+
+            // Update header
+            document.getElementById('languageTitle').textContent = config.title;
+            document.getElementById('languageSubtitle').textContent = config.subtitle;
+            document.getElementById('languageIcon').innerHTML = config.icon;
+            document.getElementById('totalCount').textContent = config.total;
+
+            // Get user progress
+            const userData = Storage.getUserData();
+            const progress = userData.progress[lang] || { completed: [], current: 1 };
+            const completedCount = progress.completed.length;
+
+            // Update progress display
+            document.getElementById('completedCount').textContent = completedCount;
+            const progressPercent = Math.round((completedCount / config.total) * 100);
+            document.getElementById('progressPercent').textContent = progressPercent + '%';
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+
+            // Update header XP
+            document.getElementById('headerXP').textContent = userData.xp + ' XP';
+
+            // Render modules and levels
+            renderModules(config.levels, progress, lang);
+        });
+
+        function renderModules(levels, progress, lang) {
+            const modulesList = document.getElementById('modulesList');
+
+            // Group levels by module
+            const modules = {};
+            levels.forEach(level => {
+                const moduleName = level.module || 'Основы';
+                if (!modules[moduleName]) {
+                    modules[moduleName] = [];
+                }
+                modules[moduleName].push(level);
+            });
+
+            let moduleIndex = 1;
+            for (const [moduleName, moduleLevels] of Object.entries(modules)) {
+                const moduleCard = document.createElement('div');
+                moduleCard.className = 'module-card';
+                if (moduleIndex === 1) moduleCard.classList.add('expanded');
+
+                const completedInModule = moduleLevels.filter(l =>
+                    progress.completed.includes(l.id)
+                ).length;
+
+                const totalXP = moduleLevels.reduce((sum, l) => sum + (l.xp || 10), 0);
+
+                moduleCard.innerHTML = `
+                    <div class="module-header">
+                        <div class="module-left">
+                            <div class="module-number">${moduleIndex}</div>
+                            <div>
+                                <div class="module-title">${moduleName}</div>
+                            </div>
+                        </div>
+                        <div class="module-right">
+                            <div class="module-stats">
+                                <div class="module-count">${completedInModule} / ${moduleLevels.length}</div>
+                                <div class="module-xp">+${totalXP} XP</div>
+                            </div>
+                            <span class="module-arrow">&#9660;</span>
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <div class="levels-grid">
+                            ${moduleLevels.map((level, idx) => {
+                                const globalIndex = levels.indexOf(level) + 1;
+                                const isCompleted = progress.completed.includes(level.id);
+                                const isCurrent = globalIndex === progress.current;
+                                const isLocked = globalIndex > progress.current && !isCompleted;
+
+                                let statusClass = '';
+                                if (isCompleted) statusClass = 'completed';
+                                else if (isCurrent) statusClass = 'current';
+                                else if (isLocked) statusClass = 'locked';
+
+                                const href = isLocked ? '#' : `game.html?lang=${lang}&level=${level.id}`;
+
+                                return `
+                                    <a href="${href}" class="level-card ${statusClass}">
+                                        <div class="level-num">${globalIndex}</div>
+                                        <div class="level-info">
+                                            <div class="level-title">${level.title}</div>
+                                            <div class="level-type">${level.type === 'fill-blank' ? 'Заполни пропуски' : 'Редактор кода'}</div>
+                                        </div>
+                                        <div class="level-xp">+${level.xp || 10} XP</div>
+                                        <span class="level-status"></span>
+                                    </a>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+
+                // Toggle module
+                moduleCard.querySelector('.module-header').addEventListener('click', () => {
+                    moduleCard.classList.toggle('expanded');
+                });
+
+                modulesList.appendChild(moduleCard);
+                moduleIndex++;
+            }
+        }
+    </script>
+</body>
+</html>
