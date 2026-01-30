@@ -7,6 +7,7 @@ window.reactLevels = [
     // === Module 1: JSX Basics (Levels 1-10) ===
     {
         id: 'react-1',
+        module: 'Основы JSX',
         title: 'Первый компонент',
         description: 'В React компоненты - это функции, возвращающие JSX.',
         task: 'Верни JSX элемент h1 из компонента',
@@ -20,6 +21,7 @@ window.reactLevels = [
     },
     {
         id: 'react-2',
+        module: 'Основы JSX',
         title: 'JSX с переменной',
         description: 'В JSX можно вставлять JavaScript выражения в фигурных скобках.',
         task: 'Вставь переменную name в JSX',
@@ -33,6 +35,7 @@ window.reactLevels = [
     },
     {
         id: 'react-3',
+        module: 'Основы JSX',
         title: 'Атрибут className',
         description: 'В JSX вместо class используется className.',
         task: 'Добавь CSS класс к div',
@@ -46,6 +49,7 @@ window.reactLevels = [
     },
     {
         id: 'react-4',
+        module: 'Основы JSX',
         title: 'Инлайн стили',
         description: 'Стили в JSX передаются как объект.',
         task: 'Добавь инлайн стиль',
@@ -59,6 +63,7 @@ window.reactLevels = [
     },
     {
         id: 'react-5',
+        module: 'Основы JSX',
         title: 'Фрагменты',
         description: 'Fragments позволяют группировать элементы без лишнего DOM узла.',
         task: 'Используй Fragment для группировки',
@@ -72,6 +77,7 @@ window.reactLevels = [
     },
     {
         id: 'react-6',
+        module: 'Основы JSX',
         title: 'Условный рендеринг',
         description: 'Используй тернарный оператор для условного рендеринга.',
         task: 'Покажи разный текст в зависимости от isLoggedIn',
@@ -85,6 +91,7 @@ window.reactLevels = [
     },
     {
         id: 'react-7',
+        module: 'Основы JSX',
         title: 'Логический AND',
         description: '&& позволяет рендерить элемент только при true.',
         task: 'Покажи сообщение если есть unreadMessages',
@@ -98,6 +105,7 @@ window.reactLevels = [
     },
     {
         id: 'react-8',
+        module: 'Основы JSX',
         title: 'Рендеринг списка',
         description: 'Используй map для рендеринга списка элементов.',
         task: 'Отрендери список items',
@@ -111,6 +119,7 @@ window.reactLevels = [
     },
     {
         id: 'react-9',
+        module: 'Основы JSX',
         title: 'Key в списках',
         description: 'Каждый элемент списка должен иметь уникальный key.',
         task: 'Добавь key к элементу списка',
@@ -124,6 +133,7 @@ window.reactLevels = [
     },
     {
         id: 'react-10',
+        module: 'Основы JSX',
         title: 'Обработка событий',
         description: 'События в React именуются в camelCase.',
         task: 'Добавь обработчик клика',
@@ -139,6 +149,7 @@ window.reactLevels = [
     // === Module 2: Props & State (Levels 11-20) ===
     {
         id: 'react-11',
+        module: 'Props и State',
         title: 'Props компонента',
         description: 'Props - это параметры, передаваемые компоненту.',
         task: 'Получи props в компоненте',
@@ -152,6 +163,7 @@ window.reactLevels = [
     },
     {
         id: 'react-12',
+        module: 'Props и State',
         title: 'Деструктуризация props',
         description: 'Можно деструктурировать props прямо в параметрах.',
         task: 'Деструктурируй name из props',
@@ -165,6 +177,7 @@ window.reactLevels = [
     },
     {
         id: 'react-13',
+        module: 'Props и State',
         title: 'Дефолтные props',
         description: 'Можно задать значения по умолчанию для props.',
         task: 'Установи дефолтное значение для name',
@@ -178,6 +191,7 @@ window.reactLevels = [
     },
     {
         id: 'react-14',
+        module: 'Props и State',
         title: 'Children props',
         description: 'children - специальный prop для вложенного контента.',
         task: 'Используй children для контента',
@@ -191,6 +205,7 @@ window.reactLevels = [
     },
     {
         id: 'react-15',
+        module: 'Props и State',
         title: 'useState Hook',
         description: 'useState создаёт состояние в функциональном компоненте.',
         task: 'Создай состояние count',
@@ -204,6 +219,7 @@ window.reactLevels = [
     },
     {
         id: 'react-16',
+        module: 'Props и State',
         title: 'Обновление состояния',
         description: 'Используй функцию-сеттер для обновления состояния.',
         task: 'Увеличь count на 1',
@@ -217,6 +233,7 @@ window.reactLevels = [
     },
     {
         id: 'react-17',
+        module: 'Props и State',
         title: 'Функциональное обновление',
         description: 'Для обновления на основе предыдущего значения используй функцию.',
         task: 'Обнови count функционально',
@@ -230,6 +247,7 @@ window.reactLevels = [
     },
     {
         id: 'react-18',
+        module: 'Props и State',
         title: 'Состояние объекта',
         description: 'Состояние может быть объектом.',
         task: 'Создай состояние формы',
@@ -243,6 +261,7 @@ window.reactLevels = [
     },
     {
         id: 'react-19',
+        module: 'Props и State',
         title: 'Spread в состоянии',
         description: 'При обновлении объекта используй spread оператор.',
         task: 'Сохрани остальные свойства при обновлении',
@@ -256,6 +275,7 @@ window.reactLevels = [
     },
     {
         id: 'react-20',
+        module: 'Props и State',
         title: 'Передача состояния',
         description: 'Состояние можно передавать дочерним компонентам через props.',
         task: 'Передай count в дочерний компонент',
@@ -271,6 +291,7 @@ window.reactLevels = [
     // === Module 3: useEffect & Lifecycle (Levels 21-30) ===
     {
         id: 'react-21',
+        module: 'useEffect и жизненный цикл',
         title: 'useEffect Hook',
         description: 'useEffect выполняет side effects в компоненте.',
         task: 'Добавь useEffect для логирования',
@@ -284,6 +305,7 @@ window.reactLevels = [
     },
     {
         id: 'react-22',
+        module: 'useEffect и жизненный цикл',
         title: 'Массив зависимостей',
         description: 'Пустой массив зависимостей = эффект при монтировании.',
         task: 'Выполни эффект только при монтировании',
@@ -297,6 +319,7 @@ window.reactLevels = [
     },
     {
         id: 'react-23',
+        module: 'useEffect и жизненный цикл',
         title: 'Зависимость от переменной',
         description: 'Добавь переменную в массив зависимостей.',
         task: 'Перезапускай эффект при изменении userId',
@@ -310,6 +333,7 @@ window.reactLevels = [
     },
     {
         id: 'react-24',
+        module: 'useEffect и жизненный цикл',
         title: 'Cleanup функция',
         description: 'Верни функцию из useEffect для очистки.',
         task: 'Добавь cleanup для отписки',
@@ -323,6 +347,7 @@ window.reactLevels = [
     },
     {
         id: 'react-25',
+        module: 'useEffect и жизненный цикл',
         title: 'Fetch данных',
         description: 'Используй useEffect для загрузки данных.',
         task: 'Загрузи данные при монтировании',
@@ -336,6 +361,7 @@ window.reactLevels = [
     },
     {
         id: 'react-26',
+        module: 'useEffect и жизненный цикл',
         title: 'useRef Hook',
         description: 'useRef создаёт мутируемую ссылку.',
         task: 'Создай ref для input элемента',
@@ -349,6 +375,7 @@ window.reactLevels = [
     },
     {
         id: 'react-27',
+        module: 'useEffect и жизненный цикл',
         title: 'Доступ к DOM через ref',
         description: 'ref.current содержит DOM элемент.',
         task: 'Сфокусируй input при клике',
@@ -362,6 +389,7 @@ window.reactLevels = [
     },
     {
         id: 'react-28',
+        module: 'useEffect и жизненный цикл',
         title: 'useMemo Hook',
         description: 'useMemo кеширует вычисленное значение.',
         task: 'Мемоизируй дорогое вычисление',
@@ -375,6 +403,7 @@ window.reactLevels = [
     },
     {
         id: 'react-29',
+        module: 'useEffect и жизненный цикл',
         title: 'useCallback Hook',
         description: 'useCallback кеширует функцию.',
         task: 'Мемоизируй callback функцию',
@@ -388,6 +417,7 @@ window.reactLevels = [
     },
     {
         id: 'react-30',
+        module: 'useEffect и жизненный цикл',
         title: 'Custom Hook',
         description: 'Создай свой хук для переиспользования логики.',
         task: 'Назови кастомный хук правильно',
@@ -403,6 +433,7 @@ window.reactLevels = [
     // === Module 4: Context & Forms (Levels 31-40) ===
     {
         id: 'react-31',
+        module: 'Context и формы',
         title: 'Создание Context',
         description: 'Context позволяет передавать данные без prop drilling.',
         task: 'Создай контекст темы',
@@ -416,6 +447,7 @@ window.reactLevels = [
     },
     {
         id: 'react-32',
+        module: 'Context и формы',
         title: 'Context Provider',
         description: 'Provider предоставляет значение контекста.',
         task: 'Оберни компоненты в Provider',
@@ -429,6 +461,7 @@ window.reactLevels = [
     },
     {
         id: 'react-33',
+        module: 'Context и формы',
         title: 'useContext Hook',
         description: 'useContext читает значение из контекста.',
         task: 'Получи значение темы',
@@ -442,6 +475,7 @@ window.reactLevels = [
     },
     {
         id: 'react-34',
+        module: 'Context и формы',
         title: 'Controlled Input',
         description: 'Controlled input привязан к состоянию.',
         task: 'Привяжи input к состоянию',
@@ -455,6 +489,7 @@ window.reactLevels = [
     },
     {
         id: 'react-35',
+        module: 'Context и формы',
         title: 'Обработка формы',
         description: 'Обработай submit формы.',
         task: 'Предотврати перезагрузку страницы',
@@ -468,6 +503,7 @@ window.reactLevels = [
     },
     {
         id: 'react-36',
+        module: 'Context и формы',
         title: 'useReducer Hook',
         description: 'useReducer для сложной логики состояния.',
         task: 'Используй useReducer',
@@ -481,6 +517,7 @@ window.reactLevels = [
     },
     {
         id: 'react-37',
+        module: 'Context и формы',
         title: 'Reducer функция',
         description: 'Reducer принимает state и action, возвращает новый state.',
         task: 'Верни новое состояние из reducer',
@@ -494,6 +531,7 @@ window.reactLevels = [
     },
     {
         id: 'react-38',
+        module: 'Context и формы',
         title: 'Multiple inputs',
         description: 'Управляй несколькими inputs одним состоянием.',
         task: 'Используй name атрибут для идентификации',
@@ -507,6 +545,7 @@ window.reactLevels = [
     },
     {
         id: 'react-39',
+        module: 'Context и формы',
         title: 'Валидация формы',
         description: 'Добавь простую валидацию.',
         task: 'Проверь что поле не пустое',
@@ -520,6 +559,7 @@ window.reactLevels = [
     },
     {
         id: 'react-40',
+        module: 'Context и формы',
         title: 'Отображение ошибок',
         description: 'Покажи ошибку валидации пользователю.',
         task: 'Условно отрендери сообщение об ошибке',
@@ -535,6 +575,7 @@ window.reactLevels = [
     // === Module 5: Advanced Patterns (Levels 41-45) ===
     {
         id: 'react-41',
+        module: 'Продвинутые паттерны',
         title: 'Render Props',
         description: 'Render props - паттерн передачи функции рендеринга.',
         task: 'Используй render prop',
@@ -548,6 +589,7 @@ window.reactLevels = [
     },
     {
         id: 'react-42',
+        module: 'Продвинутые паттерны',
         title: 'Higher-Order Component',
         description: 'HOC - функция, принимающая и возвращающая компонент.',
         task: 'Создай HOC',
@@ -561,6 +603,7 @@ window.reactLevels = [
     },
     {
         id: 'react-43',
+        module: 'Продвинутые паттерны',
         title: 'React.memo',
         description: 'memo предотвращает ненужные перерендеры.',
         task: 'Мемоизируй компонент',
@@ -574,6 +617,7 @@ window.reactLevels = [
     },
     {
         id: 'react-44',
+        module: 'Продвинутые паттерны',
         title: 'Lazy Loading',
         description: 'Lazy загружает компонент по требованию.',
         task: 'Создай lazy компонент',
@@ -587,6 +631,7 @@ window.reactLevels = [
     },
     {
         id: 'react-45',
+        module: 'Продвинутые паттерны',
         title: 'Error Boundary',
         description: 'Error boundaries ловят ошибки в дочерних компонентах.',
         task: 'Реализуй метод для отлова ошибок',

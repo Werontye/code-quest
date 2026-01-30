@@ -7,6 +7,7 @@ window.tsLevels = [
     // === Module 1: TypeScript Basics (Levels 1-10) ===
     {
         id: 'ts-1',
+        module: 'Основы TypeScript',
         title: 'Первый тип',
         description: 'TypeScript добавляет типы в JavaScript. Давай начнём с простого - укажем тип переменной.',
         task: 'Укажи тип string для переменной name',
@@ -20,6 +21,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-2',
+        module: 'Основы TypeScript',
         title: 'Числовой тип',
         description: 'Для чисел в TypeScript используется тип number.',
         task: 'Укажи тип number для переменной age',
@@ -33,6 +35,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-3',
+        module: 'Основы TypeScript',
         title: 'Логический тип',
         description: 'Boolean - это тип для значений true и false.',
         task: 'Укажи тип boolean для переменной isActive',
@@ -46,6 +49,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-4',
+        module: 'Основы TypeScript',
         title: 'Массив строк',
         description: 'Массивы в TypeScript могут быть типизированы.',
         task: 'Укажи тип массива строк',
@@ -59,6 +63,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-5',
+        module: 'Основы TypeScript',
         title: 'Массив чисел',
         description: 'Аналогично создаём массив чисел.',
         task: 'Укажи тип массива чисел',
@@ -72,6 +77,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-6',
+        module: 'Основы TypeScript',
         title: 'Функция с типами',
         description: 'Функции тоже могут иметь типы параметров и возвращаемого значения.',
         task: 'Укажи тип параметра и возвращаемого значения',
@@ -85,6 +91,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-7',
+        module: 'Основы TypeScript',
         title: 'Функция без возврата',
         description: 'Если функция ничего не возвращает, используется тип void.',
         task: 'Укажи тип void для функции',
@@ -98,6 +105,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-8',
+        module: 'Основы TypeScript',
         title: 'Объединение типов',
         description: 'Union types позволяют переменной быть одним из нескольких типов.',
         task: 'Создай тип, который может быть string или number',
@@ -111,6 +119,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-9',
+        module: 'Основы TypeScript',
         title: 'Тип any',
         description: 'Тип any отключает проверку типов (использовать осторожно!).',
         task: 'Укажи тип any для динамической переменной',
@@ -124,6 +133,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-10',
+        module: 'Основы TypeScript',
         title: 'Тип unknown',
         description: 'Unknown - более безопасная альтернатива any.',
         task: 'Укажи тип unknown',
@@ -139,6 +149,7 @@ window.tsLevels = [
     // === Module 2: Interfaces (Levels 11-20) ===
     {
         id: 'ts-11',
+        module: 'Интерфейсы',
         title: 'Первый интерфейс',
         description: 'Интерфейсы описывают структуру объектов.',
         task: 'Создай интерфейс User с полем name',
@@ -152,6 +163,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-12',
+        module: 'Интерфейсы',
         title: 'Несколько полей',
         description: 'Интерфейс может содержать несколько полей разных типов.',
         task: 'Добавь поле age типа number',
@@ -165,6 +177,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-13',
+        module: 'Интерфейсы',
         title: 'Опциональные поля',
         description: 'Поля со знаком ? являются необязательными.',
         task: 'Сделай поле email опциональным',
@@ -178,6 +191,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-14',
+        module: 'Интерфейсы',
         title: 'Readonly поля',
         description: 'Readonly поля нельзя изменить после создания.',
         task: 'Сделай поле id только для чтения',
@@ -191,6 +205,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-15',
+        module: 'Интерфейсы',
         title: 'Методы в интерфейсе',
         description: 'Интерфейсы могут описывать методы объекта.',
         task: 'Опиши метод greet, возвращающий string',
@@ -204,6 +219,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-16',
+        module: 'Интерфейсы',
         title: 'Расширение интерфейсов',
         description: 'Интерфейсы могут расширять другие интерфейсы.',
         task: 'Расширь интерфейс User',
@@ -217,6 +233,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-17',
+        module: 'Интерфейсы',
         title: 'Индексные сигнатуры',
         description: 'Index signatures позволяют описать объект с динамическими ключами.',
         task: 'Создай интерфейс словаря',
@@ -230,6 +247,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-18',
+        module: 'Интерфейсы',
         title: 'Интерфейс функции',
         description: 'Интерфейсы могут описывать функции.',
         task: 'Опиши функцию сложения',
@@ -243,6 +261,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-19',
+        module: 'Интерфейсы',
         title: 'Множественное наследование',
         description: 'Интерфейс может расширять несколько интерфейсов.',
         task: 'Расширь два интерфейса',
@@ -256,6 +275,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-20',
+        module: 'Интерфейсы',
         title: 'Использование интерфейса',
         description: 'Применим интерфейс к объекту.',
         task: 'Укажи тип интерфейса User',
@@ -271,6 +291,7 @@ window.tsLevels = [
     // === Module 3: Type Aliases & Generics (Levels 21-30) ===
     {
         id: 'ts-21',
+        module: 'Type Aliases и Generics',
         title: 'Type Alias',
         description: 'Type alias создаёт псевдоним для типа.',
         task: 'Создай псевдоним типа ID',
@@ -284,6 +305,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-22',
+        module: 'Type Aliases и Generics',
         title: 'Тип объекта',
         description: 'Type alias также может описывать объекты.',
         task: 'Создай тип Point',
@@ -297,6 +319,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-23',
+        module: 'Type Aliases и Generics',
         title: 'Литеральные типы',
         description: 'Литеральные типы ограничивают значения конкретными вариантами.',
         task: 'Создай тип для направления',
@@ -310,6 +333,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-24',
+        module: 'Type Aliases и Generics',
         title: 'Первый Generic',
         description: 'Generics позволяют создавать переиспользуемые компоненты.',
         task: 'Создай generic функцию identity',
@@ -323,6 +347,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-25',
+        module: 'Type Aliases и Generics',
         title: 'Generic массив',
         description: 'Используем generic для массива.',
         task: 'Укажи тип generic массива',
@@ -336,6 +361,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-26',
+        module: 'Type Aliases и Generics',
         title: 'Generic интерфейс',
         description: 'Интерфейсы тоже могут быть generic.',
         task: 'Создай generic интерфейс Box',
@@ -349,6 +375,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-27',
+        module: 'Type Aliases и Generics',
         title: 'Ограничение Generic',
         description: 'Constraints ограничивают возможные типы generic.',
         task: 'Ограничь T объектами с length',
@@ -362,6 +389,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-28',
+        module: 'Type Aliases и Generics',
         title: 'Несколько Generic',
         description: 'Функция может иметь несколько generic параметров.',
         task: 'Добавь второй параметр типа',
@@ -375,6 +403,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-29',
+        module: 'Type Aliases и Generics',
         title: 'keyof оператор',
         description: 'keyof возвращает объединение ключей типа.',
         task: 'Используй keyof для получения ключей',
@@ -388,6 +417,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-30',
+        module: 'Type Aliases и Generics',
         title: 'typeof оператор',
         description: 'typeof в контексте типов получает тип переменной.',
         task: 'Получи тип переменной user',
@@ -403,6 +433,7 @@ window.tsLevels = [
     // === Module 4: Classes (Levels 31-40) ===
     {
         id: 'ts-31',
+        module: 'Классы',
         title: 'Класс с типами',
         description: 'Классы в TypeScript поддерживают типизацию свойств.',
         task: 'Укажи тип свойства name',
@@ -416,6 +447,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-32',
+        module: 'Классы',
         title: 'Модификатор public',
         description: 'Public - доступ отовсюду (по умолчанию).',
         task: 'Укажи модификатор public',
@@ -429,6 +461,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-33',
+        module: 'Классы',
         title: 'Модификатор private',
         description: 'Private - доступ только внутри класса.',
         task: 'Сделай поле приватным',
@@ -442,6 +475,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-34',
+        module: 'Классы',
         title: 'Модификатор protected',
         description: 'Protected - доступ в классе и наследниках.',
         task: 'Используй protected для наследуемого поля',
@@ -455,6 +489,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-35',
+        module: 'Классы',
         title: 'Сокращённый конструктор',
         description: 'TypeScript позволяет объявлять свойства прямо в конструкторе.',
         task: 'Объяви свойство в параметре конструктора',
@@ -468,6 +503,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-36',
+        module: 'Классы',
         title: 'Readonly в классе',
         description: 'Readonly свойства можно установить только в конструкторе.',
         task: 'Сделай id только для чтения',
@@ -481,6 +517,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-37',
+        module: 'Классы',
         title: 'Геттеры и сеттеры',
         description: 'Accessors позволяют контролировать доступ к свойствам.',
         task: 'Создай геттер для fullName',
@@ -494,6 +531,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-38',
+        module: 'Классы',
         title: 'Статические свойства',
         description: 'Static свойства принадлежат классу, а не экземплярам.',
         task: 'Создай статическое свойство',
@@ -507,6 +545,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-39',
+        module: 'Классы',
         title: 'Абстрактный класс',
         description: 'Абстрактные классы не могут быть созданы напрямую.',
         task: 'Сделай класс абстрактным',
@@ -520,6 +559,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-40',
+        module: 'Классы',
         title: 'Реализация интерфейса',
         description: 'Класс может реализовывать интерфейс.',
         task: 'Реализуй интерфейс Printable',
@@ -535,6 +575,7 @@ window.tsLevels = [
     // === Module 5: Advanced Types (Levels 41-50) ===
     {
         id: 'ts-41',
+        module: 'Продвинутые типы',
         title: 'Utility Type: Partial',
         description: 'Partial делает все свойства опциональными.',
         task: 'Используй Partial для частичного обновления',
@@ -548,6 +589,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-42',
+        module: 'Продвинутые типы',
         title: 'Utility Type: Required',
         description: 'Required делает все свойства обязательными.',
         task: 'Используй Required',
@@ -561,6 +603,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-43',
+        module: 'Продвинутые типы',
         title: 'Utility Type: Pick',
         description: 'Pick выбирает определённые свойства из типа.',
         task: 'Выбери только name и email',
@@ -574,6 +617,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-44',
+        module: 'Продвинутые типы',
         title: 'Utility Type: Omit',
         description: 'Omit исключает указанные свойства.',
         task: 'Исключи поле password',
@@ -587,6 +631,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-45',
+        module: 'Продвинутые типы',
         title: 'Utility Type: Record',
         description: 'Record создаёт тип объекта с указанными ключами.',
         task: 'Создай тип записи',
@@ -600,6 +645,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-46',
+        module: 'Продвинутые типы',
         title: 'Условные типы',
         description: 'Conditional types позволяют выбирать тип по условию.',
         task: 'Заверши условный тип',
@@ -613,6 +659,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-47',
+        module: 'Продвинутые типы',
         title: 'Mapped Types',
         description: 'Mapped types трансформируют существующие типы.',
         task: 'Создай тип с readonly свойствами',
@@ -626,6 +673,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-48',
+        module: 'Продвинутые типы',
         title: 'Template Literal Types',
         description: 'Template literals работают и с типами.',
         task: 'Создай тип события',
@@ -639,6 +687,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-49',
+        module: 'Продвинутые типы',
         title: 'Infer в условных типах',
         description: 'infer позволяет извлекать типы внутри условий.',
         task: 'Извлеки тип возврата функции',
@@ -652,6 +701,7 @@ window.tsLevels = [
     },
     {
         id: 'ts-50',
+        module: 'Продвинутые типы',
         title: 'Type Guard',
         description: 'Type guards сужают типы в условиях.',
         task: 'Создай функцию-guard для string',

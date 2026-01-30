@@ -7,6 +7,7 @@ window.nodeLevels = [
     // === Module 1: Node.js Basics (Levels 1-10) ===
     {
         id: 'node-1',
+        module: 'Основы Node.js',
         title: 'console.log в Node',
         description: 'В Node.js мы тоже используем console.log для вывода.',
         task: 'Выведи сообщение в консоль',
@@ -20,6 +21,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-2',
+        module: 'Основы Node.js',
         title: 'Переменные окружения',
         description: 'process.env содержит переменные окружения.',
         task: 'Получи переменную окружения NODE_ENV',
@@ -33,6 +35,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-3',
+        module: 'Основы Node.js',
         title: 'Require модуля',
         description: 'require() загружает модули в CommonJS.',
         task: 'Импортируй модуль fs',
@@ -46,6 +49,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-4',
+        module: 'Основы Node.js',
         title: 'ES Modules import',
         description: 'В современном Node.js можно использовать import.',
         task: 'Импортируй fs используя ES modules',
@@ -59,6 +63,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-5',
+        module: 'Основы Node.js',
         title: 'Export модуля',
         description: 'module.exports экспортирует из модуля.',
         task: 'Экспортируй функцию greet',
@@ -72,6 +77,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-6',
+        module: 'Основы Node.js',
         title: 'Named exports',
         description: 'Можно экспортировать несколько значений.',
         task: 'Экспортируй add и subtract',
@@ -85,6 +91,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-7',
+        module: 'Основы Node.js',
         title: 'ES Module export',
         description: 'export default для основного экспорта.',
         task: 'Экспортируй функцию по умолчанию',
@@ -98,6 +105,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-8',
+        module: 'Основы Node.js',
         title: '__dirname',
         description: '__dirname содержит путь к текущей директории.',
         task: 'Выведи текущую директорию',
@@ -111,6 +119,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-9',
+        module: 'Основы Node.js',
         title: '__filename',
         description: '__filename содержит полный путь к файлу.',
         task: 'Выведи путь к текущему файлу',
@@ -124,6 +133,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-10',
+        module: 'Основы Node.js',
         title: 'Аргументы командной строки',
         description: 'process.argv содержит аргументы CLI.',
         task: 'Получи аргументы командной строки',
@@ -139,6 +149,7 @@ window.nodeLevels = [
     // === Module 2: File System (Levels 11-20) ===
     {
         id: 'node-11',
+        module: 'Файловая система',
         title: 'Чтение файла (sync)',
         description: 'readFileSync читает файл синхронно.',
         task: 'Прочитай файл синхронно',
@@ -152,6 +163,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-12',
+        module: 'Файловая система',
         title: 'Чтение файла (async)',
         description: 'readFile читает файл асинхронно.',
         task: 'Прочитай файл асинхронно',
@@ -165,6 +177,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-13',
+        module: 'Файловая система',
         title: 'Запись в файл',
         description: 'writeFile записывает данные в файл.',
         task: 'Запиши текст в файл',
@@ -178,6 +191,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-14',
+        module: 'Файловая система',
         title: 'Добавление в файл',
         description: 'appendFile добавляет данные в конец файла.',
         task: 'Добавь текст в конец файла',
@@ -191,6 +205,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-15',
+        module: 'Файловая система',
         title: 'Проверка существования',
         description: 'existsSync проверяет существует ли файл.',
         task: 'Проверь существование файла',
@@ -204,6 +219,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-16',
+        module: 'Файловая система',
         title: 'Создание директории',
         description: 'mkdir создаёт директорию.',
         task: 'Создай папку uploads',
@@ -217,6 +233,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-17',
+        module: 'Файловая система',
         title: 'Чтение директории',
         description: 'readdir возвращает список файлов.',
         task: 'Получи список файлов в папке',
@@ -230,6 +247,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-18',
+        module: 'Файловая система',
         title: 'FS Promises',
         description: 'fs.promises для работы с Promise API.',
         task: 'Используй промисы для чтения файла',
@@ -243,6 +261,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-19',
+        module: 'Файловая система',
         title: 'Path модуль',
         description: 'path помогает работать с путями.',
         task: 'Объедини пути безопасно',
@@ -256,6 +275,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-20',
+        module: 'Файловая система',
         title: 'Расширение файла',
         description: 'path.extname возвращает расширение.',
         task: 'Получи расширение файла',
@@ -271,6 +291,7 @@ window.nodeLevels = [
     // === Module 3: HTTP & Express (Levels 21-30) ===
     {
         id: 'node-21',
+        module: 'HTTP и Express',
         title: 'HTTP сервер',
         description: 'http.createServer создаёт веб-сервер.',
         task: 'Создай HTTP сервер',
@@ -284,6 +305,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-22',
+        module: 'HTTP и Express',
         title: 'Ответ сервера',
         description: 'res.end отправляет ответ клиенту.',
         task: 'Отправь ответ клиенту',
@@ -297,6 +319,7 @@ window.nodeLevels = [
     },
     {
         id: 'node-23',
+        module: 'HTTP и Express',
         title: 'Express приложение',
         description: 'Express - популярный фреймворк для Node.js.',
         task: 'Создай Express приложение',

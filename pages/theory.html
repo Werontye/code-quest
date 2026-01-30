@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория - CodeQuest</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/animations.css">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="grid-lines"></div>
+    </div>
+
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <a href="../index.html" class="logo-link">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">CodeQuest</span>
+                </a>
+            </div>
+            <nav class="header__nav">
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+                        <span class="theme-icon">&#9728;</span>
+                    </button>
+                </div>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon">&#9733;</span>
+                    <span class="nav-xp" id="headerXP">0 XP</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main theory-page">
+            <section class="theory-header fade-in-up">
+                <h1 class="theory-title">&#128218; Теория и Справочник</h1>
+                <p class="theory-subtitle">Полный справочник по всем технологиям для Junior-Middle Fullstack разработчика</p>
+
+                <div class="theory-nav">
+                    <button class="theory-nav-btn active" data-section="html">HTML</button>
+                    <button class="theory-nav-btn" data-section="css">CSS</button>
+                    <button class="theory-nav-btn" data-section="js">JavaScript</button>
+                    <button class="theory-nav-btn" data-section="ts">TypeScript</button>
+                    <button class="theory-nav-btn" data-section="react">React</button>
+                    <button class="theory-nav-btn" data-section="node">Node.js</button>
+                </div>
+            </section>
+
+            <!-- HTML Theory -->
+            <section class="theory-section active" id="section-html">
+                <div class="theory-intro">
+                    <div class="theory-intro-icon">&#127959;</div>
+                    <div>
+                        <h2>HTML - Структура веб-страниц</h2>
+                        <p>HTML (HyperText Markup Language) - язык разметки для создания структуры веб-страниц.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; Базовая структура документа</h3>
+                    <div class="theory-content">
+                        <p>Каждый HTML документ начинается с объявления типа документа и имеет стандартную структуру:</p>
+                        <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Заголовок страницы&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Содержимое страницы --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <ul class="theory-list">
+                            <li><code>&lt;!DOCTYPE html&gt;</code> - объявление HTML5</li>
+                            <li><code>&lt;html&gt;</code> - корневой элемент</li>
+                            <li><code>&lt;head&gt;</code> - метаданные страницы</li>
+                            <li><code>&lt;body&gt;</code> - видимое содержимое</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128221; Текстовые элементы</h3>
+                    <div class="theory-content">
+                        <p>HTML предоставляет различные теги для форматирования текста:</p>
+                        <pre class="code-block"><code>&lt;h1&gt;Заголовок 1 уровня&lt;/h1&gt;
+&lt;h2&gt;Заголовок 2 уровня&lt;/h2&gt;
+&lt;p&gt;Параграф текста&lt;/p&gt;
+&lt;strong&gt;Жирный текст&lt;/strong&gt;
+&lt;em&gt;Курсивный текст&lt;/em&gt;
+&lt;mark&gt;Выделенный текст&lt;/mark&gt;
+&lt;br&gt; - перенос строки
+&lt;hr&gt; - горизонтальная линия</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128279; Ссылки и изображения</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>&lt;!-- Ссылка --&gt;
+&lt;a href="https://example.com" target="_blank"&gt;Текст ссылки&lt;/a&gt;
+
+&lt;!-- Изображение --&gt;
+&lt;img src="image.jpg" alt="Описание" width="300"&gt;
+
+&lt;!-- Изображение-ссылка --&gt;
+&lt;a href="page.html"&gt;
+    &lt;img src="logo.png" alt="Логотип"&gt;
+&lt;/a&gt;</code></pre>
+                        <p><strong>Важные атрибуты:</strong></p>
+                        <ul class="theory-list">
+                            <li><code>href</code> - адрес ссылки</li>
+                            <li><code>target="_blank"</code> - открыть в новой вкладке</li>
+                            <li><code>alt</code> - описание изображения (обязательно!)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128203; Списки</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>&lt;!-- Маркированный список --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Элемент 1&lt;/li&gt;
+    &lt;li&gt;Элемент 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Нумерованный список --&gt;
+&lt;ol&gt;
+    &lt;li&gt;Первый&lt;/li&gt;
+    &lt;li&gt;Второй&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Список определений --&gt;
+&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;Язык разметки&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128202; Таблицы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Заголовок 1&lt;/th&gt;
+            &lt;th&gt;Заголовок 2&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Ячейка 1&lt;/td&gt;
+            &lt;td&gt;Ячейка 2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                        <p><code>colspan</code> и <code>rowspan</code> для объединения ячеек.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128221; Формы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;Имя:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+
+    &lt;input type="email" placeholder="Email"&gt;
+    &lt;input type="password" placeholder="Пароль"&gt;
+    &lt;input type="number" min="0" max="100"&gt;
+
+    &lt;textarea rows="4"&gt;&lt;/textarea&gt;
+
+    &lt;select&gt;
+        &lt;option value="1"&gt;Опция 1&lt;/option&gt;
+        &lt;option value="2"&gt;Опция 2&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;input type="checkbox" id="agree"&gt;
+    &lt;label for="agree"&gt;Согласен&lt;/label&gt;
+
+    &lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#127919; Семантические теги HTML5</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>&lt;header&gt;Шапка сайта&lt;/header&gt;
+&lt;nav&gt;Навигация&lt;/nav&gt;
+&lt;main&gt;Основной контент&lt;/main&gt;
+&lt;article&gt;Статья&lt;/article&gt;
+&lt;section&gt;Секция&lt;/section&gt;
+&lt;aside&gt;Боковая панель&lt;/aside&gt;
+&lt;footer&gt;Подвал сайта&lt;/footer&gt;
+&lt;figure&gt;
+    &lt;img src="photo.jpg" alt="Фото"&gt;
+    &lt;figcaption&gt;Подпись к фото&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                        <p>Семантические теги улучшают SEO и доступность сайта.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS Theory -->
+            <section class="theory-section" id="section-css">
+                <div class="theory-intro">
+                    <div class="theory-intro-icon">&#127912;</div>
+                    <div>
+                        <h2>CSS - Стилизация веб-страниц</h2>
+                        <p>CSS (Cascading Style Sheets) - язык для описания внешнего вида HTML-документов.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; Селекторы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Селектор элемента */
+p { color: blue; }
+
+/* Селектор класса */
+.card { background: white; }
+
+/* Селектор ID */
+#header { height: 60px; }
+
+/* Комбинированные селекторы */
+div.card { } /* div с классом card */
+div > p { }  /* прямой потомок */
+div p { }    /* любой потомок */
+div + p { }  /* соседний элемент */
+div ~ p { }  /* все соседи */
+
+/* Псевдоклассы */
+a:hover { }
+input:focus { }
+li:first-child { }
+li:nth-child(2n) { }
+
+/* Псевдоэлементы */
+p::before { content: ""; }
+p::after { content: ""; }</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#127912; Цвета и фоны</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Цвета */
+color: red;                    /* именованный */
+color: #ff0000;                /* HEX */
+color: rgb(255, 0, 0);         /* RGB */
+color: rgba(255, 0, 0, 0.5);   /* RGBA с прозрачностью */
+color: hsl(0, 100%, 50%);      /* HSL */
+
+/* Фоны */
+background-color: #f5f5f5;
+background-image: url('bg.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+/* Градиенты */
+background: linear-gradient(to right, #ff0000, #0000ff);
+background: radial-gradient(circle, #fff, #000);</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128230; Box Model</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Размеры */
+width: 100px;
+height: 100px;
+max-width: 100%;
+min-height: 50px;
+
+/* Внутренние отступы */
+padding: 20px;
+padding: 10px 20px;        /* верх/низ лево/право */
+padding: 10px 20px 15px 25px; /* все стороны */
+
+/* Внешние отступы */
+margin: 20px;
+margin: 0 auto;            /* центрирование */
+
+/* Рамка */
+border: 1px solid black;
+border-radius: 10px;
+
+/* Box-sizing */
+box-sizing: border-box;    /* включить padding в width */</code></pre>
+                        <p>По умолчанию width не включает padding и border. Используйте <code>box-sizing: border-box</code>.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128205; Позиционирование</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Display */
+display: block;
+display: inline;
+display: inline-block;
+display: none;
+
+/* Position */
+position: static;      /* по умолчанию */
+position: relative;    /* относительно себя */
+position: absolute;    /* относительно родителя с position */
+position: fixed;       /* относительно viewport */
+position: sticky;      /* липкий элемент */
+
+top: 10px;
+right: 20px;
+bottom: 10px;
+left: 20px;
+
+z-index: 100;          /* порядок наложения */</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128295; Flexbox</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Контейнер */
+display: flex;
+flex-direction: row | column | row-reverse | column-reverse;
+justify-content: flex-start | center | flex-end | space-between | space-around;
+align-items: stretch | flex-start | center | flex-end;
+flex-wrap: nowrap | wrap;
+gap: 20px;
+
+/* Элементы */
+flex-grow: 1;          /* растягиваться */
+flex-shrink: 0;        /* не сжиматься */
+flex-basis: 200px;     /* базовый размер */
+flex: 1 0 200px;       /* сокращение */
+align-self: center;    /* выравнивание элемента */
+order: 1;              /* порядок */</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128200; CSS Grid</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Контейнер */
+display: grid;
+grid-template-columns: 1fr 2fr 1fr;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: 100px auto;
+gap: 20px;
+grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+
+/* Элементы */
+grid-column: 1 / 3;    /* от 1 до 3 линии */
+grid-row: 1 / 2;
+grid-area: header;
+
+/* Выравнивание */
+justify-items: center;
+align-items: center;</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#127916; Анимации и переходы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Переходы */
+transition: all 0.3s ease;
+transition: transform 0.3s, opacity 0.5s;
+
+/* Трансформации */
+transform: translateX(100px);
+transform: rotate(45deg);
+transform: scale(1.5);
+transform: skew(10deg);
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.element {
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128241; Адаптивный дизайн</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>/* Media queries */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* CSS переменные */
+:root {
+    --primary-color: #6c63ff;
+    --spacing: 20px;
+}
+
+.element {
+    color: var(--primary-color);
+    padding: var(--spacing);
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JavaScript Theory -->
+            <section class="theory-section" id="section-js">
+                <div class="theory-intro">
+                    <div class="theory-intro-icon">&#128640;</div>
+                    <div>
+                        <h2>JavaScript - Программирование на веб-странице</h2>
+                        <p>JavaScript - язык программирования для создания интерактивных веб-страниц.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; Переменные и типы данных</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Объявление переменных
+let name = "John";        // изменяемая
+const PI = 3.14;          // константа
+var oldWay = "устарело";  // не используйте
+
+// Типы данных
+let str = "строка";
+let num = 42;
+let bool = true;
+let arr = [1, 2, 3];
+let obj = { name: "John", age: 30 };
+let nothing = null;
+let notDefined = undefined;
+
+// Проверка типа
+typeof str  // "string"
+Array.isArray(arr)  // true</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128260; Операторы и условия</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Арифметические
++ - * / % **
+
+// Сравнение
+== != === !== &gt; &lt; &gt;= &lt;=
+// Используйте === вместо ==
+
+// Логические
+&amp;&amp; || !
+
+// Условия
+if (condition) {
+    // код
+} else if (other) {
+    // код
+} else {
+    // код
+}
+
+// Тернарный оператор
+const result = condition ? "да" : "нет";
+
+// Switch
+switch (value) {
+    case 1:
+        // код
+        break;
+    default:
+        // код
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128257; Циклы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// For
+for (let i = 0; i &lt; 10; i++) {
+    console.log(i);
+}
+
+// While
+while (condition) {
+    // код
+}
+
+// Do...while
+do {
+    // выполнится минимум 1 раз
+} while (condition);
+
+// For...of (для массивов)
+for (const item of array) {
+    console.log(item);
+}
+
+// For...in (для объектов)
+for (const key in object) {
+    console.log(key, object[key]);
+}
+
+// break - выход из цикла
+// continue - пропустить итерацию</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#9889; Функции</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Function declaration
+function greet(name) {
+    return "Hello, " + name;
+}
+
+// Function expression
+const greet = function(name) {
+    return "Hello, " + name;
+};
+
+// Arrow function
+const greet = (name) =&gt; "Hello, " + name;
+
+// Параметры по умолчанию
+function greet(name = "World") { }
+
+// Rest параметры
+function sum(...numbers) {
+    return numbers.reduce((a, b) =&gt; a + b, 0);
+}
+
+// Callback
+function processData(data, callback) {
+    const result = callback(data);
+    return result;
+}
+
+// Замыкание
+function counter() {
+    let count = 0;
+    return () =&gt; ++count;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128203; Массивы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const arr = [1, 2, 3, 4, 5];
+
+// Методы изменения
+arr.push(6);        // добавить в конец
+arr.pop();          // удалить из конца
+arr.unshift(0);     // добавить в начало
+arr.shift();        // удалить из начала
+arr.splice(1, 2);   // удалить/вставить
+
+// Методы перебора
+arr.forEach(item =&gt; console.log(item));
+const doubled = arr.map(x =&gt; x * 2);
+const even = arr.filter(x =&gt; x % 2 === 0);
+const sum = arr.reduce((acc, x) =&gt; acc + x, 0);
+const found = arr.find(x =&gt; x &gt; 3);
+const index = arr.findIndex(x =&gt; x &gt; 3);
+const hasEven = arr.some(x =&gt; x % 2 === 0);
+const allPositive = arr.every(x =&gt; x &gt; 0);
+
+// Spread оператор
+const newArr = [...arr, 6, 7];
+const copy = [...arr];</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128230; Объекты</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const user = {
+    name: "John",
+    age: 30,
+    greet() {
+        return `Hi, I'm ${this.name}`;
+    }
+};
+
+// Доступ к свойствам
+user.name;
+user["name"];
+
+// Добавление/изменение
+user.email = "john@mail.com";
+
+// Удаление
+delete user.age;
+
+// Проверка свойства
+"name" in user;
+user.hasOwnProperty("name");
+
+// Деструктуризация
+const { name, age } = user;
+const { name: userName } = user;
+
+// Spread оператор
+const newUser = { ...user, role: "admin" };
+
+// Object методы
+Object.keys(user);    // ["name", "age"]
+Object.values(user);  // ["John", 30]
+Object.entries(user); // [["name", "John"], ["age", 30]]</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#127760; DOM - Работа со страницей</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Поиск элементов
+document.getElementById("id");
+document.querySelector(".class");
+document.querySelectorAll("div");
+
+// Изменение содержимого
+element.textContent = "Текст";
+element.innerHTML = "&lt;b&gt;HTML&lt;/b&gt;";
+
+// Изменение стилей
+element.style.color = "red";
+element.classList.add("active");
+element.classList.remove("hidden");
+element.classList.toggle("open");
+
+// Атрибуты
+element.getAttribute("href");
+element.setAttribute("href", "url");
+
+// Создание элементов
+const div = document.createElement("div");
+parent.appendChild(div);
+parent.insertBefore(newEl, existingEl);
+element.remove();
+
+// События
+element.addEventListener("click", (e) =&gt; {
+    e.preventDefault();
+    e.target; // элемент, на котором сработало
+});
+
+// Популярные события:
+// click, dblclick, mouseover, mouseout
+// keydown, keyup, keypress
+// submit, change, input, focus, blur
+// load, DOMContentLoaded, scroll, resize</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#9203; Асинхронность</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// setTimeout / setInterval
+setTimeout(() =&gt; console.log("Через 1 сек"), 1000);
+const id = setInterval(() =&gt; {}, 1000);
+clearInterval(id);
+
+// Promise
+const promise = new Promise((resolve, reject) =&gt; {
+    if (success) resolve(data);
+    else reject(error);
+});
+
+promise
+    .then(data =&gt; console.log(data))
+    .catch(error =&gt; console.error(error))
+    .finally(() =&gt; console.log("Готово"));
+
+// async/await
+async function fetchData() {
+    try {
+        const response = await fetch("/api/data");
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Fetch API
+fetch("/api/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: "John" })
+})
+.then(res =&gt; res.json())
+.then(data =&gt; console.log(data));</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TypeScript Theory -->
+            <section class="theory-section" id="section-ts">
+                <div class="theory-intro">
+                    <div class="theory-intro-icon">&#128196;</div>
+                    <div>
+                        <h2>TypeScript - Типизированный JavaScript</h2>
+                        <p>TypeScript добавляет статическую типизацию в JavaScript для надёжного кода.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; Базовые типы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Примитивные типы
+let name: string = "John";
+let age: number = 30;
+let isActive: boolean = true;
+let nothing: null = null;
+let notDefined: undefined = undefined;
+
+// Массивы
+let numbers: number[] = [1, 2, 3];
+let names: Array&lt;string&gt; = ["a", "b"];
+
+// Tuple (кортеж)
+let tuple: [string, number] = ["hello", 42];
+
+// Enum
+enum Status {
+    Pending,
+    Active,
+    Completed
+}
+
+// Any, Unknown, Never
+let anything: any = "no type checking";
+let unknown: unknown = getData();
+function error(): never {
+    throw new Error("Error!");
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128221; Интерфейсы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Базовый интерфейс
+interface User {
+    name: string;
+    age: number;
+    email?: string;        // опциональное
+    readonly id: number;   // только для чтения
+}
+
+// Методы
+interface User {
+    greet(): string;
+    setAge(age: number): void;
+}
+
+// Расширение
+interface Admin extends User {
+    adminLevel: number;
+}
+
+// Индексная сигнатура
+interface Dictionary {
+    [key: string]: string;
+}
+
+// Использование
+const user: User = {
+    id: 1,
+    name: "John",
+    age: 30,
+    greet() { return "Hi!"; },
+    setAge(age) { this.age = age; }
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128295; Type Aliases и Union Types</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Type Alias
+type ID = string | number;
+type Point = { x: number; y: number };
+
+// Union Types
+let value: string | number;
+value = "hello";
+value = 42;
+
+// Literal Types
+type Direction = "left" | "right" | "up" | "down";
+type Status = 0 | 1 | 2;
+
+// Intersection Types
+type Employee = User &amp; { employeeId: number };
+
+// Type Guards
+function process(value: string | number) {
+    if (typeof value === "string") {
+        // здесь value - string
+        return value.toUpperCase();
+    }
+    // здесь value - number
+    return value * 2;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#9889; Generics</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Generic функция
+function identity&lt;T&gt;(arg: T): T {
+    return arg;
+}
+
+identity&lt;string&gt;("hello");
+identity(42); // тип выводится автоматически
+
+// Generic интерфейс
+interface Box&lt;T&gt; {
+    value: T;
+}
+
+// Generic с ограничением
+function getLength&lt;T extends { length: number }&gt;(item: T): number {
+    return item.length;
+}
+
+// Несколько параметров
+function pair&lt;T, U&gt;(first: T, second: U): [T, U] {
+    return [first, second];
+}
+
+// keyof и typeof
+type UserKeys = keyof User; // "name" | "age" | "email"
+const user = { name: "John" };
+type UserType = typeof user;</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128230; Классы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>class User {
+    // Модификаторы доступа
+    public name: string;
+    private password: string;
+    protected email: string;
+    readonly id: number;
+
+    // Сокращённый конструктор
+    constructor(
+        public name: string,
+        private age: number
+    ) {}
+
+    // Методы
+    greet(): string {
+        return `Hi, I'm ${this.name}`;
+    }
+
+    // Геттеры и сеттеры
+    get userAge(): number {
+        return this.age;
+    }
+
+    set userAge(value: number) {
+        this.age = value;
+    }
+
+    // Статические члены
+    static createGuest(): User {
+        return new User("Guest", 0);
+    }
+}
+
+// Абстрактный класс
+abstract class Animal {
+    abstract makeSound(): void;
+}
+
+// Реализация интерфейса
+class Dog implements Animal {
+    makeSound() { console.log("Woof!"); }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128295; Utility Types</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>interface User {
+    name: string;
+    age: number;
+    email: string;
+}
+
+// Partial - все поля опциональные
+type PartialUser = Partial&lt;User&gt;;
+
+// Required - все поля обязательные
+type RequiredUser = Required&lt;User&gt;;
+
+// Pick - выбрать поля
+type UserName = Pick&lt;User, "name" | "email"&gt;;
+
+// Omit - исключить поля
+type UserWithoutEmail = Omit&lt;User, "email"&gt;;
+
+// Record - создать объект
+type PageViews = Record&lt;string, number&gt;;
+
+// Readonly - все поля только для чтения
+type ReadonlyUser = Readonly&lt;User&gt;;
+
+// ReturnType - тип возврата функции
+type Result = ReturnType&lt;typeof someFunction&gt;;
+
+// Parameters - типы параметров
+type Params = Parameters&lt;typeof someFunction&gt;;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- React Theory -->
+            <section class="theory-section" id="section-react">
+                <div class="theory-intro">
+                    <div class="theory-intro-icon">&#9883;</div>
+                    <div>
+                        <h2>React - Библиотека для UI</h2>
+                        <p>React - библиотека для построения пользовательских интерфейсов из компонентов.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; JSX и компоненты</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Функциональный компонент
+function Welcome({ name }) {
+    return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+}
+
+// JSX особенности
+&lt;div className="card"&gt;       {/* className вместо class */}
+    {variable}                {/* вставка переменных */}
+    {condition &amp;&amp; &lt;p&gt;Show&lt;/p&gt;} {/* условный рендеринг */}
+    {isTrue ? "Yes" : "No"}   {/* тернарный оператор */}
+&lt;/div&gt;
+
+// Списки с key
+{items.map(item =&gt; (
+    &lt;li key={item.id}&gt;{item.name}&lt;/li&gt;
+))}
+
+// Фрагменты
+&lt;&gt;
+    &lt;Child1 /&gt;
+    &lt;Child2 /&gt;
+&lt;/&gt;
+
+// Инлайн стили
+&lt;div style={{ backgroundColor: "blue", padding: 20 }}&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128221; Props</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Передача props
+&lt;UserCard name="John" age={30} /&gt;
+
+// Получение props
+function UserCard({ name, age }) {
+    return &lt;p&gt;{name}, {age}&lt;/p&gt;;
+}
+
+// Дефолтные значения
+function Greeting({ name = "Guest" }) {
+    return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+}
+
+// Children
+function Card({ children }) {
+    return &lt;div className="card"&gt;{children}&lt;/div&gt;;
+}
+
+&lt;Card&gt;
+    &lt;p&gt;Контент внутри&lt;/p&gt;
+&lt;/Card&gt;
+
+// Spread props
+const props = { name: "John", age: 30 };
+&lt;UserCard {...props} /&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#9889; useState</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>import { useState } from 'react';
+
+function Counter() {
+    // [значение, функция изменения] = useState(начальное)
+    const [count, setCount] = useState(0);
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Count: {count}&lt;/p&gt;
+            &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+                Increment
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+
+// Функциональное обновление
+setCount(prev =&gt; prev + 1);
+
+// Состояние-объект
+const [form, setForm] = useState({ name: "", email: "" });
+setForm(prev =&gt; ({ ...prev, name: "John" }));
+
+// Состояние-массив
+const [items, setItems] = useState([]);
+setItems(prev =&gt; [...prev, newItem]);</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128257; useEffect</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>import { useEffect } from 'react';
+
+function Component() {
+    // Выполняется после каждого рендера
+    useEffect(() =&gt; {
+        console.log("Rendered");
+    });
+
+    // Только при монтировании (пустой массив)
+    useEffect(() =&gt; {
+        fetchData();
+    }, []);
+
+    // При изменении зависимостей
+    useEffect(() =&gt; {
+        fetchUser(userId);
+    }, [userId]);
+
+    // Cleanup функция
+    useEffect(() =&gt; {
+        const subscription = subscribe();
+        return () =&gt; {
+            subscription.unsubscribe();
+        };
+    }, []);
+}
+
+// Fetch данных
+useEffect(() =&gt; {
+    async function loadData() {
+        const response = await fetch("/api/data");
+        const data = await response.json();
+        setData(data);
+    }
+    loadData();
+}, []);</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; Другие хуки</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// useRef - ссылка на DOM или мутируемое значение
+const inputRef = useRef(null);
+inputRef.current.focus();
+
+// useMemo - мемоизация значения
+const expensiveValue = useMemo(() =&gt; {
+    return computeExpensive(data);
+}, [data]);
+
+// useCallback - мемоизация функции
+const handleClick = useCallback(() =&gt; {
+    doSomething(a, b);
+}, [a, b]);
+
+// useContext - глобальное состояние
+const ThemeContext = createContext("light");
+
+function App() {
+    return (
+        &lt;ThemeContext.Provider value="dark"&gt;
+            &lt;Child /&gt;
+        &lt;/ThemeContext.Provider&gt;
+    );
+}
+
+function Child() {
+    const theme = useContext(ThemeContext);
+    return &lt;div&gt;Theme: {theme}&lt;/div&gt;;
+}
+
+// useReducer - сложное состояние
+const [state, dispatch] = useReducer(reducer, initialState);
+dispatch({ type: "INCREMENT" });</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128221; Формы</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>function Form() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    const handleSubmit = (e) =&gt; {
+        e.preventDefault();
+        // отправка данных
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit}&gt;
+            &lt;input
+                type="text"
+                value={name}
+                onChange={(e) =&gt; setName(e.target.value)}
+            /&gt;
+            &lt;input
+                type="email"
+                value={email}
+                onChange={(e) =&gt; setEmail(e.target.value)}
+            /&gt;
+            &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+
+// Множественные поля одним состоянием
+const [form, setForm] = useState({ name: "", email: "" });
+
+const handleChange = (e) =&gt; {
+    const { name, value } = e.target;
+    setForm(prev =&gt; ({ ...prev, [name]: value }));
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128295; Продвинутые паттерны</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Custom Hook
+function useLocalStorage(key, initialValue) {
+    const [value, setValue] = useState(() =&gt; {
+        const saved = localStorage.getItem(key);
+        return saved ? JSON.parse(saved) : initialValue;
+    });
+
+    useEffect(() =&gt; {
+        localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
+
+    return [value, setValue];
+}
+
+// React.memo для оптимизации
+const MemoizedComponent = React.memo(function Component({ data }) {
+    return &lt;div&gt;{data}&lt;/div&gt;;
+});
+
+// Lazy loading
+const HeavyComponent = React.lazy(() =&gt; import("./Heavy"));
+
+&lt;Suspense fallback={&lt;Loading /&gt;}&gt;
+    &lt;HeavyComponent /&gt;
+&lt;/Suspense&gt;
+
+// Error Boundary (классовый компонент)
+class ErrorBoundary extends React.Component {
+    state = { hasError: false };
+
+    static getDerivedStateFromError(error) {
+        return { hasError: true };
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return &lt;h1&gt;Something went wrong&lt;/h1&gt;;
+        }
+        return this.props.children;
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Node.js Theory -->
+            <section class="theory-section" id="section-node">
+                <div class="theory-intro">
+                    <div class="theory-intro-icon">&#9881;</div>
+                    <div>
+                        <h2>Node.js - JavaScript на сервере</h2>
+                        <p>Node.js позволяет выполнять JavaScript на сервере для создания backend-приложений.</p>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128204; Основы Node.js</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Глобальные объекты
+console.log("Hello from Node!");
+process.env.NODE_ENV;    // переменные окружения
+process.argv;            // аргументы CLI
+__dirname;               // путь к директории
+__filename;              // путь к файлу
+
+// CommonJS модули
+const fs = require("fs");
+module.exports = myFunction;
+module.exports = { func1, func2 };
+
+// ES Modules
+import fs from "fs";
+export default myFunction;
+export { func1, func2 };
+
+// package.json
+{
+    "name": "my-app",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128193; Файловая система (fs)</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const fs = require("fs");
+const path = require("path");
+
+// Синхронное чтение
+const data = fs.readFileSync("file.txt", "utf8");
+
+// Асинхронное чтение
+fs.readFile("file.txt", "utf8", (err, data) =&gt; {
+    if (err) throw err;
+    console.log(data);
+});
+
+// Promise API
+const fsPromises = require("fs").promises;
+const data = await fsPromises.readFile("file.txt", "utf8");
+
+// Запись файла
+fs.writeFileSync("output.txt", "Hello!");
+fs.appendFileSync("log.txt", "New line\n");
+
+// Работа с директориями
+fs.mkdirSync("uploads", { recursive: true });
+const files = fs.readdirSync("./src");
+fs.existsSync("config.json");
+
+// Path модуль
+path.join(__dirname, "uploads", "file.txt");
+path.resolve("./src", "index.js");
+path.extname("photo.jpg");  // .jpg
+path.basename("/path/to/file.txt");  // file.txt</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#127760; HTTP сервер</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const http = require("http");
+
+const server = http.createServer((req, res) =&gt; {
+    // Информация о запросе
+    console.log(req.method);  // GET, POST, etc.
+    console.log(req.url);     // /api/users
+    console.log(req.headers);
+
+    // Формирование ответа
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ message: "Hello!" }));
+});
+
+server.listen(3000, () =&gt; {
+    console.log("Server running on port 3000");
+});
+
+// Обработка POST данных
+let body = "";
+req.on("data", chunk =&gt; { body += chunk; });
+req.on("end", () =&gt; {
+    const data = JSON.parse(body);
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#9889; Express.js</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const express = require("express");
+const app = express();
+
+// Middleware
+app.use(express.json());           // парсинг JSON
+app.use(express.static("public")); // статические файлы
+
+// Маршруты
+app.get("/", (req, res) =&gt; {
+    res.send("Hello World!");
+});
+
+app.get("/users/:id", (req, res) =&gt; {
+    const { id } = req.params;     // URL параметры
+    const { sort } = req.query;    // Query параметры
+    res.json({ id, sort });
+});
+
+app.post("/users", (req, res) =&gt; {
+    const { name, email } = req.body;
+    res.status(201).json({ name, email });
+});
+
+app.put("/users/:id", (req, res) =&gt; { });
+app.delete("/users/:id", (req, res) =&gt; { });
+
+// Запуск сервера
+app.listen(3000, () =&gt; {
+    console.log("Server started");
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128295; Middleware и роутеры</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>// Custom middleware
+const logger = (req, res, next) =&gt; {
+    console.log(`${req.method} ${req.url}`);
+    next();  // передать управление дальше
+};
+
+app.use(logger);
+
+// Middleware для конкретного маршрута
+app.use("/api", authMiddleware);
+
+// Роутер
+const router = express.Router();
+
+router.get("/", (req, res) =&gt; { });
+router.post("/", (req, res) =&gt; { });
+router.get("/:id", (req, res) =&gt; { });
+
+module.exports = router;
+
+// Подключение роутера
+const usersRouter = require("./routes/users");
+app.use("/api/users", usersRouter);
+
+// Обработка ошибок
+app.use((err, req, res, next) =&gt; {
+    console.error(err.stack);
+    res.status(500).json({ error: "Something went wrong" });
+});
+
+// 404
+app.use((req, res) =&gt; {
+    res.status(404).json({ error: "Not found" });
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128202; MongoDB и Mongoose</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const mongoose = require("mongoose");
+
+// Подключение
+mongoose.connect("mongodb://localhost:27017/myapp")
+    .then(() =&gt; console.log("Connected to MongoDB"))
+    .catch(err =&gt; console.error(err));
+
+// Схема
+const userSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    email: { type: String, unique: true },
+    age: Number,
+    createdAt: { type: Date, default: Date.now }
+});
+
+// Модель
+const User = mongoose.model("User", userSchema);
+
+// CRUD операции
+// Create
+const user = await User.create({ name: "John", email: "john@mail.com" });
+
+// Read
+const users = await User.find();
+const user = await User.findById(id);
+const user = await User.findOne({ email: "john@mail.com" });
+
+// Update
+await User.findByIdAndUpdate(id, { name: "Jane" });
+
+// Delete
+await User.findByIdAndDelete(id);
+
+// Запросы
+const adults = await User.find({ age: { $gte: 18 } })
+    .sort({ name: 1 })
+    .limit(10)
+    .select("name email");</code></pre>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="theory-card-title">&#128274; Аутентификация JWT</h3>
+                    <div class="theory-content">
+                        <pre class="code-block"><code>const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+// Регистрация
+app.post("/register", async (req, res) =&gt; {
+    const { email, password } = req.body;
+
+    // Хеширование пароля
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await User.create({
+        email,
+        password: hashedPassword
+    });
+
+    res.status(201).json({ message: "User created" });
+});
+
+// Логин
+app.post("/login", async (req, res) =&gt; {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user || !await bcrypt.compare(password, user.password)) {
+        return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Создание токена
+    const token = jwt.sign(
+        { userId: user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+    );
+
+    res.json({ token });
+});
+
+// Middleware проверки токена
+const auth = (req, res, next) =&gt; {
+    const token = req.headers.authorization?.split(" ")[1];
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.userId = decoded.userId;
+        next();
+    } catch {
+        res.status(401).json({ error: "Invalid token" });
+    }
+};
+
+// Защищённый маршрут
+app.get("/profile", auth, async (req, res) =&gt; {
+    const user = await User.findById(req.userId);
+    res.json(user);
+});</code></pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer__text">CodeQuest &copy; 2024 | Изучай. Играй. Создавай.</p>
+        </footer>
+    </div>
+
+    <script src="../js/modules/storage.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update XP
+            const userData = Storage.getUserData();
+            document.getElementById('headerXP').textContent = (userData.xp || 0) + ' XP';
+
+            // Section navigation
+            const navBtns = document.querySelectorAll('.theory-nav-btn');
+            const sections = document.querySelectorAll('.theory-section');
+
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const sectionId = btn.dataset.section;
+
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === `section-${sectionId}`) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Theme toggle
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const icon = document.querySelector('.theme-icon');
+                icon.innerHTML = document.body.classList.contains('light-theme') ? '&#9790;' : '&#9728;';
+                localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+            });
+
+            // Load saved theme
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                document.querySelector('.theme-icon').innerHTML = '&#9790;';
+            }
+        });
+    </script>
+
+    <style>
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .theory-page {
+            max-width: 1000px;
+            padding: var(--spacing-xl);
+        }
+
+        .theory-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .theory-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .theory-subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .theory-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .theory-nav-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--color-bg-card);
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .theory-nav-btn:hover {
+            border-color: var(--color-primary);
+        }
+
+        .theory-nav-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .theory-section {
+            display: none;
+        }
+
+        .theory-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .theory-intro {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .theory-intro-icon {
+            font-size: 3rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+        }
+
+        .theory-intro h2 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .theory-intro p {
+            color: var(--color-text-muted);
+        }
+
+        .theory-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-lg);
+            overflow: hidden;
+        }
+
+        .theory-card-title {
+            padding: var(--spacing-lg);
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-bg);
+            font-size: 1.1rem;
+        }
+
+        .theory-content {
+            padding: var(--spacing-lg);
+        }
+
+        .theory-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+        }
+
+        .code-block {
+            background: #1e1e2e;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            overflow-x: auto;
+            margin: var(--spacing-md) 0;
+        }
+
+        .code-block code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #cdd6f4;
+            white-space: pre;
+        }
+
+        .theory-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .theory-list li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+        }
+
+        .theory-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .theory-list code {
+            background: var(--color-bg);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85em;
+        }
+
+        .theory-content code:not(.code-block code) {
+            background: var(--color-bg);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .theory-title {
+                font-size: 1.8rem;
+            }
+
+            .theory-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .theory-nav {
+                gap: var(--spacing-xs);
+            }
+
+            .theory-nav-btn {
+                padding: var(--spacing-xs) var(--spacing-md);
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</body>
+</html>

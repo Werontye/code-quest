@@ -21,6 +21,10 @@
                 </a>
             </div>
             <nav class="header__nav">
+                <a href="theory.html" class="nav-link nav-link--theory">
+                    <span class="nav-icon">&#128218;</span>
+                    <span>Теория</span>
+                </a>
                 <a href="profile.html" class="nav-link">
                     <span class="nav-icon">&#9733;</span>
                     <span class="nav-xp" id="headerXP">0 XP</span>
@@ -168,6 +172,63 @@
 
         .levels-page[data-lang="js"] .progress-fill {
             background: var(--color-js);
+        }
+
+        /* TypeScript Theme */
+        .levels-page[data-lang="ts"] .language-icon {
+            background: rgba(49, 120, 198, 0.15);
+            color: #3178c6;
+        }
+
+        .levels-page[data-lang="ts"] .language-title {
+            color: #3178c6;
+        }
+
+        .levels-page[data-lang="ts"] .progress-fill {
+            background: #3178c6;
+        }
+
+        .levels-page[data-lang="ts"] .module-number {
+            background: rgba(49, 120, 198, 0.15);
+            color: #3178c6;
+        }
+
+        /* React Theme */
+        .levels-page[data-lang="react"] .language-icon {
+            background: rgba(97, 218, 251, 0.15);
+            color: #61dafb;
+        }
+
+        .levels-page[data-lang="react"] .language-title {
+            color: #61dafb;
+        }
+
+        .levels-page[data-lang="react"] .progress-fill {
+            background: #61dafb;
+        }
+
+        .levels-page[data-lang="react"] .module-number {
+            background: rgba(97, 218, 251, 0.15);
+            color: #61dafb;
+        }
+
+        /* Node.js Theme */
+        .levels-page[data-lang="node"] .language-icon {
+            background: rgba(104, 160, 99, 0.15);
+            color: #68a063;
+        }
+
+        .levels-page[data-lang="node"] .language-title {
+            color: #68a063;
+        }
+
+        .levels-page[data-lang="node"] .progress-fill {
+            background: #68a063;
+        }
+
+        .levels-page[data-lang="node"] .module-number {
+            background: rgba(104, 160, 99, 0.15);
+            color: #68a063;
         }
 
         /* Modules */
@@ -388,6 +449,9 @@
     <script src="../js/levels/html-levels.js"></script>
     <script src="../js/levels/css-levels.js"></script>
     <script src="../js/levels/js-levels.js"></script>
+    <script src="../js/levels/ts-levels.js"></script>
+    <script src="../js/levels/react-levels.js"></script>
+    <script src="../js/levels/node-levels.js"></script>
     <script>
         // Levels Page Logic
         document.addEventListener('DOMContentLoaded', () => {
@@ -417,6 +481,27 @@
                     icon: '&#128640;',
                     levels: typeof jsLevels !== 'undefined' ? jsLevels : [],
                     total: 70
+                },
+                ts: {
+                    title: 'TypeScript',
+                    subtitle: 'Инженер',
+                    icon: '&#128196;',
+                    levels: typeof tsLevels !== 'undefined' ? tsLevels : [],
+                    total: 50
+                },
+                react: {
+                    title: 'React',
+                    subtitle: 'Архитектор',
+                    icon: '&#9883;',
+                    levels: typeof reactLevels !== 'undefined' ? reactLevels : [],
+                    total: 45
+                },
+                node: {
+                    title: 'Node.js',
+                    subtitle: 'Backend Инженер',
+                    icon: '&#9881;',
+                    levels: typeof nodeLevels !== 'undefined' ? nodeLevels : [],
+                    total: 45
                 }
             };
 
