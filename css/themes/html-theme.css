@@ -111,13 +111,9 @@
     50% { transform: rotate(-15deg); }
 }
 
-/* Construction Worker (Mascot) */
+/* Construction Worker (Mascot) - Hidden to reduce distraction */
 .theme-html .mascot {
-    position: absolute;
-    bottom: 70px;
-    left: 30px;
-    width: 60px;
-    height: 80px;
+    display: none;
 }
 
 .theme-html .mascot-body {

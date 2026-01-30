@@ -148,6 +148,16 @@ button {
     font-family: var(--font-mono);
 }
 
+.logo-svg {
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+.header__logo:hover .logo-svg,
+.footer-logo:hover .logo-svg {
+    transform: scale(1.05);
+}
+
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;
@@ -1713,20 +1723,21 @@ button {
 }
 
 .light-theme .orb {
-    opacity: 0.08;
-    background: radial-gradient(circle, rgba(139, 107, 74, 0.4), transparent);
+    opacity: 0.04;
+    background: radial-gradient(circle, rgba(139, 107, 74, 0.2), transparent);
+    pointer-events: none;
 }
 
 .light-theme .orb-1 {
-    background: radial-gradient(circle, rgba(210, 180, 140, 0.3), transparent);
+    background: radial-gradient(circle, rgba(210, 180, 140, 0.15), transparent);
 }
 
 .light-theme .orb-2 {
-    background: radial-gradient(circle, rgba(166, 124, 82, 0.25), transparent);
+    background: radial-gradient(circle, rgba(166, 124, 82, 0.12), transparent);
 }
 
 .light-theme .orb-3 {
-    background: radial-gradient(circle, rgba(139, 107, 74, 0.2), transparent);
+    background: radial-gradient(circle, rgba(139, 107, 74, 0.1), transparent);
 }
 
 .light-theme .header {

@@ -86,17 +86,9 @@
     100% { transform: scale(1) rotate(360deg); opacity: 0.7; }
 }
 
-/* Color Palette */
+/* Color Palette - Hidden to reduce distraction */
 .theme-css .palette-widget {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    gap: 8px;
-    padding: 10px 15px;
-    background: #654321;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: none;
 }
 
 .theme-css .palette-color {

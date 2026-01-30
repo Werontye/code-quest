@@ -4,8 +4,8 @@
   "description": "Interactive coding learning platform - Learn HTML, CSS, and JavaScript through gamified lessons",
   "main": "index.html",
   "scripts": {
-    "start": "npx serve -s . -l $PORT",
-    "dev": "npx serve -s . -l 3000"
+    "start": "npx serve . -l $PORT",
+    "dev": "npx serve . -l 3000"
   },
   "keywords": [
     "coding",

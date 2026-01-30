@@ -284,13 +284,9 @@
     transform: translate(-50%, -50%) rotateX(70deg);
 }
 
-/* Robot Mascot */
+/* Robot Mascot - Hidden to reduce distraction */
 .theme-js .mascot {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 80px;
+    display: none;
 }
 
 .theme-js .robot-head {

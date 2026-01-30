@@ -9,6 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <script>
+        // Load theme immediately to prevent flash
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-theme');
+        }
+    </script>
 </head>
 <body>
     <!-- Animated Background -->
@@ -37,7 +44,18 @@
         <!-- Header -->
         <header class="header">
             <div class="header__logo">
-                <span class="logo-icon">&lt;/&gt;</span>
+                <svg class="logo-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="url(#logoGradient)"/>
+                    <path d="M10 12L6 16L10 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 12L26 16L22 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18 8L14 24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#6c63ff"/>
+                            <stop offset="1" stop-color="#9b59b6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
                 <span class="logo-text">CodeQuest</span>
             </div>
             <nav class="header__nav">
@@ -480,7 +498,18 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <span class="logo-icon">&lt;/&gt;</span>
+                    <svg class="logo-svg" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="url(#logoGradientFooter)"/>
+                        <path d="M10 12L6 16L10 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 12L26 16L22 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 8L14 24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="logoGradientFooter" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#6c63ff"/>
+                                <stop offset="1" stop-color="#9b59b6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                     <span class="logo-text">CodeQuest</span>
                 </div>
                 <p class="footer__text" data-i18n="footer.slogan">Изучай. Играй. Создавай.</p>
@@ -550,15 +579,18 @@
         // Theme toggle
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
+            document.documentElement.classList.toggle('light-theme');
             const icon = document.querySelector('.theme-icon');
-            icon.innerHTML = document.body.classList.contains('light-theme') ? '&#9790;' : '&#9728;';
-            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+            const isLight = document.body.classList.contains('light-theme');
+            icon.innerHTML = isLight ? '&#9790;' : '&#9728;';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
 
-        // Load saved theme
+        // Apply saved theme to body and update icon
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light-theme');
-            document.querySelector('.theme-icon').innerHTML = '&#9790;';
+            const themeIcon = document.querySelector('.theme-icon');
+            if (themeIcon) themeIcon.innerHTML = '&#9790;';
         }
 
     </script>

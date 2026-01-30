@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="../css/themes/html-theme.css">
     <link rel="stylesheet" href="../css/themes/css-theme.css">
     <link rel="stylesheet" href="../css/themes/js-theme.css">
+    <script>
+        // Load theme immediately to prevent flash
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-theme');
+        }
+    </script>
 </head>
 <body>
     <!-- Animated Background -->
@@ -29,7 +35,7 @@
         <header class="header">
             <div class="header__logo">
                 <a href="../index.html" class="logo-link">
-                    <span class="logo-icon">&lt;/&gt;</span>
+                    <svg class="logo-svg" width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="url(#lg)"/><path d="M10 12L6 16L10 20M22 12L26 16L22 20M18 8L14 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="lg" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#6c63ff"/><stop offset="1" stop-color="#9b59b6"/></linearGradient></defs></svg>
                     <span class="logo-text">CodeQuest</span>
                 </a>
             </div>
@@ -219,15 +225,18 @@
         // Theme toggle
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
+            document.documentElement.classList.toggle('light-theme');
             const icon = document.querySelector('.theme-icon');
-            icon.innerHTML = document.body.classList.contains('light-theme') ? '&#9790;' : '&#9728;';
-            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+            const isLight = document.body.classList.contains('light-theme');
+            icon.innerHTML = isLight ? '&#9790;' : '&#9728;';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
 
-        // Load saved theme
+        // Apply saved theme to body and update icon
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light-theme');
-            document.querySelector('.theme-icon').innerHTML = '&#9790;';
+            const themeIcon = document.querySelector('.theme-icon');
+            if (themeIcon) themeIcon.innerHTML = '&#9790;';
         }
     </script>
 </body>
