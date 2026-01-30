@@ -14,12 +14,18 @@ const Storage = {
         createdAt: new Date().toISOString(),
         xp: 0,
         rank: 1,
+        dailyGoal: 100,
         progress: {
             html: { completed: [], current: 1 },
             css: { completed: [], current: 1 },
-            js: { completed: [], current: 1 }
+            js: { completed: [], current: 1 },
+            ts: { completed: [], current: 1 },
+            react: { completed: [], current: 1 },
+            node: { completed: [], current: 1 }
         },
         achievements: [],
+        weeklyXP: {},
+        recentActivity: [],
         stats: {
             totalLevels: 0,
             totalTime: 0,
@@ -83,6 +89,21 @@ const Storage = {
     addXP(amount) {
         const userData = this.getUserData();
         userData.xp += amount;
+
+        // Track daily XP for weekly chart
+        const today = new Date().toISOString().split('T')[0];
+        if (!userData.weeklyXP) userData.weeklyXP = {};
+        userData.weeklyXP[today] = (userData.weeklyXP[today] || 0) + amount;
+
+        // Clean old weekly data (keep only last 14 days)
+        const twoWeeksAgo = new Date();
+        twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+        const cutoffDate = twoWeeksAgo.toISOString().split('T')[0];
+        for (const date in userData.weeklyXP) {
+            if (date < cutoffDate) {
+                delete userData.weeklyXP[date];
+            }
+        }
 
         // Check for rank up
         const newRank = this.calculateRank(userData.xp);
@@ -156,8 +177,13 @@ const Storage = {
     /**
      * Complete a level
      */
-    completeLevel(lang, levelId, xpEarned, isFirstTry = false, isFast = false) {
+    completeLevel(lang, levelId, xpEarned, isFirstTry = false, isFast = false, levelTitle = null) {
         const userData = this.getUserData();
+
+        // Ensure progress structure exists for this language
+        if (!userData.progress[lang]) {
+            userData.progress[lang] = { completed: [], current: 1 };
+        }
 
         // Add to completed if not already
         if (!userData.progress[lang].completed.includes(levelId)) {
@@ -171,6 +197,21 @@ const Storage = {
 
             if (isFast) {
                 userData.stats.fastCompletions++;
+            }
+
+            // Add to recent activity
+            if (!userData.recentActivity) userData.recentActivity = [];
+            userData.recentActivity.unshift({
+                course: lang,
+                levelId: levelId,
+                levelTitle: levelTitle,
+                xp: xpEarned,
+                timestamp: new Date().toISOString()
+            });
+
+            // Keep only last 20 activities
+            if (userData.recentActivity.length > 20) {
+                userData.recentActivity = userData.recentActivity.slice(0, 20);
             }
         }
 

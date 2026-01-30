@@ -372,11 +372,17 @@ const Achievements = {
         if (nameEl) nameEl.textContent = achievement.name;
         if (iconEl) iconEl.innerHTML = achievement.icon;
 
-        popup.classList.remove('hidden');
+        // Reset animation classes
+        popup.classList.remove('hidden', 'fade-out');
 
-        // Auto hide after 4 seconds
+        // Auto hide after 4 seconds with fade-out animation
         setTimeout(() => {
-            popup.classList.add('hidden');
+            popup.classList.add('fade-out');
+            // Remove popup after animation completes
+            setTimeout(() => {
+                popup.classList.add('hidden');
+                popup.classList.remove('fade-out');
+            }, 500);
         }, 4000);
     }
 };

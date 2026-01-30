@@ -7,6 +7,7 @@ const LevelManager = {
     currentLang: null,
     attempts: 0,
     startTime: null,
+    isLevelCompleted: false,
 
     /**
      * Initialize level manager on game page
@@ -35,6 +36,7 @@ const LevelManager = {
         if (this.currentLevel) {
             this.attempts = 0;
             this.startTime = Date.now();
+            this.isLevelCompleted = false;
             this.renderLevel();
             this.setupEventListeners();
             this.updateUI();
@@ -51,6 +53,9 @@ const LevelManager = {
             case 'html': return window.htmlLevels || [];
             case 'css': return window.cssLevels || [];
             case 'js': return window.jsLevels || [];
+            case 'ts': return window.tsLevels || [];
+            case 'react': return window.reactLevels || [];
+            case 'node': return window.nodeLevels || [];
             default: return [];
         }
     },
@@ -70,9 +75,9 @@ const LevelManager = {
         const levelIndex = levels.indexOf(level) + 1;
 
         document.getElementById('levelNumber').textContent = `Уровень ${levelIndex}`;
-        document.getElementById('levelTitle').textContent = level.title;
-        document.getElementById('levelDescription').textContent = level.description;
-        document.getElementById('taskText').textContent = level.task;
+        document.getElementById('levelTitle').innerHTML = level.title;
+        document.getElementById('levelDescription').innerHTML = level.description;
+        document.getElementById('taskText').innerHTML = level.task;
 
         // Update header counter
         document.getElementById('levelCounter').textContent =
@@ -89,7 +94,7 @@ const LevelManager = {
         }
 
         // Update hint
-        document.getElementById('hintText').textContent = level.hint;
+        document.getElementById('hintText').innerHTML = level.hint;
 
         // Update levels link
         document.getElementById('btnLevels').href = `levels.html?lang=${this.currentLang}`;
@@ -110,6 +115,9 @@ const LevelManager = {
 
         // Render visual area
         this.renderVisual();
+
+        // Initial preview update
+        setTimeout(() => this.updatePreview(), 100);
     },
 
     /**
@@ -161,19 +169,22 @@ const LevelManager = {
             inputGroups[dataIndex].push(input);
         });
 
-        // Sync values for paired inputs
+        // Sync values for paired inputs and update preview
         Object.values(inputGroups).forEach(group => {
-            if (group.length > 1) {
-                group.forEach(input => {
-                    input.addEventListener('input', (e) => {
+            group.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    // Sync paired inputs
+                    if (group.length > 1) {
                         group.forEach(otherInput => {
                             if (otherInput !== e.target) {
                                 otherInput.value = e.target.value;
                             }
                         });
-                    });
+                    }
+                    // Update preview in real-time
+                    this.updatePreview();
                 });
-            }
+            });
         });
 
         // Focus first input
@@ -201,7 +212,10 @@ const LevelManager = {
                     uniqueInputs[idx + 1].focus();
                 } else if (e.key === 'Enter') {
                     e.preventDefault();
-                    document.getElementById('btnRun').click();
+                    // Prevent multiple submissions after level is completed
+                    if (!this.isLevelCompleted) {
+                        document.getElementById('btnRun').click();
+                    }
                 }
             });
         });
@@ -240,24 +254,91 @@ const LevelManager = {
     },
 
     /**
-     * Render visual representation
+     * Render visual representation with progress info
      */
     renderVisual() {
         const visualContent = document.getElementById('visualContent');
         const level = this.currentLevel;
+        const userData = Storage.getUserData();
+        const levels = this.getLevelsForLang(this.currentLang);
+        const currentIndex = levels.indexOf(level) + 1;
+        const completedLevels = userData.progress[this.currentLang]?.completed?.length || 0;
+        const progressPercent = Math.round((completedLevels / levels.length) * 100);
 
-        // Default visual based on language
+        // Get theme-specific content
+        let themeContent;
         switch (this.currentLang) {
             case 'html':
-                visualContent.innerHTML = this.getHTMLVisual(level);
+                themeContent = this.getHTMLVisual(level);
                 break;
             case 'css':
-                visualContent.innerHTML = this.getCSSVisual(level);
+                themeContent = this.getCSSVisual(level);
                 break;
             case 'js':
-                visualContent.innerHTML = this.getJSVisual(level);
+                themeContent = this.getJSVisual(level);
+                break;
+            case 'ts':
+                themeContent = this.getTSVisual(level);
+                break;
+            case 'react':
+                themeContent = this.getReactVisual(level);
+                break;
+            case 'node':
+                themeContent = this.getNodeVisual(level);
                 break;
         }
+
+        // Labels
+        const completeLabel = 'Завершено';
+        const levelsLabel = 'Уровней';
+        const totalXpLabel = 'Всего XP';
+        const rankLabel = 'Ранг';
+
+        // Build visual with progress info
+        visualContent.innerHTML = `
+            <div class="visual-wrapper">
+                <div class="progress-dashboard">
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring-bg" cx="60" cy="60" r="52" />
+                            <circle class="progress-ring-fill" cx="60" cy="60" r="52"
+                                stroke-dasharray="${326.7}"
+                                stroke-dashoffset="${326.7 - (326.7 * progressPercent / 100)}" />
+                        </svg>
+                        <div class="progress-ring-text">
+                            <span class="progress-percent">${progressPercent}%</span>
+                            <span class="progress-label">${completeLabel}</span>
+                        </div>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">&#128218;</span>
+                            <div class="stat-info">
+                                <span class="stat-value">${completedLevels}/${levels.length}</span>
+                                <span class="stat-label">${levelsLabel}</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">&#11088;</span>
+                            <div class="stat-info">
+                                <span class="stat-value">${userData.xp || 0}</span>
+                                <span class="stat-label">${totalXpLabel}</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">&#127942;</span>
+                            <div class="stat-info">
+                                <span class="stat-value">${i18n ? i18n.getRankName(userData.rank || 1) : Storage.getRankName(userData.rank)}</span>
+                                <span class="stat-label">${rankLabel}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-visual">
+                    ${themeContent}
+                </div>
+            </div>
+        `;
     },
 
     /**
@@ -316,11 +397,88 @@ const LevelManager = {
                     <span class="panel-title">// Консоль</span>
                     <div class="status-indicator">
                         <span class="status-dot online"></span>
-                        <span>Online</span>
+                        <span>Онлайн</span>
                     </div>
                 </div>
                 <div class="console-output" id="consoleOutput">
                     <div class="console-line log">Ожидание кода...</div>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
+     * Get TypeScript themed visual
+     */
+    getTSVisual(level) {
+        return `
+            <div class="ts-visual">
+                <div class="type-checker">
+                    <div class="type-icon">TS</div>
+                    <div class="type-info">
+                        <span class="type-title">Проверка типов</span>
+                        <span class="type-status">Готов к проверке типов</span>
+                    </div>
+                </div>
+                <div class="type-hints">
+                    <div class="hint-item">
+                        <span class="hint-icon">&#128269;</span>
+                        <span>Статическая типизация</span>
+                    </div>
+                    <div class="hint-item">
+                        <span class="hint-icon">&#9989;</span>
+                        <span>Автодополнение</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
+     * Get React themed visual
+     */
+    getReactVisual(level) {
+        return `
+            <div class="react-visual">
+                <div class="react-logo">
+                    <div class="atom">
+                        <div class="nucleus"></div>
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                    </div>
+                </div>
+                <div class="component-tree">
+                    <div class="component root">&lt;App /&gt;</div>
+                    <div class="component child">&lt;Component /&gt;</div>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
+     * Get Node.js themed visual
+     */
+    getNodeVisual(level) {
+        return `
+            <div class="node-visual">
+                <div class="server-icon">
+                    <div class="server-box">
+                        <div class="server-light"></div>
+                        <div class="server-light"></div>
+                        <div class="server-light"></div>
+                    </div>
+                </div>
+                <div class="terminal-mini">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">$ node server.js</div>
+                        <div class="terminal-line success">Server running...</div>
+                    </div>
                 </div>
             </div>
         `;
@@ -332,7 +490,10 @@ const LevelManager = {
     setupEventListeners() {
         // Run button
         document.getElementById('btnRun').addEventListener('click', () => {
-            this.checkAnswer();
+            // Prevent checking if level is already completed
+            if (!this.isLevelCompleted) {
+                this.checkAnswer();
+            }
         });
 
         // Reset button
@@ -375,7 +536,9 @@ const LevelManager = {
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'Enter') {
                 e.preventDefault();
-                this.checkAnswer();
+                if (!this.isLevelCompleted) {
+                    this.checkAnswer();
+                }
             }
         });
     },
@@ -449,6 +612,8 @@ const LevelManager = {
      * Handle successful completion
      */
     handleSuccess() {
+        // Mark level as completed to prevent re-submission
+        this.isLevelCompleted = true;
         const level = this.currentLevel;
         const timeSpent = Math.floor((Date.now() - this.startTime) / 1000);
         const isFirstTry = this.attempts === 1;
@@ -463,7 +628,7 @@ const LevelManager = {
         const isNewCompletion = !Storage.isLevelCompleted(this.currentLang, level.id);
 
         if (isNewCompletion) {
-            Storage.completeLevel(this.currentLang, level.id, xp, isFirstTry, isFast);
+            Storage.completeLevel(this.currentLang, level.id, xp, isFirstTry, isFast, level.title);
             Storage.addXP(xp);
         }
 
@@ -525,6 +690,7 @@ const LevelManager = {
     resetLevel() {
         this.attempts = 0;
         this.startTime = Date.now();
+        this.isLevelCompleted = false;
 
         if (this.currentLevel.type === 'fill-blank') {
             const inputs = document.querySelectorAll('.blank-input');
@@ -564,29 +730,166 @@ const LevelManager = {
      */
     updatePreview() {
         const level = this.currentLevel;
+        const resultPreview = document.getElementById('resultPreview');
 
         if (this.currentLang === 'html') {
             // Show HTML preview
             let userCode;
             if (level.type === 'fill-blank') {
                 const inputs = document.querySelectorAll('.blank-input');
-                const userBlanks = Array.from(inputs).map(input => input.value);
-                userCode = CodeValidator.buildCodeFromTemplate(level.template, userBlanks);
+
+                // Get unique values by data-index
+                const uniqueValues = {};
+                inputs.forEach(input => {
+                    const idx = input.getAttribute('data-index');
+                    if (!uniqueValues.hasOwnProperty(idx)) {
+                        uniqueValues[idx] = input.value;
+                    }
+                });
+
+                // Build blanks array in order
+                const userBlanks = Object.keys(uniqueValues)
+                    .sort((a, b) => parseInt(a) - parseInt(b))
+                    .map(k => uniqueValues[k]);
+
+                userCode = this.buildCodeFromTemplate(level.template, userBlanks);
             } else {
                 userCode = document.getElementById('codeInput').value;
             }
 
-            const resultPreview = document.getElementById('resultPreview');
             if (resultPreview) {
-                resultPreview.innerHTML = CodeValidator.getHTMLPreview(userCode);
+                const preview = CodeValidator.getHTMLPreview(userCode);
+                resultPreview.innerHTML = `
+                    <div class="preview-rendered">${preview}</div>
+                    <div class="preview-code">
+                        <span class="code-label">HTML:</span>
+                        <code>${this.escapeHtml(userCode)}</code>
+                    </div>
+                `;
             }
         } else if (this.currentLang === 'css') {
-            // Apply CSS to preview element
-            // CSS preview handled in visual area
+            // CSS preview - show styled element
+            if (resultPreview && level.type === 'fill-blank') {
+                const inputs = document.querySelectorAll('.blank-input');
+                const uniqueValues = {};
+                inputs.forEach(input => {
+                    const idx = input.getAttribute('data-index');
+                    if (!uniqueValues.hasOwnProperty(idx)) {
+                        uniqueValues[idx] = input.value;
+                    }
+                });
+                const userBlanks = Object.keys(uniqueValues)
+                    .sort((a, b) => parseInt(a) - parseInt(b))
+                    .map(k => uniqueValues[k]);
+
+                const userCode = this.buildCodeFromTemplate(level.template, userBlanks);
+                const previewHtml = level.previewHtml || '<div class="preview-box">Preview</div>';
+
+                resultPreview.innerHTML = `
+                    <style>${userCode}</style>
+                    <div class="preview-rendered">${previewHtml}</div>
+                    <div class="preview-code">
+                        <span class="code-label">CSS:</span>
+                        <code>${this.escapeHtml(userCode)}</code>
+                    </div>
+                `;
+            }
         } else if (this.currentLang === 'js') {
-            // JS preview - show console output
-            // Handled in checkAnswer
+            // JS preview - execute and show result
+            if (resultPreview && level.type === 'fill-blank') {
+                const inputs = document.querySelectorAll('.blank-input');
+                const uniqueValues = {};
+                inputs.forEach(input => {
+                    const idx = input.getAttribute('data-index');
+                    if (!uniqueValues.hasOwnProperty(idx)) {
+                        uniqueValues[idx] = input.value;
+                    }
+                });
+                const userBlanks = Object.keys(uniqueValues)
+                    .sort((a, b) => parseInt(a) - parseInt(b))
+                    .map(k => uniqueValues[k]);
+
+                const userCode = this.buildCodeFromTemplate(level.template, userBlanks);
+
+                // Execute and show console output
+                this.executeAndShowResult(userCode, resultPreview);
+            }
         }
+    },
+
+    /**
+     * Build code from template (handles both [[TAG]] and ___ patterns)
+     */
+    buildCodeFromTemplate(template, userBlanks) {
+        let code = template;
+        let blankIndex = 0;
+
+        // Replace [[TAG]] pattern - all occurrences use the same value (for paired tags)
+        code = code.replace(/\[\[([^\]]+)\]\]/g, () => {
+            return userBlanks[blankIndex] || '';
+        });
+
+        // Reset index for ___ pattern
+        blankIndex = 0;
+        code = code.replace(/___/g, () => {
+            const value = userBlanks[blankIndex] || '';
+            blankIndex++;
+            return value;
+        });
+
+        return code;
+    },
+
+    /**
+     * Execute JS code and show result
+     */
+    async executeAndShowResult(code, container) {
+        const logs = [];
+
+        try {
+            // Create sandbox with custom console
+            const originalLog = console.log;
+            console.log = (...args) => {
+                logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+            };
+
+            // Execute code
+            eval(code);
+
+            // Restore console
+            console.log = originalLog;
+
+            container.innerHTML = `
+                <div class="preview-console">
+                    <span class="console-label">Console:</span>
+                    ${logs.map(log => `<div class="console-line">&gt; ${this.escapeHtml(log)}</div>`).join('')}
+                </div>
+                <div class="preview-code">
+                    <span class="code-label">JavaScript:</span>
+                    <code>${this.escapeHtml(code)}</code>
+                </div>
+            `;
+        } catch (e) {
+            container.innerHTML = `
+                <div class="preview-error">
+                    <span class="error-label">Error:</span>
+                    <span>${this.escapeHtml(e.message)}</span>
+                </div>
+                <div class="preview-code">
+                    <span class="code-label">JavaScript:</span>
+                    <code>${this.escapeHtml(code)}</code>
+                </div>
+            `;
+        }
+    },
+
+    /**
+     * Escape HTML for display
+     */
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     },
 
     /**
@@ -609,6 +912,7 @@ const LevelManager = {
 
         if (currentIndex > 0) {
             this.hideSuccess();
+            this.isLevelCompleted = false;
             this.currentLevel = levels[currentIndex - 1];
             this.attempts = 0;
             this.startTime = Date.now();
@@ -629,6 +933,7 @@ const LevelManager = {
 
         if (currentIndex < levels.length - 1) {
             this.hideSuccess();
+            this.isLevelCompleted = false;
             this.currentLevel = levels[currentIndex + 1];
             this.attempts = 0;
             this.startTime = Date.now();

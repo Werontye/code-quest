@@ -1,0 +1,27 @@
+{
+  "name": "codequest",
+  "version": "1.0.0",
+  "description": "Interactive coding learning platform - Learn HTML, CSS, and JavaScript through gamified lessons",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s . -l $PORT",
+    "dev": "npx serve -s . -l 3000"
+  },
+  "keywords": [
+    "coding",
+    "learning",
+    "html",
+    "css",
+    "javascript",
+    "education",
+    "gamification"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

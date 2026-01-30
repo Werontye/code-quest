@@ -31,6 +31,21 @@
     --color-js-light: #f5e663;
     --color-js-bg: #1a2d1f;
 
+    /* TypeScript Theme Colors */
+    --color-ts: #3178c6;
+    --color-ts-light: #5a9bd5;
+    --color-ts-bg: #1a2333;
+
+    /* React Theme Colors */
+    --color-react: #61dafb;
+    --color-react-light: #88e4fc;
+    --color-react-bg: #1a2d2f;
+
+    /* Node.js Theme Colors */
+    --color-node: #68a063;
+    --color-node-light: #8cc84b;
+    --color-node-bg: #1a2d1a;
+
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -295,6 +310,36 @@ button {
     box-shadow: 0 8px 30px rgba(240, 219, 79, 0.3);
 }
 
+/* TypeScript Card */
+.language-card--ts::before {
+    background: linear-gradient(90deg, var(--color-ts), var(--color-ts-light));
+}
+
+.language-card--ts:hover {
+    border-color: var(--color-ts);
+    box-shadow: 0 8px 30px rgba(49, 120, 198, 0.3);
+}
+
+/* React Card */
+.language-card--react::before {
+    background: linear-gradient(90deg, var(--color-react), var(--color-react-light));
+}
+
+.language-card--react:hover {
+    border-color: var(--color-react);
+    box-shadow: 0 8px 30px rgba(97, 218, 251, 0.3);
+}
+
+/* Node.js Card */
+.language-card--node::before {
+    background: linear-gradient(90deg, var(--color-node), var(--color-node-light));
+}
+
+.language-card--node:hover {
+    border-color: var(--color-node);
+    box-shadow: 0 8px 30px rgba(104, 160, 99, 0.3);
+}
+
 /* Card Icon */
 .card__icon {
     width: 120px;
@@ -524,6 +569,9 @@ button {
 .language-card--html .card__title { color: var(--color-html); }
 .language-card--css .card__title { color: var(--color-css); }
 .language-card--js .card__title { color: var(--color-js); }
+.language-card--ts .card__title { color: var(--color-ts); }
+.language-card--react .card__title { color: var(--color-react); }
+.language-card--node .card__title { color: var(--color-node); }
 
 .card__subtitle {
     font-size: 1rem;
@@ -563,6 +611,9 @@ button {
 .language-card--html .progress-fill { background: var(--color-html); }
 .language-card--css .progress-fill { background: var(--color-css); }
 .language-card--js .progress-fill { background: var(--color-js); }
+.language-card--ts .progress-fill { background: var(--color-ts); }
+.language-card--react .progress-fill { background: var(--color-react); }
+.language-card--node .progress-fill { background: var(--color-node); }
 
 .progress-text {
     font-size: 0.8rem;
@@ -775,6 +826,58 @@ button {
 
 .animate-shake {
     animation: shake 0.5s ease;
+}
+
+/* ===================================
+   Language Transition Animation
+   =================================== */
+.lang-transition {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lang-fade-out {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+.lang-fade-in {
+    animation: langFadeIn 0.3s ease forwards;
+}
+
+@keyframes langFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth content transition container */
+[data-i18n] {
+    transition: opacity 0.2s ease;
+}
+
+.lang-updating [data-i18n] {
+    opacity: 0;
+}
+
+/* Achievement fade out animation */
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+.achievement-popup.fade-out {
+    animation: slideOutRight 0.5s ease forwards;
 }
 
 /* ===================================
@@ -1004,8 +1107,110 @@ button {
     background: radial-gradient(circle at center, rgba(240, 219, 79, 0.1) 0%, transparent 70%);
 }
 
+.language-card--ts .card__glow {
+    background: radial-gradient(circle at center, rgba(49, 120, 198, 0.1) 0%, transparent 70%);
+}
+
+.language-card--react .card__glow {
+    background: radial-gradient(circle at center, rgba(97, 218, 251, 0.1) 0%, transparent 70%);
+}
+
+.language-card--node .card__glow {
+    background: radial-gradient(circle at center, rgba(104, 160, 99, 0.1) 0%, transparent 70%);
+}
+
 .language-card:hover .card__glow {
     opacity: 1;
+}
+
+/* TypeScript Icon */
+.ts-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-ts);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 2rem;
+    color: white;
+}
+
+/* React Icon */
+.react-icon {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.atom-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--color-react);
+    border-radius: 50%;
+}
+
+.atom-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 30px;
+    border: 2px solid var(--color-react);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.atom-ring.ring1 {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.atom-ring.ring2 {
+    transform: translate(-50%, -50%) rotate(60deg);
+}
+
+.atom-ring.ring3 {
+    transform: translate(-50%, -50%) rotate(-60deg);
+}
+
+/* Server Icon (Node.js) */
+.server-icon-card {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.server-rack {
+    width: 60px;
+    height: 70px;
+    background: var(--color-bg);
+    border: 2px solid var(--color-node);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: var(--spacing-sm);
+}
+
+.server-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-node);
+    box-shadow: 0 0 8px var(--color-node);
+}
+
+.server-light.green {
+    background: var(--color-node-light);
+    box-shadow: 0 0 8px var(--color-node-light);
 }
 
 /* ===================================
@@ -1459,66 +1664,206 @@ button {
 }
 
 /* ===================================
-   Light Theme
+   Light Theme - Coffee/Warm tones
    =================================== */
 .light-theme {
-    --color-bg: #f5f7fa;
-    --color-bg-secondary: #e8ecf1;
-    --color-bg-card: #ffffff;
-    --color-text: #1a1a2e;
-    --color-text-muted: #6b7280;
+    --color-bg: #faf7f2;
+    --color-bg-secondary: #f0e9df;
+    --color-bg-card: #fffcf8;
+    --color-text: #3d3027;
+    --color-text-muted: #7a6f63;
+    --color-primary: #8b6b4a;
+    --color-primary-light: #a67c52;
+    --color-success: #5a8f5a;
+    --color-warning: #d4a84b;
+    --color-shadow: rgba(139, 107, 74, 0.15);
 }
 
 .light-theme .animated-bg {
-    background: #f5f7fa;
+    background: linear-gradient(135deg, #faf7f2 0%, #f5efe5 50%, #faf7f2 100%);
 }
 
 .light-theme .grid-lines {
     background-image:
-        linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(139, 107, 74, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 107, 74, 0.06) 1px, transparent 1px);
 }
 
 .light-theme .particle {
-    background: var(--color-primary);
-    opacity: 0.2;
+    background: linear-gradient(135deg, #c4a67c, #8b6b4a);
+    opacity: 0.3;
 }
 
 .light-theme .orb {
-    opacity: 0.1;
+    opacity: 0.08;
+    background: radial-gradient(circle, rgba(139, 107, 74, 0.4), transparent);
+}
+
+.light-theme .orb-1 {
+    background: radial-gradient(circle, rgba(210, 180, 140, 0.3), transparent);
+}
+
+.light-theme .orb-2 {
+    background: radial-gradient(circle, rgba(166, 124, 82, 0.25), transparent);
+}
+
+.light-theme .orb-3 {
+    background: radial-gradient(circle, rgba(139, 107, 74, 0.2), transparent);
 }
 
 .light-theme .header {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: #fffcf8;
+    box-shadow: 0 2px 15px rgba(139, 107, 74, 0.1);
+    border-bottom: 1px solid rgba(139, 107, 74, 0.1);
 }
 
 .light-theme .logo-text {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-css));
+    background: linear-gradient(135deg, #8b6b4a, #a67c52);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .light-theme .language-card {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(139, 107, 74, 0.08);
+    border: 1px solid rgba(139, 107, 74, 0.1);
 }
 
 .light-theme .language-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(139, 107, 74, 0.15);
 }
 
 .light-theme .code-editor {
-    border-color: #ddd;
+    border-color: rgba(139, 107, 74, 0.2);
+    background: #fffcf8;
 }
 
 .light-theme .blank-input {
-    background: #f5f7fa;
-    border-color: var(--color-primary);
+    background: #faf7f2;
+    border-color: #8b6b4a;
+    color: #3d3027;
+}
+
+.light-theme .blank-input:focus {
+    box-shadow: 0 0 0 3px rgba(139, 107, 74, 0.2);
 }
 
 .light-theme .result-preview {
-    background: #ffffff;
-    color: #1a1a2e;
-    border-color: #e8ecf1;
+    background: #fffcf8;
+    color: #3d3027;
+    border-color: rgba(139, 107, 74, 0.15);
+}
+
+.light-theme .btn-primary-hero {
+    background: linear-gradient(135deg, #8b6b4a, #a67c52);
+    box-shadow: 0 4px 15px rgba(139, 107, 74, 0.3);
+}
+
+.light-theme .btn-primary-hero:hover {
+    box-shadow: 0 6px 20px rgba(139, 107, 74, 0.4);
+}
+
+.light-theme .feature-card {
+    background: #fffcf8;
+    border: 1px solid rgba(139, 107, 74, 0.1);
+}
+
+.light-theme .feature-card:hover {
+    border-color: #8b6b4a;
+}
+
+.light-theme .feature-icon-wrapper {
+    background: linear-gradient(135deg, #8b6b4a, #a67c52);
+}
+
+.light-theme .stat-card {
+    background: #fffcf8;
+    border: 1px solid rgba(139, 107, 74, 0.1);
+}
+
+.light-theme .stat-card:hover {
+    box-shadow: 0 4px 20px rgba(139, 107, 74, 0.15);
+}
+
+.light-theme .stat-value {
+    color: #8b6b4a;
+}
+
+.light-theme .quick-stat-card {
+    background: #fffcf8;
+    border: 1px solid rgba(139, 107, 74, 0.1);
+}
+
+.light-theme .nav-link {
+    background: #f0e9df;
+}
+
+.light-theme .nav-link:hover {
+    background: #8b6b4a;
+    color: white;
+}
+
+.light-theme .cta-section {
+    background: linear-gradient(135deg, #f0e9df, #faf7f2);
+    border: 1px solid rgba(139, 107, 74, 0.15);
+}
+
+.light-theme .btn-cta {
+    background: linear-gradient(135deg, #8b6b4a, #a67c52);
+}
+
+.light-theme .footer {
+    background: #f0e9df;
+    border-top: 1px solid rgba(139, 107, 74, 0.15);
+}
+
+.light-theme .modal-content {
+    background: #fffcf8;
+    border: 1px solid rgba(139, 107, 74, 0.15);
+}
+
+.light-theme .auth-input {
+    background: #faf7f2;
+    border-color: rgba(139, 107, 74, 0.2);
+}
+
+.light-theme .auth-input:focus {
+    border-color: #8b6b4a;
+}
+
+.light-theme .hero-badge {
+    background: rgba(139, 107, 74, 0.1);
+    border-color: rgba(139, 107, 74, 0.2);
+    color: #8b6b4a;
+}
+
+.light-theme .hero-stat-value {
+    color: #8b6b4a;
+}
+
+.light-theme .section-title::after {
+    background: #8b6b4a;
+}
+
+.light-theme .path-step {
+    background: #fffcf8;
+    border: 1px solid rgba(139, 107, 74, 0.1);
+}
+
+.light-theme .step-number {
+    background: #8b6b4a;
+}
+
+.light-theme .path-connector {
+    background: linear-gradient(90deg, #8b6b4a, #a67c52);
+}
+
+.light-theme .achievement-card {
+    background: #fffcf8;
+    border: 1px solid rgba(139, 107, 74, 0.1);
+}
+
+.light-theme .achievement-card:hover {
+    box-shadow: 0 4px 20px rgba(139, 107, 74, 0.15);
 }
 
 /* ===================================

@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - CodeQuest</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/animations.css">
+    <link rel="stylesheet" href="../css/components/progress.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="grid-lines"></div>
+    </div>
+
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <a href="../index.html" class="logo-link">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">CodeQuest</span>
+                </a>
+            </div>
+            <nav class="header__nav">
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+                        <span class="theme-icon">&#9728;</span>
+                    </button>
+                </div>
+                <a href="profile.html" class="nav-link active">
+                    <span class="nav-icon">&#9733;</span>
+                    <span class="nav-xp" id="headerXP">0 XP</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main profile-page">
+            <!-- Profile Header -->
+            <section class="profile-header fade-in-up">
+                <div class="profile-avatar">
+                    <div class="avatar-circle" id="avatarCircle">
+                        <span class="avatar-emoji">&#128640;</span>
+                    </div>
+                    <div class="rank-badge" id="rankBadge">
+                        <span class="rank-icon">&#127942;</span>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name" id="profileName">Кодер</h1>
+                    <p class="profile-rank" id="profileRank">Новичок</p>
+                    <div class="profile-xp">
+                        <span class="xp-value" id="totalXP">0</span>
+                        <span class="xp-label">XP</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-edit-profile" id="editProfile">
+                        &#9998; Редактировать
+                    </button>
+                </div>
+            </section>
+
+            <!-- XP Progress to Next Rank -->
+            <section class="rank-progress-section fade-in-up">
+                <div class="rank-progress-card">
+                    <div class="rank-progress-header">
+                        <span class="current-rank" id="currentRankName">Новичок</span>
+                        <span class="next-rank" id="nextRankName">Ученик</span>
+                    </div>
+                    <div class="rank-progress-bar">
+                        <div class="rank-progress-fill" id="rankProgressFill" style="width: 0%"></div>
+                    </div>
+                    <p class="rank-progress-text">
+                        <span id="currentXPProgress">0</span> / <span id="nextRankXP">100</span> XP до следующего ранга
+                    </p>
+                </div>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="profile-stats fade-in-up">
+                <h2 class="section-title">Статистика</h2>
+                <div class="stats-grid">
+                    <div class="stat-card stat-card--primary">
+                        <div class="stat-icon">&#128293;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="streakDays">0</span>
+                            <span class="stat-label">Дней подряд</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--success">
+                        <div class="stat-icon">&#127942;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalLevels">0</span>
+                            <span class="stat-label">Уровней пройдено</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--warning">
+                        <div class="stat-icon">&#127919;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="firstTryCount">0</span>
+                            <span class="stat-label">С первой попытки</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--info">
+                        <div class="stat-icon">&#9889;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="fastCompletions">0</span>
+                            <span class="stat-label">Быстрых решений</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Progress -->
+            <section class="course-progress fade-in-up">
+                <h2 class="section-title">Прогресс по курсам</h2>
+                <div class="courses-grid">
+                    <!-- HTML -->
+                    <div class="course-card course-card--html">
+                        <div class="course-icon">&#127959;</div>
+                        <div class="course-info">
+                            <h3>HTML</h3>
+                            <p class="course-subtitle">Строитель</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" id="htmlProgressFill" style="width: 0%"></div>
+                            </div>
+                            <p class="course-progress-text">
+                                <span id="htmlCompleted">0</span> / 35 уровней
+                            </p>
+                        </div>
+                        <a href="levels.html?lang=html" class="course-action">Продолжить &#8594;</a>
+                    </div>
+
+                    <!-- CSS -->
+                    <div class="course-card course-card--css">
+                        <div class="course-icon">&#127912;</div>
+                        <div class="course-info">
+                            <h3>CSS</h3>
+                            <p class="course-subtitle">Художник</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" id="cssProgressFill" style="width: 0%"></div>
+                            </div>
+                            <p class="course-progress-text">
+                                <span id="cssCompleted">0</span> / 55 уровней
+                            </p>
+                        </div>
+                        <a href="levels.html?lang=css" class="course-action">Продолжить &#8594;</a>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="course-card course-card--js">
+                        <div class="course-icon">&#128640;</div>
+                        <div class="course-info">
+                            <h3>JavaScript</h3>
+                            <p class="course-subtitle">Космонавт</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" id="jsProgressFill" style="width: 0%"></div>
+                            </div>
+                            <p class="course-progress-text">
+                                <span id="jsCompleted">0</span> / 70 уровней
+                            </p>
+                        </div>
+                        <a href="levels.html?lang=js" class="course-action">Продолжить &#8594;</a>
+                    </div>
+
+                    <!-- TypeScript -->
+                    <div class="course-card course-card--ts">
+                        <div class="course-icon">&#128196;</div>
+                        <div class="course-info">
+                            <h3>TypeScript</h3>
+                            <p class="course-subtitle">Архитектор</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" id="tsProgressFill" style="width: 0%"></div>
+                            </div>
+                            <p class="course-progress-text">
+                                <span id="tsCompleted">0</span> / 53 уровней
+                            </p>
+                        </div>
+                        <a href="levels.html?lang=ts" class="course-action">Начать &#8594;</a>
+                    </div>
+
+                    <!-- React -->
+                    <div class="course-card course-card--react">
+                        <div class="course-icon">&#9883;</div>
+                        <div class="course-info">
+                            <h3>React</h3>
+                            <p class="course-subtitle">UI Мастер</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" id="reactProgressFill" style="width: 0%"></div>
+                            </div>
+                            <p class="course-progress-text">
+                                <span id="reactCompleted">0</span> / 45 уровней
+                            </p>
+                        </div>
+                        <a href="levels.html?lang=react" class="course-action">Начать &#8594;</a>
+                    </div>
+
+                    <!-- Node.js -->
+                    <div class="course-card course-card--node">
+                        <div class="course-icon">&#9881;</div>
+                        <div class="course-info">
+                            <h3>Node.js</h3>
+                            <p class="course-subtitle">Backend Инженер</p>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" id="nodeProgressFill" style="width: 0%"></div>
+                            </div>
+                            <p class="course-progress-text">
+                                <span id="nodeCompleted">0</span> / 46 уровней
+                            </p>
+                        </div>
+                        <a href="levels.html?lang=node" class="course-action">Начать &#8594;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="achievements-section fade-in-up">
+                <h2 class="section-title">Достижения</h2>
+                <p class="achievements-count">
+                    Получено: <span id="achievementsCount">0</span> / <span id="achievementsTotal">30</span>
+                </p>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be inserted by JS -->
+                </div>
+            </section>
+
+            <!-- Weekly Progress Chart -->
+            <section class="weekly-progress fade-in-up">
+                <h2 class="section-title">Прогресс за неделю</h2>
+                <div class="weekly-chart-container">
+                    <div class="weekly-goal-info">
+                        <span class="goal-label">Дневная цель:</span>
+                        <span class="goal-value" id="dailyGoalDisplay">100 XP</span>
+                    </div>
+                    <div class="weekly-chart" id="weeklyChart">
+                        <!-- Chart bars will be inserted by JS -->
+                    </div>
+                    <div class="weekly-summary">
+                        <div class="summary-item">
+                            <span class="summary-value" id="weeklyTotal">0</span>
+                            <span class="summary-label">XP за неделю</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-value" id="weeklyAvg">0</span>
+                            <span class="summary-label">Среднее в день</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-value" id="goalsReached">0/7</span>
+                            <span class="summary-label">Целей достигнуто</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Progress Table -->
+            <section class="progress-table-section fade-in-up">
+                <h2 class="section-title">Детальная статистика</h2>
+                <div class="progress-table-wrapper">
+                    <table class="progress-table" id="progressTable">
+                        <thead>
+                            <tr>
+                                <th>Курс</th>
+                                <th>Пройдено</th>
+                                <th>Осталось</th>
+                                <th>Прогресс</th>
+                                <th>XP</th>
+                            </tr>
+                        </thead>
+                        <tbody id="progressTableBody">
+                            <!-- Rows will be inserted by JS -->
+                        </tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td><strong>Всего</strong></td>
+                                <td id="totalCompleted">0</td>
+                                <td id="totalRemaining">0</td>
+                                <td id="totalProgress">0%</td>
+                                <td id="totalXPEarned">0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="activity-section fade-in-up">
+                <h2 class="section-title">Недавняя активность</h2>
+                <div class="activity-list" id="activityList">
+                    <!-- Activity items will be inserted by JS -->
+                </div>
+            </section>
+
+            <!-- Learning Path Progress -->
+            <section class="learning-path-progress fade-in-up">
+                <h2 class="section-title">Путь к Junior разработчику</h2>
+                <div class="path-milestones">
+                    <div class="milestone" id="milestone1">
+                        <div class="milestone-icon">&#127959;</div>
+                        <div class="milestone-info">
+                            <h4>HTML Основы</h4>
+                            <p>20 уровней</p>
+                        </div>
+                        <div class="milestone-status" data-status="incomplete">&#10003;</div>
+                    </div>
+                    <div class="milestone-connector"></div>
+                    <div class="milestone" id="milestone2">
+                        <div class="milestone-icon">&#127912;</div>
+                        <div class="milestone-info">
+                            <h4>CSS Мастерство</h4>
+                            <p>30 уровней</p>
+                        </div>
+                        <div class="milestone-status" data-status="incomplete">&#10003;</div>
+                    </div>
+                    <div class="milestone-connector"></div>
+                    <div class="milestone" id="milestone3">
+                        <div class="milestone-icon">&#128640;</div>
+                        <div class="milestone-info">
+                            <h4>JavaScript Pro</h4>
+                            <p>40 уровней</p>
+                        </div>
+                        <div class="milestone-status" data-status="incomplete">&#10003;</div>
+                    </div>
+                    <div class="milestone-connector"></div>
+                    <div class="milestone" id="milestone4">
+                        <div class="milestone-icon">&#9883;</div>
+                        <div class="milestone-info">
+                            <h4>React Разработчик</h4>
+                            <p>30 уровней</p>
+                        </div>
+                        <div class="milestone-status" data-status="incomplete">&#10003;</div>
+                    </div>
+                    <div class="milestone-connector"></div>
+                    <div class="milestone milestone--final" id="milestone5">
+                        <div class="milestone-icon">&#127942;</div>
+                        <div class="milestone-info">
+                            <h4>Junior Developer</h4>
+                            <p>Цель достигнута!</p>
+                        </div>
+                        <div class="milestone-status" data-status="incomplete">&#128081;</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer__text">CodeQuest &copy; 2024 | Изучай. Играй. Создавай.</p>
+        </footer>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal hidden" id="editProfileModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-content--large">
+            <button class="modal-close" id="closeEditModal">&times;</button>
+            <h2 class="modal-title">Редактировать профиль</h2>
+            <form class="edit-profile-form" id="editProfileForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" id="editName" class="auth-input" placeholder="Ваше имя" maxlength="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Email (опционально)</label>
+                        <input type="email" id="editEmail" class="auth-input" placeholder="email@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>О себе</label>
+                    <textarea id="editBio" class="auth-input auth-textarea" placeholder="Расскажите о себе..." maxlength="200"></textarea>
+                    <span class="char-counter"><span id="bioCharCount">0</span>/200</span>
+                </div>
+                <div class="form-group">
+                    <label>Дневная цель XP</label>
+                    <div class="goal-selector" id="goalSelector">
+                        <button type="button" class="goal-option" data-goal="50">50 XP<span>Легкая</span></button>
+                        <button type="button" class="goal-option" data-goal="100">100 XP<span>Стандарт</span></button>
+                        <button type="button" class="goal-option" data-goal="200">200 XP<span>Серьёзная</span></button>
+                        <button type="button" class="goal-option" data-goal="300">300 XP<span>Хардкор</span></button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Выберите аватар</label>
+                    <div class="avatar-selector" id="avatarSelector">
+                        <button type="button" class="avatar-option" data-avatar="&#128640;">&#128640;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#128187;">&#128187;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#127919;">&#127919;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#129302;">&#129302;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#128571;">&#128571;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#127775;">&#127775;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#128293;">&#128293;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#129332;">&#129332;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#128526;">&#128526;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#127912;">&#127912;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#9889;">&#9889;</button>
+                        <button type="button" class="avatar-option" data-avatar="&#127959;">&#127959;</button>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-reset-progress" id="resetProgressBtn">
+                        &#128465; Сбросить прогресс
+                    </button>
+                    <button type="submit" class="auth-submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Reset Modal -->
+    <div class="modal hidden" id="confirmResetModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-content--small">
+            <h2 class="modal-title modal-title--danger">&#9888; Сбросить прогресс?</h2>
+            <p class="modal-text">Это действие удалит весь ваш прогресс, XP и достижения. Это нельзя отменить!</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="cancelReset">Отмена</button>
+                <button class="btn-danger" id="confirmReset">Да, сбросить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/modules/storage.js"></script>
+    <script src="../js/modules/i18n.js"></script>
+    <script src="../js/modules/achievements.js"></script>
+    <script>
+        // Initialize profile page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProfileData();
+            loadAchievements();
+            loadWeeklyProgress();
+            loadProgressTable();
+            loadRecentActivity();
+            setupEventListeners();
+            loadTheme();
+        });
+
+        function loadProfileData() {
+            const userData = Storage.getUserData();
+
+            // Profile info
+            document.getElementById('profileName').textContent = userData.username || 'Кодер';
+            document.getElementById('profileRank').textContent = Storage.getRankName(userData.rank);
+            document.getElementById('totalXP').textContent = userData.xp || 0;
+            document.getElementById('headerXP').textContent = (userData.xp || 0) + ' XP';
+
+            // Avatar
+            if (userData.avatar) {
+                document.querySelector('.avatar-emoji').innerHTML = userData.avatar;
+            }
+
+            // Rank progress
+            const rankThresholds = [0, 100, 300, 600, 1000, 1500, 2500, 4000, 10000];
+            const currentRank = userData.rank || 1;
+            const currentXP = userData.xp || 0;
+            const currentThreshold = rankThresholds[currentRank - 1];
+            const nextThreshold = rankThresholds[currentRank] || rankThresholds[rankThresholds.length - 1];
+            const progress = ((currentXP - currentThreshold) / (nextThreshold - currentThreshold)) * 100;
+
+            document.getElementById('currentRankName').textContent = Storage.getRankName(currentRank);
+            document.getElementById('nextRankName').textContent = Storage.getRankName(Math.min(currentRank + 1, 8));
+            document.getElementById('rankProgressFill').style.width = Math.min(progress, 100) + '%';
+            document.getElementById('currentXPProgress').textContent = currentXP;
+            document.getElementById('nextRankXP').textContent = nextThreshold;
+
+            // Stats
+            document.getElementById('streakDays').textContent = userData.stats?.streakDays || 0;
+            document.getElementById('totalLevels').textContent = userData.stats?.totalLevels || 0;
+            document.getElementById('firstTryCount').textContent = userData.stats?.firstTryCount || 0;
+            document.getElementById('fastCompletions').textContent = userData.stats?.fastCompletions || 0;
+
+            // Course progress
+            const htmlCompleted = userData.progress?.html?.completed?.length || 0;
+            const cssCompleted = userData.progress?.css?.completed?.length || 0;
+            const jsCompleted = userData.progress?.js?.completed?.length || 0;
+            const tsCompleted = userData.progress?.ts?.completed?.length || 0;
+            const reactCompleted = userData.progress?.react?.completed?.length || 0;
+            const nodeCompleted = userData.progress?.node?.completed?.length || 0;
+
+            document.getElementById('htmlCompleted').textContent = htmlCompleted;
+            document.getElementById('htmlProgressFill').style.width = (htmlCompleted / 35 * 100) + '%';
+
+            document.getElementById('cssCompleted').textContent = cssCompleted;
+            document.getElementById('cssProgressFill').style.width = (cssCompleted / 55 * 100) + '%';
+
+            document.getElementById('jsCompleted').textContent = jsCompleted;
+            document.getElementById('jsProgressFill').style.width = (jsCompleted / 70 * 100) + '%';
+
+            document.getElementById('tsCompleted').textContent = tsCompleted;
+            document.getElementById('tsProgressFill').style.width = (tsCompleted / 53 * 100) + '%';
+
+            document.getElementById('reactCompleted').textContent = reactCompleted;
+            document.getElementById('reactProgressFill').style.width = (reactCompleted / 45 * 100) + '%';
+
+            document.getElementById('nodeCompleted').textContent = nodeCompleted;
+            document.getElementById('nodeProgressFill').style.width = (nodeCompleted / 46 * 100) + '%';
+
+            // Update milestones
+            updateMilestones(htmlCompleted, cssCompleted, jsCompleted, reactCompleted);
+        }
+
+        function updateMilestones(html, css, js, react) {
+            const m1 = document.getElementById('milestone1');
+            const m2 = document.getElementById('milestone2');
+            const m3 = document.getElementById('milestone3');
+            const m4 = document.getElementById('milestone4');
+            const m5 = document.getElementById('milestone5');
+
+            if (html >= 20) {
+                m1.classList.add('completed');
+                m1.querySelector('.milestone-status').dataset.status = 'complete';
+            }
+            if (css >= 30) {
+                m2.classList.add('completed');
+                m2.querySelector('.milestone-status').dataset.status = 'complete';
+            }
+            if (js >= 40) {
+                m3.classList.add('completed');
+                m3.querySelector('.milestone-status').dataset.status = 'complete';
+            }
+            if (react >= 30) {
+                m4.classList.add('completed');
+                m4.querySelector('.milestone-status').dataset.status = 'complete';
+            }
+            if (html >= 20 && css >= 30 && js >= 40 && react >= 30) {
+                m5.classList.add('completed');
+                m5.querySelector('.milestone-status').dataset.status = 'complete';
+            }
+        }
+
+        function loadAchievements() {
+            const userData = Storage.getUserData();
+            const grid = document.getElementById('achievementsGrid');
+            const allAchievements = Achievements.getAllWithStatus();
+
+            document.getElementById('achievementsCount').textContent = userData.achievements?.length || 0;
+            document.getElementById('achievementsTotal').textContent = allAchievements.length;
+
+            grid.innerHTML = allAchievements.map(a => `
+                <div class="achievement-item ${a.unlocked ? 'unlocked' : 'locked'}">
+                    <span class="achievement-icon-large">${a.icon}</span>
+                    <div class="achievement-details">
+                        <h4>${a.name}</h4>
+                        <p>${a.description}</p>
+                        ${a.xp > 0 ? `<span class="achievement-xp">+${a.xp} XP</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadWeeklyProgress() {
+            const userData = Storage.getUserData();
+            const dailyGoal = userData.dailyGoal || 100;
+            const weeklyXP = userData.weeklyXP || {};
+            const chart = document.getElementById('weeklyChart');
+
+            // Display daily goal
+            document.getElementById('dailyGoalDisplay').textContent = dailyGoal + ' XP';
+
+            // Get last 7 days
+            const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+            const today = new Date();
+            let weeklyTotal = 0;
+            let goalsReached = 0;
+            let chartHTML = '';
+
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateKey = date.toISOString().split('T')[0];
+                const dayXP = weeklyXP[dateKey] || 0;
+                const dayName = days[date.getDay()];
+                const isToday = i === 0;
+
+                weeklyTotal += dayXP;
+                if (dayXP >= dailyGoal) goalsReached++;
+
+                const heightPercent = Math.min((dayXP / dailyGoal) * 100, 150);
+                const barClass = dayXP >= dailyGoal ? 'bar-complete' : (dayXP > 0 ? 'bar-partial' : 'bar-empty');
+
+                chartHTML += `
+                    <div class="chart-day ${isToday ? 'today' : ''}">
+                        <div class="chart-bar-container">
+                            <div class="chart-bar ${barClass}" style="height: ${Math.max(heightPercent, 5)}%">
+                                <span class="bar-value">${dayXP}</span>
+                            </div>
+                            <div class="goal-line"></div>
+                        </div>
+                        <span class="day-label">${dayName}</span>
+                    </div>
+                `;
+            }
+
+            chart.innerHTML = chartHTML;
+
+            // Update summary
+            document.getElementById('weeklyTotal').textContent = weeklyTotal;
+            document.getElementById('weeklyAvg').textContent = Math.round(weeklyTotal / 7);
+            document.getElementById('goalsReached').textContent = goalsReached + '/7';
+        }
+
+        function loadProgressTable() {
+            const userData = Storage.getUserData();
+            const tbody = document.getElementById('progressTableBody');
+
+            const courses = [
+                { id: 'html', name: 'HTML', icon: '&#127959;', total: 35, color: '#e55039' },
+                { id: 'css', name: 'CSS', icon: '&#127912;', total: 55, color: '#8c7ae6' },
+                { id: 'js', name: 'JavaScript', icon: '&#128640;', total: 70, color: '#ffc107' },
+                { id: 'ts', name: 'TypeScript', icon: '&#128196;', total: 53, color: '#3178c6' },
+                { id: 'react', name: 'React', icon: '&#9883;', total: 45, color: '#61dafb' },
+                { id: 'node', name: 'Node.js', icon: '&#9881;', total: 46, color: '#68a063' }
+            ];
+
+            let totalCompleted = 0;
+            let totalLevels = 0;
+            let totalXP = 0;
+
+            let rowsHTML = '';
+
+            courses.forEach(course => {
+                const completed = userData.progress?.[course.id]?.completed?.length || 0;
+                const remaining = course.total - completed;
+                const percent = Math.round((completed / course.total) * 100);
+                const xpEarned = completed * 15; // Average XP per level
+
+                totalCompleted += completed;
+                totalLevels += course.total;
+                totalXP += xpEarned;
+
+                rowsHTML += `
+                    <tr>
+                        <td>
+                            <span class="course-name-cell">
+                                <span class="course-icon-mini">${course.icon}</span>
+                                ${course.name}
+                            </span>
+                        </td>
+                        <td>${completed}</td>
+                        <td>${remaining}</td>
+                        <td>
+                            <div class="mini-progress">
+                                <div class="mini-progress-fill" style="width: ${percent}%; background: ${course.color}"></div>
+                            </div>
+                            <span class="percent-text">${percent}%</span>
+                        </td>
+                        <td>~${xpEarned}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = rowsHTML;
+
+            // Update totals
+            document.getElementById('totalCompleted').textContent = totalCompleted;
+            document.getElementById('totalRemaining').textContent = totalLevels - totalCompleted;
+            document.getElementById('totalProgress').textContent = Math.round((totalCompleted / totalLevels) * 100) + '%';
+            document.getElementById('totalXPEarned').textContent = '~' + totalXP;
+        }
+
+        function loadRecentActivity() {
+            const userData = Storage.getUserData();
+            const activityList = document.getElementById('activityList');
+            const activities = userData.recentActivity || [];
+
+            if (activities.length === 0) {
+                activityList.innerHTML = `
+                    <div class="activity-empty">
+                        <span class="activity-empty-icon">&#128203;</span>
+                        <p>Начни проходить уровни, чтобы увидеть свою активность!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const courseNames = {
+                html: 'HTML',
+                css: 'CSS',
+                js: 'JavaScript',
+                ts: 'TypeScript',
+                react: 'React',
+                node: 'Node.js'
+            };
+
+            activityList.innerHTML = activities.slice(0, 10).map(activity => {
+                const date = new Date(activity.timestamp);
+                const timeAgo = getTimeAgo(date);
+                const courseName = courseNames[activity.course] || activity.course;
+
+                return `
+                    <div class="activity-item">
+                        <div class="activity-icon">&#10003;</div>
+                        <div class="activity-content">
+                            <span class="activity-text">Пройден уровень <strong>${activity.levelTitle || activity.levelId}</strong> в курсе ${courseName}</span>
+                            <span class="activity-xp">+${activity.xp} XP</span>
+                        </div>
+                        <span class="activity-time">${timeAgo}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diff = Math.floor((now - date) / 1000);
+
+            if (diff < 60) return 'только что';
+            if (diff < 3600) return Math.floor(diff / 60) + ' мин. назад';
+            if (diff < 86400) return Math.floor(diff / 3600) + ' ч. назад';
+            if (diff < 604800) return Math.floor(diff / 86400) + ' дн. назад';
+            return date.toLocaleDateString('ru-RU');
+        }
+
+        function setupEventListeners() {
+            // Edit profile
+            document.getElementById('editProfile').addEventListener('click', () => {
+                document.getElementById('editProfileModal').classList.remove('hidden');
+                const userData = Storage.getUserData();
+                document.getElementById('editName').value = userData.username || '';
+                document.getElementById('editEmail').value = userData.email || '';
+                document.getElementById('editBio').value = userData.bio || '';
+                document.getElementById('bioCharCount').textContent = (userData.bio || '').length;
+
+                // Set current avatar as selected
+                const currentAvatar = userData.avatar;
+                if (currentAvatar) {
+                    document.querySelectorAll('.avatar-option').forEach(btn => {
+                        btn.classList.toggle('selected', btn.dataset.avatar === currentAvatar);
+                    });
+                }
+
+                // Set current goal as selected
+                const currentGoal = userData.dailyGoal || 100;
+                document.querySelectorAll('.goal-option').forEach(btn => {
+                    btn.classList.toggle('selected', parseInt(btn.dataset.goal) === currentGoal);
+                });
+            });
+
+            document.getElementById('closeEditModal').addEventListener('click', () => {
+                document.getElementById('editProfileModal').classList.add('hidden');
+            });
+
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    e.target.closest('.modal').classList.add('hidden');
+                });
+            });
+
+            // Bio character counter
+            document.getElementById('editBio').addEventListener('input', (e) => {
+                document.getElementById('bioCharCount').textContent = e.target.value.length;
+            });
+
+            // Avatar selection
+            document.querySelectorAll('.avatar-option').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.avatar-option').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                });
+            });
+
+            // Goal selection
+            document.querySelectorAll('.goal-option').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.goal-option').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                });
+            });
+
+            // Save profile
+            document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('editName').value;
+                const email = document.getElementById('editEmail').value;
+                const bio = document.getElementById('editBio').value;
+                const selectedAvatar = document.querySelector('.avatar-option.selected');
+                const selectedGoal = document.querySelector('.goal-option.selected');
+
+                const userData = Storage.getUserData();
+                if (name) userData.username = name;
+                userData.email = email;
+                userData.bio = bio;
+                if (selectedAvatar) userData.avatar = selectedAvatar.dataset.avatar;
+                if (selectedGoal) userData.dailyGoal = parseInt(selectedGoal.dataset.goal);
+                Storage.saveUserData(userData);
+
+                loadProfileData();
+                document.getElementById('editProfileModal').classList.add('hidden');
+                showNotification('Профиль сохранён!');
+            });
+
+            // Reset progress
+            document.getElementById('resetProgressBtn').addEventListener('click', () => {
+                document.getElementById('confirmResetModal').classList.remove('hidden');
+            });
+
+            document.getElementById('cancelReset').addEventListener('click', () => {
+                document.getElementById('confirmResetModal').classList.add('hidden');
+            });
+
+            document.getElementById('confirmReset').addEventListener('click', () => {
+                // Reset all user data except username and avatar
+                const userData = Storage.getUserData();
+                const newData = {
+                    username: userData.username,
+                    avatar: userData.avatar,
+                    email: userData.email,
+                    bio: userData.bio,
+                    dailyGoal: userData.dailyGoal,
+                    xp: 0,
+                    rank: 1,
+                    progress: {
+                        html: { completed: [], current: 1 },
+                        css: { completed: [], current: 1 },
+                        js: { completed: [], current: 1 },
+                        ts: { completed: [], current: 1 },
+                        react: { completed: [], current: 1 },
+                        node: { completed: [], current: 1 }
+                    },
+                    achievements: [],
+                    stats: {
+                        totalLevels: 0,
+                        streakDays: 0,
+                        firstTryCount: 0,
+                        fastCompletions: 0
+                    }
+                };
+                Storage.saveUserData(newData);
+
+                document.getElementById('confirmResetModal').classList.add('hidden');
+                document.getElementById('editProfileModal').classList.add('hidden');
+                loadProfileData();
+                loadAchievements();
+                showNotification('Прогресс сброшен!');
+            });
+
+            // Theme toggle
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const icon = document.querySelector('.theme-icon');
+                icon.innerHTML = document.body.classList.contains('light-theme') ? '&#9790;' : '&#9728;';
+                localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+            });
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        function loadTheme() {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                document.querySelector('.theme-icon').innerHTML = '&#9790;';
+            }
+        }
+    </script>
+
+    <style>
+        /* Profile Page Styles */
+        .profile-page {
+            max-width: 1200px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        /* Profile Header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            padding: var(--spacing-2xl);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .profile-avatar {
+            position: relative;
+        }
+
+        .avatar-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-css));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .rank-badge {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 40px;
+            height: 40px;
+            background: var(--color-warning);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            border: 3px solid var(--color-bg-card);
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .profile-rank {
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .profile-xp {
+            display: flex;
+            align-items: baseline;
+            gap: var(--spacing-xs);
+        }
+
+        .xp-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-warning);
+        }
+
+        .xp-label {
+            color: var(--color-text-muted);
+        }
+
+        .btn-edit-profile {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--color-bg);
+            border: 1px solid var(--color-text-muted);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-edit-profile:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* Rank Progress */
+        .rank-progress-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .rank-progress-card {
+            padding: var(--spacing-lg);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+        }
+
+        .rank-progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .current-rank {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .next-rank {
+            color: var(--color-text-muted);
+        }
+
+        .rank-progress-bar {
+            height: 12px;
+            background: var(--color-bg);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .rank-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-css));
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+
+        .rank-progress-text {
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Stats Grid */
+        .profile-stats {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+        }
+
+        .stat-card--primary .stat-icon { background: rgba(108, 99, 255, 0.15); }
+        .stat-card--success .stat-icon { background: rgba(0, 210, 106, 0.15); }
+        .stat-card--warning .stat-icon { background: rgba(255, 193, 7, 0.15); }
+        .stat-card--info .stat-icon { background: rgba(0, 123, 255, 0.15); }
+
+        /* Course Progress */
+        .course-progress {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .course-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            border-left: 4px solid var(--color-primary);
+            transition: var(--transition-normal);
+        }
+
+        .course-card:hover {
+            transform: translateX(8px);
+        }
+
+        .course-card--html { border-color: var(--color-html); }
+        .course-card--css { border-color: var(--color-css); }
+        .course-card--js { border-color: var(--color-js); }
+        .course-card--ts { border-color: #3178c6; }
+        .course-card--react { border-color: #61dafb; }
+        .course-card--node { border-color: #68a063; }
+
+        .course-icon {
+            font-size: 2.5rem;
+        }
+
+        .course-info {
+            flex: 1;
+        }
+
+        .course-info h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .course-subtitle {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .course-progress-bar {
+            height: 6px;
+            background: var(--color-bg);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .course-progress-fill {
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: var(--radius-full);
+        }
+
+        .course-card--html .course-progress-fill { background: var(--color-html); }
+        .course-card--css .course-progress-fill { background: var(--color-css); }
+        .course-card--js .course-progress-fill { background: var(--color-js); }
+        .course-card--ts .course-progress-fill { background: #3178c6; }
+        .course-card--react .course-progress-fill { background: #61dafb; }
+        .course-card--node .course-progress-fill { background: #68a063; }
+
+        .course-progress-text {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .course-action {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-bg);
+            border-radius: var(--radius-md);
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition-fast);
+        }
+
+        .course-action:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Achievements */
+        .achievements-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .achievements-count {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-normal);
+        }
+
+        .achievement-item.locked {
+            opacity: 0.5;
+            filter: grayscale(1);
+        }
+
+        .achievement-item.unlocked {
+            border: 1px solid var(--color-success);
+        }
+
+        .achievement-icon-large {
+            font-size: 2rem;
+        }
+
+        .achievement-details h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .achievement-details p {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .achievement-xp {
+            font-size: 0.75rem;
+            color: var(--color-warning);
+            font-weight: 600;
+        }
+
+        /* Activity */
+        .activity-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .activity-empty {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+        }
+
+        .activity-empty-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.5;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 210, 106, 0.15);
+            color: var(--color-success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .activity-xp {
+            font-size: 0.8rem;
+            color: var(--color-warning);
+            font-weight: 600;
+        }
+
+        .activity-time {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Weekly Progress Chart */
+        .weekly-progress {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .weekly-chart-container {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+        }
+
+        .weekly-goal-info {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .goal-label {
+            color: var(--color-text-muted);
+            margin-right: var(--spacing-sm);
+        }
+
+        .goal-value {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .weekly-chart {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 150px;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding: 0 var(--spacing-md);
+        }
+
+        .chart-day {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .chart-day.today .day-label {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .chart-bar-container {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .chart-bar {
+            width: 100%;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            transition: height 0.5s ease;
+            position: relative;
+            min-height: 5px;
+        }
+
+        .bar-complete {
+            background: linear-gradient(180deg, var(--color-success), #00a66d);
+        }
+
+        .bar-partial {
+            background: linear-gradient(180deg, var(--color-warning), #e6a800);
+        }
+
+        .bar-empty {
+            background: var(--color-bg);
+            border: 1px dashed var(--color-text-muted);
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+        }
+
+        .goal-line {
+            position: absolute;
+            bottom: 100%;
+            left: -5px;
+            right: -5px;
+            height: 2px;
+            background: var(--color-primary);
+            opacity: 0.3;
+        }
+
+        .day-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-sm);
+        }
+
+        .weekly-summary {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-2xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-bg);
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .summary-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Progress Table */
+        .progress-table-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .progress-table-wrapper {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+        }
+
+        .progress-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .progress-table th,
+        .progress-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--color-bg);
+        }
+
+        .progress-table th {
+            background: var(--color-bg);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .progress-table tbody tr:hover {
+            background: var(--color-bg);
+        }
+
+        .course-name-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .course-icon-mini {
+            font-size: 1.25rem;
+        }
+
+        .mini-progress {
+            width: 80px;
+            height: 6px;
+            background: var(--color-bg);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: var(--spacing-sm);
+        }
+
+        .mini-progress-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+        }
+
+        .percent-text {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .total-row {
+            background: var(--color-bg);
+        }
+
+        .total-row td {
+            border-bottom: none;
+            font-weight: 500;
+        }
+
+        /* Learning Path Milestones */
+        .learning-path-progress {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .path-milestones {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            padding: var(--spacing-lg);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+        }
+
+        .milestone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-lg);
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            min-width: 140px;
+            position: relative;
+            transition: var(--transition-normal);
+        }
+
+        .milestone.completed {
+            background: rgba(0, 210, 106, 0.1);
+            border: 1px solid var(--color-success);
+        }
+
+        .milestone-icon {
+            font-size: 2rem;
+        }
+
+        .milestone-info {
+            text-align: center;
+        }
+
+        .milestone-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .milestone-info p {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .milestone-status {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: var(--color-bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .milestone-status[data-status="complete"] {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .milestone--final .milestone-icon {
+            font-size: 2.5rem;
+        }
+
+        .milestone-connector {
+            width: 30px;
+            height: 3px;
+            background: var(--color-bg);
+            flex-shrink: 0;
+        }
+
+        /* Avatar Selector */
+        .avatar-selector {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-sm);
+        }
+
+        .avatar-option {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            background: var(--color-bg);
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .avatar-option:hover,
+        .avatar-option.selected {
+            border-color: var(--color-primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        /* Extended Profile Form */
+        .modal-content--large {
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content--small {
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .auth-textarea {
+            min-height: 80px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .char-counter {
+            display: block;
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-xs);
+        }
+
+        .goal-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .goal-option {
+            padding: var(--spacing-sm);
+            background: var(--color-bg);
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .goal-option span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+        }
+
+        .goal-option:hover,
+        .goal-option.selected {
+            border-color: var(--color-primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-lg);
+            gap: var(--spacing-md);
+        }
+
+        .btn-reset-progress {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: transparent;
+            border: 1px solid var(--color-text-muted);
+            border-radius: var(--radius-md);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.85rem;
+        }
+
+        .btn-reset-progress:hover {
+            border-color: #ff4757;
+            color: #ff4757;
+        }
+
+        .modal-title--danger {
+            color: #ff4757;
+        }
+
+        .modal-text {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .btn-cancel {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--color-bg);
+            border: 1px solid var(--color-text-muted);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-cancel:hover {
+            border-color: var(--color-text);
+        }
+
+        .btn-danger {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: #ff4757;
+            border: none;
+            border-radius: var(--radius-md);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 600;
+        }
+
+        .btn-danger:hover {
+            background: #ff6b7a;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--color-success);
+            color: white;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .path-milestones {
+                flex-direction: column;
+            }
+
+            .milestone-connector {
+                width: 3px;
+                height: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .goal-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .btn-reset-progress {
+                width: 100%;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .btn-cancel,
+            .btn-danger {
+                width: 100%;
+            }
+        }
+    </style>
+</body>
+</html>

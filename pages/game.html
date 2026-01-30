@@ -65,7 +65,7 @@
                     <p class="level-description" id="levelDescription"></p>
 
                     <div class="task-box">
-                        <span class="task-label">Задание</span>
+                        <span class="task-label" data-i18n="game.task">Задание</span>
                         <p class="task-text" id="taskText"></p>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="hint-box hidden" id="hintBox">
                     <div class="hint-header">
                         <span class="hint-icon">&#128161;</span>
-                        <span>Подсказка</span>
+                        <span data-i18n="game.hint">Подсказка</span>
                     </div>
                     <p class="hint-text" id="hintText"></p>
                 </div>
@@ -93,14 +93,14 @@
                 <div class="code-editor" id="codeEditor">
                     <div class="editor-header">
                         <div class="editor-tabs">
-                            <button class="editor-tab active" data-tab="code">Код</button>
+                            <button class="editor-tab active" data-tab="code" data-i18n="game.code">Код</button>
                         </div>
                         <div class="editor-actions">
                             <button class="btn btn-hint" id="btnHint" title="Показать подсказку">
-                                &#128161; Подсказка
+                                &#128161; <span data-i18n="game.hint">Подсказка</span>
                             </button>
                             <button class="btn btn-reset" id="btnReset" title="Сбросить код">
-                                &#8634; Сбросить
+                                &#8634; <span data-i18n="game.reset">Сбросить</span>
                             </button>
                         </div>
                     </div>
@@ -125,38 +125,27 @@
                     <div class="editor-footer">
                         <div class="editor-status">
                             <span class="status-icon" id="statusIcon"></span>
-                            <span id="statusText">Готов к проверке</span>
+                            <span id="statusText" data-i18n="game.ready">Готов к проверке</span>
                         </div>
                         <button class="btn btn-run" id="btnRun">
-                            &#9654; Проверить
+                            &#9654; <span data-i18n="game.check">Проверить</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Output Area -->
-                <div class="output-area" id="outputArea">
-                    <div class="output-header">
-                        <span class="output-title">Результат</span>
-                    </div>
-                    <div class="output-content">
-                        <div class="result-preview" id="resultPreview">
-                            <!-- Result will be shown here -->
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
 
         <!-- Navigation -->
         <nav class="game-nav">
             <button class="nav-btn" id="btnPrev" disabled>
-                &#9664; Назад
+                &#9664; <span data-i18n="game.back">Назад</span>
             </button>
             <a href="#" class="nav-btn" id="btnLevels">
-                &#9776; Все уровни
+                &#9776; <span data-i18n="game.all_levels">Все уровни</span>
             </a>
             <button class="nav-btn" id="btnNext">
-                Далее &#9654;
+                <span data-i18n="game.next">Далее</span> &#9654;
             </button>
         </nav>
 
@@ -164,23 +153,23 @@
         <div class="success-overlay hidden" id="successOverlay">
             <div class="success-content">
                 <div class="success-icon">&#127881;</div>
-                <h2 class="success-title">Отлично!</h2>
-                <p class="success-subtitle">Уровень пройден</p>
+                <h2 class="success-title" data-i18n="success.title">Отлично!</h2>
+                <p class="success-subtitle" data-i18n="success.subtitle">Уровень пройден</p>
                 <div class="success-stats">
                     <div class="success-stat">
                         <span class="stat-value" id="earnedXP">+10</span>
-                        <span class="stat-label">XP</span>
+                        <span class="stat-label" data-i18n="success.xp">XP</span>
                     </div>
                     <div class="success-stat">
                         <span class="stat-value" id="attemptCount">1</span>
-                        <span class="stat-label">Попытка</span>
+                        <span class="stat-label" data-i18n="success.attempt">Попытка</span>
                     </div>
                 </div>
                 <div class="success-actions">
                     <button class="btn btn-next" id="btnNextLevel">
-                        Следующий уровень &#9654;
+                        <span data-i18n="success.next">Следующий уровень</span> &#9654;
                     </button>
-                    <button class="btn btn-retry" id="btnRetry">
+                    <button class="btn btn-retry" id="btnRetry" data-i18n="success.retry">
                         Попробовать ещё
                     </button>
                 </div>
@@ -210,10 +199,19 @@
     <script src="../js/levels/html-levels.js"></script>
     <script src="../js/levels/css-levels.js"></script>
     <script src="../js/levels/js-levels.js"></script>
+    <script src="../js/levels/ts-levels.js"></script>
+    <script src="../js/levels/react-levels.js"></script>
+    <script src="../js/levels/node-levels.js"></script>
     <script src="../js/modules/codeValidator.js"></script>
     <script src="../js/modules/achievements.js"></script>
     <script src="../js/modules/levelManager.js"></script>
     <script>
+        // Initialize i18n first
+        document.addEventListener('DOMContentLoaded', () => {
+            i18n.init();
+            i18n.updatePage();
+        });
+
         // Theme toggle
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('light-theme');

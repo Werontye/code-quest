@@ -60,7 +60,14 @@ const CodeValidator = {
         let code = template;
         let blankIndex = 0;
 
-        // Replace ___ with user inputs
+        // Replace [[TAG]] pattern with user inputs (all same-index get same value)
+        code = code.replace(/\[\[([^\]]+)\]\]/g, () => {
+            const value = userBlanks[blankIndex] || '';
+            // Note: for paired tags, we use the same blankIndex value
+            return value;
+        });
+
+        // Also support ___ pattern for backward compatibility
         code = code.replace(/___/g, () => {
             const value = userBlanks[blankIndex] || '';
             blankIndex++;
