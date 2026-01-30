@@ -1,4 +1,8 @@
 {
+  "public": ".",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "**/*.@(js|css)",
@@ -19,5 +23,6 @@
       ]
     }
   ],
-  "cleanUrls": false
+  "cleanUrls": false,
+  "directoryListing": false
 }
