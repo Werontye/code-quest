@@ -140,8 +140,31 @@ const LevelManager = {
         let blankIndex = 0;
         const namedBlanks = {}; // Track [[NAME]] patterns for pairing
 
+        // First, escape HTML to display code as text (but preserve our placeholders)
+        // Replace placeholders temporarily
+        const placeholders = [];
+        let tempTemplate = template.replace(/\[\[([^\]]+)\]\]/g, (match) => {
+            placeholders.push({ type: 'named', value: match });
+            return `__PLACEHOLDER_${placeholders.length - 1}__`;
+        });
+        tempTemplate = tempTemplate.replace(/___/g, () => {
+            placeholders.push({ type: 'simple', value: '___' });
+            return `__PLACEHOLDER_${placeholders.length - 1}__`;
+        });
+
+        // Escape HTML
+        tempTemplate = tempTemplate
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+
+        // Restore placeholders
+        placeholders.forEach((p, i) => {
+            tempTemplate = tempTemplate.replace(`__PLACEHOLDER_${i}__`, p.value);
+        });
+
         // Support both [[TAG]] and ___ patterns
-        let html = template;
+        let html = tempTemplate;
 
         // First pass: Replace [[NAME]] patterns
         // Same [[NAME]] appearing multiple times share the same index (for opening/closing tags)
@@ -967,14 +990,23 @@ const LevelManager = {
     buildCodeFromTemplate(template, userBlanks) {
         let code = template;
         let blankIndex = 0;
+        const namedBlanks = {}; // Track [[NAME]] patterns for pairing
 
-        // Replace [[TAG]] pattern - all occurrences use the same value (for paired tags)
-        code = code.replace(/\[\[([^\]]+)\]\]/g, () => {
-            return userBlanks[blankIndex] || '';
+        // Replace [[TAG]] pattern - same [[NAME]] uses same value (for paired tags)
+        code = code.replace(/\[\[([^\]]+)\]\]/g, (match, name) => {
+            if (namedBlanks.hasOwnProperty(name)) {
+                // Reuse existing value for paired tags
+                return userBlanks[namedBlanks[name]] || '';
+            } else {
+                // New named blank - assign new index
+                namedBlanks[name] = blankIndex;
+                const value = userBlanks[blankIndex] || '';
+                blankIndex++;
+                return value;
+            }
         });
 
-        // Reset index for ___ pattern
-        blankIndex = 0;
+        // Replace ___ pattern (each gets next index)
         code = code.replace(/___/g, () => {
             const value = userBlanks[blankIndex] || '';
             blankIndex++;
