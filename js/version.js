@@ -1,8 +1,8 @@
 // Auto-generated version for cache busting
-// Generated: 2026-01-31T21:14:51.745Z
+// Generated: 2026-01-31T21:19:03.850Z
 const APP_VERSION = '2.2.0';
-const BUILD_TIMESTAMP = 1769894091740;
-const CACHE_VERSION = '2.2.0-1769894091740';
+const BUILD_TIMESTAMP = 1769894343842;
+const CACHE_VERSION = '2.2.0-1769894343842';
 
 // Export for module usage
 if (typeof module !== 'undefined' && module.exports) {

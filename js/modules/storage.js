@@ -393,24 +393,21 @@ const Storage = {
         // Create a seed from the date
         const seed = dateString.split('-').reduce((acc, val) => acc + parseInt(val), 0);
 
-        // Get all available courses and their levels
-        const courses = ['html', 'css', 'js', 'figma'];
+        // All available courses (must match index.html)
+        const courses = ['html', 'css', 'js', 'python', 'git', 'figma'];
+        const levelCounts = { html: 35, css: 55, js: 70, python: 38, git: 25, figma: 40 };
+
         const courseIndex = seed % courses.length;
         const selectedCourse = courses[courseIndex];
 
-        // Get levels for selected course
-        const levels = this.getLevelsForCourse(selectedCourse);
-        if (!levels || levels.length === 0) return null;
-
-        // Select a level based on seed
-        const levelIndex = (seed * 7) % levels.length;
-        const selectedLevel = levels[levelIndex];
+        // Calculate level number (same algorithm as index.html)
+        const levelNum = ((seed * 7) % levelCounts[selectedCourse]) + 1;
+        const levelId = `${selectedCourse}-${levelNum.toString().padStart(2, '0')}`;
 
         return {
             course: selectedCourse,
-            levelId: selectedLevel.id,
-            levelIndex: levelIndex + 1,
-            levelTitle: selectedLevel.title,
+            levelId: levelId,
+            levelIndex: levelNum,
             xpMultiplier: 2,
             date: dateString
         };

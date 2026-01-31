@@ -7,8 +7,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>CodeQuest - Изучай Web-разработку играя</title>
-    <link rel="stylesheet" href="css/main.css?v=2.2.0.1769894091740">
-    <link rel="stylesheet" href="css/components/animations.css?v=2.2.0.1769894091740">
+    <link rel="stylesheet" href="css/main.css?v=2.2.0.1769894343842">
+    <link rel="stylesheet" href="css/components/animations.css?v=2.2.0.1769894343842">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -647,10 +647,10 @@
         </footer>
     </div>
 
-    <script src="js/version.js?v=2.2.0.1769894091740"></script>
-    <script src="js/modules/storage.js?v=2.2.0.1769894091740"></script>
-    <script src="js/modules/i18n.js?v=2.2.0.1769894091740"></script>
-    <script src="js/app.js?v=2.2.0.1769894091740"></script>
+    <script src="js/version.js?v=2.2.0.1769894343842"></script>
+    <script src="js/modules/storage.js?v=2.2.0.1769894343842"></script>
+    <script src="js/modules/i18n.js?v=2.2.0.1769894343842"></script>
+    <script src="js/app.js?v=2.2.0.1769894343842"></script>
     <script>
         // Page transition on load
         document.addEventListener('DOMContentLoaded', () => {
@@ -714,6 +714,9 @@
             const course = courses[courseIndex];
             const levelNum = ((seed * 7) % levelCounts[course.id]) + 1;
 
+            // Create level ID (format: html-01, css-02, etc.)
+            const levelId = `${course.id}-${levelNum.toString().padStart(2, '0')}`;
+
             // Update UI
             document.getElementById('dailyTitle').textContent = `${course.name} - Уровень ${levelNum}`;
             document.getElementById('dailyDescription').textContent = `Пройди уровень ${levelNum} курса ${course.name} и получи двойной XP!`;
@@ -723,9 +726,9 @@
             if (langDot) langDot.style.background = course.color;
             if (langName) langName.textContent = course.name;
 
-            // Set link
+            // Set link with correct level ID
             const btn = document.getElementById('dailyChallengeBtn');
-            btn.href = `pages/game.html?lang=${course.id}&level=${levelNum}&daily=true`;
+            btn.href = `pages/game.html?lang=${course.id}&level=${levelId}&daily=true`;
 
             // Check if completed
             const userData = Storage.getUserData();
