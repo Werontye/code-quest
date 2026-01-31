@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Профиль - CodeQuest</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/components/animations.css">
-    <link rel="stylesheet" href="../css/components/progress.css">
+    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1769892444892">
+    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1769892444892">
+    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1769892444892">
 </head>
 <body>
     <!-- Animated Background -->
@@ -420,13 +423,39 @@
                         <button type="button" class="avatar-option" data-avatar="&#127959;">&#127959;</button>
                     </div>
                 </div>
+                <div class="data-management">
+                    <h4 class="data-management-title">Управление данными</h4>
+                    <div class="data-management-buttons">
+                        <button type="button" class="btn-export" id="exportDataBtn">
+                            &#128190; Экспорт
+                        </button>
+                        <button type="button" class="btn-import" id="importDataBtn">
+                            &#128194; Импорт
+                        </button>
+                        <button type="button" class="btn-reset-progress" id="resetProgressBtn">
+                            &#128465; Сброс
+                        </button>
+                    </div>
+                </div>
                 <div class="form-actions">
-                    <button type="button" class="btn-reset-progress" id="resetProgressBtn">
-                        &#128465; Сбросить прогресс
-                    </button>
+                    <div></div>
                     <button type="submit" class="auth-submit">Сохранить</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="modal hidden" id="importModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <h2 class="modal-title">&#128194; Импорт данных</h2>
+            <p class="modal-text">Вставьте JSON данные, которые вы ранее экспортировали:</p>
+            <textarea id="importTextarea" class="import-textarea" placeholder='{"userData": {...}, "settings": {...}}'></textarea>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="cancelImport">Отмена</button>
+                <button class="btn-primary" id="confirmImport">Импортировать</button>
+            </div>
         </div>
     </div>
 
@@ -443,9 +472,10 @@
         </div>
     </div>
 
-    <script src="../js/modules/storage.js"></script>
-    <script src="../js/modules/i18n.js"></script>
-    <script src="../js/modules/achievements.js"></script>
+    <script src="../js/version.js?v=2.2.0.1769892444892"></script>
+    <script src="../js/modules/storage.js?v=2.2.0.1769892444892"></script>
+    <script src="../js/modules/i18n.js?v=2.2.0.1769892444892"></script>
+    <script src="../js/modules/achievements.js?v=2.2.0.1769892444892"></script>
     <script>
         // Initialize profile page
         document.addEventListener('DOMContentLoaded', () => {
@@ -844,7 +874,9 @@
                         ts: { completed: [], current: 1 },
                         react: { completed: [], current: 1 },
                         node: { completed: [], current: 1 },
-                        figma: { completed: [], current: 1 }
+                        figma: { completed: [], current: 1 },
+                        python: { completed: [], current: 1 },
+                        git: { completed: [], current: 1 }
                     },
                     achievements: [],
                     stats: {
@@ -863,6 +895,58 @@
                 showNotification('Прогресс сброшен!');
             });
 
+            // Export data
+            document.getElementById('exportDataBtn').addEventListener('click', () => {
+                const data = Storage.exportData();
+                const blob = new Blob([data], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'codequest-backup-' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showNotification('Данные экспортированы!');
+            });
+
+            // Import data - open modal
+            document.getElementById('importDataBtn').addEventListener('click', () => {
+                document.getElementById('importModal').classList.remove('hidden');
+                document.getElementById('importTextarea').value = '';
+            });
+
+            document.getElementById('cancelImport').addEventListener('click', () => {
+                document.getElementById('importModal').classList.add('hidden');
+            });
+
+            document.getElementById('confirmImport').addEventListener('click', () => {
+                const jsonData = document.getElementById('importTextarea').value.trim();
+                if (!jsonData) {
+                    showNotification('Введите данные для импорта!');
+                    return;
+                }
+
+                const success = Storage.importData(jsonData);
+                if (success) {
+                    document.getElementById('importModal').classList.add('hidden');
+                    document.getElementById('editProfileModal').classList.add('hidden');
+                    loadProfileData();
+                    loadAchievements();
+                    loadWeeklyProgress();
+                    loadProgressTable();
+                    showNotification('Данные успешно импортированы!');
+                } else {
+                    showNotification('Ошибка: неверный формат данных');
+                }
+            });
+
+            // Close modals on overlay click
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', () => {
+                    overlay.closest('.modal').classList.add('hidden');
+                });
+            });
         }
 
         function showNotification(message) {
@@ -1651,6 +1735,80 @@
         .goal-option.selected {
             border-color: var(--color-primary);
             background: rgba(108, 99, 255, 0.1);
+        }
+
+        /* Data Management */
+        .data-management {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-management-title {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .data-management-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn-export,
+        .btn-import {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: transparent;
+            border: 1px solid var(--color-text-muted);
+            border-radius: var(--radius-md);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.85rem;
+        }
+
+        .btn-export:hover {
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .btn-import:hover {
+            border-color: #2196F3;
+            color: #2196F3;
+        }
+
+        .import-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+            margin: var(--spacing-md) 0;
+        }
+
+        .import-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--color-primary);
+            border: none;
+            border-radius: var(--radius-md);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
         }
 
         .form-actions {

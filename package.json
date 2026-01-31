@@ -1,9 +1,11 @@
 {
   "name": "codequest",
-  "version": "1.0.0",
-  "description": "Interactive coding learning platform - Learn HTML, CSS, and JavaScript through gamified lessons",
+  "version": "2.2.0",
+  "description": "Interactive coding learning platform - Learn HTML, CSS, JavaScript, TypeScript, React, Node.js, Python and Git through gamified lessons",
   "main": "index.html",
   "scripts": {
+    "build": "node build.js",
+    "postinstall": "npm run build",
     "start": "npx serve . -l $PORT",
     "dev": "npx serve . -l 3000"
   },
