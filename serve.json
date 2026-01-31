@@ -52,6 +52,5 @@
   ],
   "cleanUrls": false,
   "directoryListing": false,
-  "trailingSlash": false,
-  "etag": false
+  "trailingSlash": false
 }
