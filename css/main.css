@@ -1151,6 +1151,8 @@ button {
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--radius-full);
     margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
 }
 
 .daily-badge-icon {
@@ -1180,6 +1182,8 @@ button {
     align-items: center;
     gap: var(--spacing-lg);
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 .daily-info {
