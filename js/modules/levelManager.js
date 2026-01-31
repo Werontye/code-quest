@@ -255,9 +255,12 @@ const LevelManager = {
 
     /**
      * Render visual representation with progress info
+     * (Visual area has been removed - this function is now disabled)
      */
     renderVisual() {
         const visualContent = document.getElementById('visualContent');
+        if (!visualContent) return; // Visual area removed
+
         const level = this.currentLevel;
         const userData = Storage.getUserData();
         const levels = this.getLevelsForLang(this.currentLang);
