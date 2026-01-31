@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - CodeQuest</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/animations.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="grid-lines"></div>
+    </div>
+
+    <div class="app">
+        <header class="header">
+            <div class="header__logo">
+                <a href="../index.html" class="logo-link">
+                    <svg class="logo-svg" width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="url(#lg)"/><path d="M10 12L6 16L10 20M22 12L26 16L22 20M18 8L14 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="lg" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#6c63ff"/><stop offset="1" stop-color="#9b59b6"/></linearGradient></defs></svg>
+                    <span class="logo-text">CodeQuest</span>
+                </a>
+            </div>
+            <nav class="header__nav">
+                <span class="admin-badge">&#128737; Админ-панель</span>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon">&#9733;</span>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </header>
+
+        <main class="main admin-page">
+            <!-- Stats Overview -->
+            <section class="admin-stats fade-in-up">
+                <h1 class="admin-title">&#128202; Статистика платформы</h1>
+
+                <div class="stats-grid">
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">&#128101;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalUsers">-</span>
+                            <span class="stat-label">Всего пользователей</span>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">&#128994;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="activeToday">-</span>
+                            <span class="stat-label">Активны сегодня</span>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">&#128200;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="activeWeek">-</span>
+                            <span class="stat-label">Активны за неделю</span>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">&#11088;</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalXP">-</span>
+                            <span class="stat-label">Всего XP заработано</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Stats -->
+            <section class="admin-courses fade-in-up">
+                <h2 class="section-title">&#128218; Прогресс по курсам</h2>
+
+                <div class="courses-grid">
+                    <div class="course-stat-card">
+                        <span class="course-icon">&#127959;</span>
+                        <span class="course-name">HTML</span>
+                        <span class="course-completions" id="htmlCompletions">0</span>
+                        <span class="course-label">уровней пройдено</span>
+                    </div>
+                    <div class="course-stat-card">
+                        <span class="course-icon">&#127912;</span>
+                        <span class="course-name">CSS</span>
+                        <span class="course-completions" id="cssCompletions">0</span>
+                        <span class="course-label">уровней пройдено</span>
+                    </div>
+                    <div class="course-stat-card">
+                        <span class="course-icon">&#128640;</span>
+                        <span class="course-name">JavaScript</span>
+                        <span class="course-completions" id="jsCompletions">0</span>
+                        <span class="course-label">уровней пройдено</span>
+                    </div>
+                    <div class="course-stat-card">
+                        <span class="course-icon">&#128196;</span>
+                        <span class="course-name">TypeScript</span>
+                        <span class="course-completions" id="tsCompletions">0</span>
+                        <span class="course-label">уровней пройдено</span>
+                    </div>
+                    <div class="course-stat-card">
+                        <span class="course-icon">&#9883;</span>
+                        <span class="course-name">React</span>
+                        <span class="course-completions" id="reactCompletions">0</span>
+                        <span class="course-label">уровней пройдено</span>
+                    </div>
+                    <div class="course-stat-card">
+                        <span class="course-icon">&#9881;</span>
+                        <span class="course-name">Node.js</span>
+                        <span class="course-completions" id="nodeCompletions">0</span>
+                        <span class="course-label">уровней пройдено</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Users -->
+            <section class="admin-users fade-in-up">
+                <h2 class="section-title">&#127942; Топ пользователей</h2>
+
+                <div class="users-table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Пользователь</th>
+                                <th>XP</th>
+                                <th>Уровней</th>
+                                <th>Последняя активность</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topUsersBody">
+                            <tr>
+                                <td colspan="5" class="loading-cell">Загрузка...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- All Users -->
+            <section class="admin-all-users fade-in-up">
+                <h2 class="section-title">&#128101; Все пользователи</h2>
+
+                <div class="users-table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Имя</th>
+                                <th>XP</th>
+                                <th>Роль</th>
+                                <th>Регистрация</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allUsersBody">
+                            <tr>
+                                <td colspan="6" class="loading-cell">Загрузка...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be inserted here -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">CodeQuest Admin &copy; 2024</p>
+        </footer>
+    </div>
+
+    <style>
+        .logo-link { display: flex; align-items: center; gap: var(--spacing-sm); }
+
+        .admin-badge {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .admin-page {
+            padding: var(--spacing-xl);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .admin-stat-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            border: 1px solid rgba(108, 99, 255, 0.1);
+        }
+
+        .admin-stat-card .stat-icon {
+            font-size: 2.5rem;
+        }
+
+        .admin-stat-card .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: block;
+        }
+
+        .admin-stat-card .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .course-stat-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .course-stat-card .course-icon {
+            font-size: 2rem;
+        }
+
+        .course-stat-card .course-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .course-stat-card .course-completions {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .course-stat-card .course-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .users-table-container {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--color-bg);
+        }
+
+        .users-table th {
+            background: var(--color-bg-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .users-table tr:hover {
+            background: var(--color-bg-secondary);
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .user-avatar {
+            font-size: 1.5rem;
+        }
+
+        .loading-cell {
+            text-align: center;
+            color: var(--color-text-muted);
+            padding: var(--spacing-xl) !important;
+        }
+
+        .action-btn {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .action-btn--admin {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .action-btn--admin:hover {
+            background: var(--color-primary-light);
+        }
+
+        .action-btn--delete {
+            background: var(--color-error);
+            color: white;
+            margin-left: var(--spacing-xs);
+        }
+
+        .action-btn--delete:hover {
+            opacity: 0.8;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .page-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-bg-card);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .no-access {
+            text-align: center;
+            padding: var(--spacing-2xl);
+        }
+
+        .no-access h2 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .admin-page { padding: var(--spacing-md); }
+            .admin-title { font-size: 1.5rem; }
+            .users-table { font-size: 0.85rem; }
+            .users-table th, .users-table td { padding: var(--spacing-sm); }
+        }
+    </style>
+
+    <script src="../js/modules/storage.js"></script>
+    <script src="../js/modules/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check if user is logged in and is admin
+            if (!API.isLoggedIn()) {
+                document.querySelector('.admin-page').innerHTML = `
+                    <div class="no-access">
+                        <h2>&#128274; Доступ запрещён</h2>
+                        <p>Войдите в аккаунт администратора</p>
+                        <a href="../index.html" class="btn btn-primary" style="margin-top: var(--spacing-lg); display: inline-block; padding: var(--spacing-md) var(--spacing-xl); background: var(--color-primary); border-radius: var(--radius-md);">На главную</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                // Load stats
+                const stats = await API.admin.getStats();
+
+                document.getElementById('totalUsers').textContent = stats.users.total;
+                document.getElementById('activeToday').textContent = stats.users.activeToday;
+                document.getElementById('activeWeek').textContent = stats.users.activeWeek;
+                document.getElementById('totalXP').textContent = stats.xp.totalXP.toLocaleString();
+
+                document.getElementById('htmlCompletions').textContent = stats.courses.totalHtml;
+                document.getElementById('cssCompletions').textContent = stats.courses.totalCss;
+                document.getElementById('jsCompletions').textContent = stats.courses.totalJs;
+                document.getElementById('tsCompletions').textContent = stats.courses.totalTs;
+                document.getElementById('reactCompletions').textContent = stats.courses.totalReact;
+                document.getElementById('nodeCompletions').textContent = stats.courses.totalNode;
+
+                // Load activity (top users)
+                const activity = await API.admin.getActivity();
+                renderTopUsers(activity.topUsers);
+
+                // Load all users
+                loadUsers(1);
+
+            } catch (error) {
+                console.error('Admin access error:', error);
+                document.querySelector('.admin-page').innerHTML = `
+                    <div class="no-access">
+                        <h2>&#128274; Доступ запрещён</h2>
+                        <p>У вас нет прав администратора</p>
+                        <a href="profile.html" class="btn btn-primary" style="margin-top: var(--spacing-lg); display: inline-block; padding: var(--spacing-md) var(--spacing-xl); background: var(--color-primary); border-radius: var(--radius-md);">В профиль</a>
+                    </div>
+                `;
+            }
+        });
+
+        function renderTopUsers(users) {
+            const tbody = document.getElementById('topUsersBody');
+            if (!users || users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">Нет данных</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = users.map((user, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>
+                        <div class="user-cell">
+                            <span class="user-avatar">${user.avatar || '&#128640;'}</span>
+                            <span>${user.username}</span>
+                        </div>
+                    </td>
+                    <td>${user.xp.toLocaleString()} XP</td>
+                    <td>${user.totalLevels}</td>
+                    <td>${formatDate(user.lastActive)}</td>
+                </tr>
+            `).join('');
+        }
+
+        let currentPage = 1;
+
+        async function loadUsers(page) {
+            currentPage = page;
+            const tbody = document.getElementById('allUsersBody');
+            tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">Загрузка...</td></tr>';
+
+            try {
+                const data = await API.admin.getUsers(page, 10);
+                renderAllUsers(data.users);
+                renderPagination(data.pagination);
+            } catch (error) {
+                tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">Ошибка загрузки</td></tr>';
+            }
+        }
+
+        function renderAllUsers(users) {
+            const tbody = document.getElementById('allUsersBody');
+
+            tbody.innerHTML = users.map(user => `
+                <tr>
+                    <td>${user.email}</td>
+                    <td>
+                        <div class="user-cell">
+                            <span class="user-avatar">${user.avatar || '&#128640;'}</span>
+                            <span>${user.username}</span>
+                        </div>
+                    </td>
+                    <td>${user.xp.toLocaleString()} XP</td>
+                    <td>${user.role === 'admin' ? '&#128081; Админ' : 'Пользователь'}</td>
+                    <td>${formatDate(user.createdAt)}</td>
+                    <td>
+                        <button class="action-btn action-btn--admin" onclick="toggleAdmin('${user.id}', '${user.role}')">
+                            ${user.role === 'admin' ? 'Убрать админа' : 'Сделать админом'}
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPagination(pagination) {
+            const container = document.getElementById('pagination');
+            if (pagination.pages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            for (let i = 1; i <= pagination.pages; i++) {
+                html += `<button class="page-btn ${i === pagination.page ? 'active' : ''}" onclick="loadUsers(${i})">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        async function toggleAdmin(userId, currentRole) {
+            const newRole = currentRole === 'admin' ? 'user' : 'admin';
+            try {
+                await API.admin.updateUserRole(userId, newRole);
+                loadUsers(currentPage);
+            } catch (error) {
+                alert('Ошибка: ' + error.message);
+            }
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '-';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('ru-RU', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>

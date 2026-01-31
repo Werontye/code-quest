@@ -1,7 +1,12 @@
 {
   "public": ".",
   "rewrites": [
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/index", "destination": "/index.html" },
+    { "source": "/pages/profile", "destination": "/pages/profile.html" },
+    { "source": "/pages/game", "destination": "/pages/game.html" },
+    { "source": "/pages/levels", "destination": "/pages/levels.html" },
+    { "source": "/pages/theory", "destination": "/pages/theory.html" }
   ],
   "headers": [
     {
@@ -24,5 +29,6 @@
     }
   ],
   "cleanUrls": false,
-  "directoryListing": false
+  "directoryListing": false,
+  "trailingSlash": false
 }

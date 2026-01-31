@@ -135,13 +135,9 @@
     margin: 0 auto;
 }
 
-/* Mascot - Chameleon Artist */
+/* Mascot - Chameleon Artist - Hidden to reduce distraction */
 .theme-css .mascot {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 70px;
-    height: 50px;
+    display: none;
 }
 
 .theme-css .chameleon-body {

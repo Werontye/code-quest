@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Теория - CodeQuest</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components/animations.css">
-    <script>
-        // Load theme immediately to prevent flash
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-theme');
-        }
-    </script>
 </head>
 <body>
     <div class="animated-bg">
@@ -48,11 +43,6 @@
                 </a>
             </div>
             <nav class="header__nav">
-                <div class="header-controls">
-                    <button class="theme-toggle" id="themeToggle" title="Переключить тему">
-                        <span class="theme-icon">&#9728;</span>
-                    </button>
-                </div>
                 <a href="profile.html" class="nav-link">
                     <span class="nav-icon">&#9733;</span>
                     <span class="nav-xp" id="headerXP">0 XP</span>
@@ -4460,21 +4450,6 @@ process.nextTick(() => console.log('Перед следующей итераци
                 });
             });
 
-            document.getElementById('themeToggle').addEventListener('click', () => {
-                document.body.classList.toggle('light-theme');
-                document.documentElement.classList.toggle('light-theme');
-                const icon = document.querySelector('.theme-icon');
-                const isLight = document.body.classList.contains('light-theme');
-                icon.innerHTML = isLight ? '&#9790;' : '&#9728;';
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            });
-
-            // Apply saved theme to body and update icon
-            if (localStorage.getItem('theme') === 'light') {
-                document.body.classList.add('light-theme');
-                const themeIcon = document.querySelector('.theme-icon');
-                if (themeIcon) themeIcon.innerHTML = '&#9790;';
-            }
         });
     </script>
 
@@ -4528,7 +4503,6 @@ process.nextTick(() => console.log('Перед следующей итераци
             90% { opacity: 0.04; }
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
-        .light-theme .code-symbol { color: var(--color-primary); opacity: 0.06; }
 
         @media (max-width: 768px) {
             .theory-title { font-size: 1.8rem; }
