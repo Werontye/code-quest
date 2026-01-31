@@ -1,0 +1,431 @@
+/* ===================================
+   Figma Theme - "Дизайнер"
+   Designer / UI/UX Style
+   =================================== */
+
+.theme-figma {
+    --theme-primary: #a259ff;
+    --theme-primary-light: #c490ff;
+    --theme-primary-dark: #7c3aed;
+    --theme-bg: #1e1e2e;
+    --theme-bg-secondary: #2a2a3e;
+    --theme-bg-card: #3a3a4e;
+    --theme-accent: #1abcfe;
+    --theme-accent-light: #4dd0ff;
+    --figma-red: #f24e1e;
+    --figma-orange: #ff7262;
+    --figma-purple: #a259ff;
+    --figma-blue: #1abcfe;
+    --figma-green: #0acf83;
+}
+
+/* Theme Background */
+.theme-figma .game-page {
+    background:
+        linear-gradient(135deg, var(--theme-bg) 0%, var(--theme-bg-secondary) 100%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a259ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Figma Design Studio Visual */
+.theme-figma .visual-area {
+    background: var(--theme-bg-secondary);
+    border: 2px solid var(--theme-primary);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Figma Canvas */
+.theme-figma .figma-canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.theme-figma .figma-frame {
+    position: relative;
+    width: 200px;
+    height: 140px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-figma .figma-frame::before {
+    content: 'Frame';
+    position: absolute;
+    top: -24px;
+    left: 0;
+    font-size: 12px;
+    color: var(--theme-primary);
+    font-weight: 500;
+}
+
+/* Figma Logo Animation */
+.theme-figma .figma-logo-animated {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60px;
+    height: 90px;
+}
+
+.theme-figma .figma-piece {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+}
+
+.theme-figma .figma-piece:nth-child(1) {
+    background: var(--figma-red);
+    border-radius: 50% 0 0 50%;
+}
+
+.theme-figma .figma-piece:nth-child(2) {
+    background: var(--figma-orange);
+    border-radius: 0 50% 50% 0;
+}
+
+.theme-figma .figma-piece:nth-child(3) {
+    background: var(--figma-purple);
+    border-radius: 50% 0 0 50%;
+}
+
+.theme-figma .figma-piece:nth-child(4) {
+    background: var(--figma-blue);
+    border-radius: 50%;
+}
+
+.theme-figma .figma-piece:nth-child(5) {
+    background: var(--figma-green);
+    border-radius: 50% 0 0 50%;
+    border-bottom-left-radius: 50%;
+}
+
+/* Toolbar Visual */
+.theme-figma .figma-toolbar {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: var(--theme-bg-card);
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.theme-figma .tool-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: var(--theme-bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-figma .tool-icon:hover {
+    background: var(--theme-primary);
+    color: white;
+}
+
+.theme-figma .tool-icon.active {
+    background: var(--theme-primary);
+    color: white;
+}
+
+/* Quiz Mode Styles */
+.theme-figma .quiz-editor {
+    padding: var(--spacing-xl);
+}
+
+.theme-figma .quiz-question {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.theme-figma .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.theme-figma .quiz-option {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--theme-bg-secondary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-figma .quiz-option:hover {
+    background: var(--theme-bg-card);
+    border-color: var(--theme-primary);
+}
+
+.theme-figma .quiz-option.selected {
+    background: rgba(162, 89, 255, 0.15);
+    border-color: var(--theme-primary);
+}
+
+.theme-figma .quiz-option.correct {
+    background: rgba(10, 207, 131, 0.15);
+    border-color: var(--figma-green);
+}
+
+.theme-figma .quiz-option.incorrect {
+    background: rgba(242, 78, 30, 0.15);
+    border-color: var(--figma-red);
+}
+
+.theme-figma .quiz-option-marker {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--theme-bg-card);
+    border: 2px solid var(--theme-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--theme-primary);
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.theme-figma .quiz-option.selected .quiz-option-marker {
+    background: var(--theme-primary);
+    color: white;
+}
+
+.theme-figma .quiz-option.correct .quiz-option-marker {
+    background: var(--figma-green);
+    border-color: var(--figma-green);
+    color: white;
+}
+
+.theme-figma .quiz-option.incorrect .quiz-option-marker {
+    background: var(--figma-red);
+    border-color: var(--figma-red);
+    color: white;
+}
+
+.theme-figma .quiz-option-text {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+/* Level Info Panel */
+.theme-figma .level-info {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-primary);
+}
+
+.theme-figma .level-number {
+    color: var(--theme-primary);
+}
+
+/* Code Editor Styling */
+.theme-figma .code-editor {
+    border: 2px solid var(--theme-primary);
+    background: var(--theme-bg);
+}
+
+.theme-figma .editor-header {
+    background: var(--theme-bg-card);
+    border-bottom: 1px solid var(--theme-primary);
+}
+
+.theme-figma .btn-run {
+    background: var(--theme-primary);
+}
+
+.theme-figma .btn-run:hover {
+    background: var(--theme-primary-light);
+}
+
+/* Success State */
+.theme-figma .success-overlay {
+    background: radial-gradient(circle, rgba(162, 89, 255, 0.9), rgba(30, 30, 46, 0.95));
+}
+
+.theme-figma .success-icon {
+    color: var(--figma-green);
+}
+
+/* Hint Styling */
+.theme-figma .hint-box {
+    background: var(--theme-bg-card);
+    border-left: 4px solid var(--theme-accent);
+}
+
+/* Module Badge */
+.theme-figma .module-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(162, 89, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--theme-primary-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Figma Colors Demo */
+.theme-figma .figma-colors-demo {
+    display: flex;
+    gap: 8px;
+    margin-top: var(--spacing-md);
+}
+
+.theme-figma .color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.theme-figma .color-dot:hover {
+    transform: scale(1.2);
+}
+
+.theme-figma .color-dot.red { background: var(--figma-red); }
+.theme-figma .color-dot.orange { background: var(--figma-orange); }
+.theme-figma .color-dot.purple { background: var(--figma-purple); }
+.theme-figma .color-dot.blue { background: var(--figma-blue); }
+.theme-figma .color-dot.green { background: var(--figma-green); }
+
+/* Layers Panel Visual */
+.theme-figma .layers-panel {
+    background: var(--theme-bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    font-size: 0.85rem;
+}
+
+.theme-figma .layer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.theme-figma .layer-item:hover {
+    background: var(--theme-bg-secondary);
+}
+
+.theme-figma .layer-item.selected {
+    background: rgba(162, 89, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.theme-figma .layer-icon {
+    width: 16px;
+    height: 16px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+}
+
+/* Properties Panel */
+.theme-figma .properties-panel {
+    background: var(--theme-bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.theme-figma .property-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.theme-figma .property-row:last-child {
+    border-bottom: none;
+}
+
+.theme-figma .property-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.theme-figma .property-value {
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+/* Keyboard Shortcut Visual */
+.theme-figma .shortcut-demo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: var(--spacing-md);
+    background: var(--theme-bg-card);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+}
+
+.theme-figma .key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    background: var(--theme-bg-secondary);
+    border: 1px solid var(--theme-primary);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    box-shadow: 0 2px 0 var(--theme-primary-dark);
+}
+
+.theme-figma .key-plus {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* Animation for correct answer */
+@keyframes figmaSuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.theme-figma .quiz-option.correct {
+    animation: figmaSuccess 0.4s ease;
+}
+
+/* Animation for wrong answer */
+@keyframes figmaError {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+.theme-figma .quiz-option.incorrect {
+    animation: figmaError 0.4s ease;
+}

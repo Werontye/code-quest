@@ -145,6 +145,22 @@ const jsLevels = [
         expected: 'let full = \"Hello\" + \" World\";',
         xp: 10
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 1
+    {
+        id: 'js-10-challenge',
+        module: 'Основы JavaScript',
+        title: '🏆 Контрольное: Переменные и вычисления',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Используй все знания из модуля "Основы JavaScript":<br>• Создание констант (<code>const</code>)<br>• Арифметические операции (<code>*</code>)<br>• Шаблонные строки (<code>${}</code>)<br>• Вывод в консоль (<code>console.log</code>)<br><br>Вычисли площадь прямоугольника!',
+        task: 'Создай константы width и height, вычисли площадь, выведи результат в шаблонной строке',
+        hint: 'const, умножение *, шаблонная строка `${}`',
+        template: '___ width = 10;\nconst height = 5;\nconst area = width ___ height;\nconsole.___(`Площадь: ___area___`);',
+        blanks: ['const', '*', 'log', '${', '}'],
+        blankLabels: ['ключ.слово', 'оператор', 'метод', 'начало', 'конец'],
+        expected: 'const width = 10;\nconst height = 5;\nconst area = width * height;\nconsole.log(`Площадь: ${area}`);',
+        xp: 50
+    },
 
     // ===== Module 2: Conditions =====
     {
@@ -259,6 +275,22 @@ const jsLevels = [
         expected: 'switch(color) {\n  case \"red\":\n    console.log(\"Красный\");\n    break;\n}',
         xp: 15
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 2
+    {
+        id: 'js-18-challenge',
+        module: 'Условия',
+        title: '🏆 Контрольное: Проверка доступа',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай проверку доступа к системе:<br>• Условие if (<code>if</code>)<br>• Логическое И (<code>&&</code>)<br>• Сравнение (<code>===</code>, <code>>=</code>)<br>• Ветка else<br><br>Проверь возраст И наличие пароля!',
+        task: 'Если age >= 18 И password === "secret", выведи "Доступ разрешён", иначе "Доступ запрещён"',
+        hint: 'if с условием &&, else',
+        template: '___ (age >= 18 ___ password ___ \"secret\") {\n  console.log(\"Доступ разрешён\");\n} ___ {\n  console.log(\"Доступ запрещён\");\n}',
+        blanks: ['if', '&&', '===', 'else'],
+        blankLabels: ['условие', 'логич.И', 'сравнение', 'иначе'],
+        expected: 'if (age >= 18 && password === \"secret\") {\n  console.log(\"Доступ разрешён\");\n} else {\n  console.log(\"Доступ запрещён\");\n}',
+        xp: 50
+    },
 
     // ===== Module 3: Loops =====
     {
@@ -330,6 +362,22 @@ const jsLevels = [
         blanks: ['continue'],
         expected: 'for (let i = 0; i < 5; i++) {\n  if (i === 2) continue;\n  console.log(i);\n}',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 3
+    {
+        id: 'js-23-challenge',
+        module: 'Циклы',
+        title: '🏆 Контрольное: Поиск в цикле',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Найди первое чётное число и останови цикл:<br>• Цикл for с условием<br>• Проверка на чётность (<code>% 2 === 0</code>)<br>• Прерывание цикла (<code>break</code>)<br>• Инкремент (<code>i++</code>)<br><br>Оптимизация циклов — важный навык!',
+        task: 'Цикл от 1 до 10, найди первое чётное число (i % 2 === 0) и прерви цикл',
+        hint: 'for, оператор %, break, инкремент ++',
+        template: '___ (let i = 1; i <= 10; i___) {\n  if (i ___ 2 === 0) {\n    console.log(\"Найдено:\", i);\n    ___;\n  }\n}',
+        blanks: ['for', '++', '%', 'break'],
+        blankLabels: ['цикл', 'инкремент', 'остаток', 'прервать'],
+        expected: 'for (let i = 1; i <= 10; i++) {\n  if (i % 2 === 0) {\n    console.log(\"Найдено:\", i);\n    break;\n  }\n}',
+        xp: 50
     },
 
     // ===== Module 4: Functions =====
@@ -416,6 +464,22 @@ const jsLevels = [
         blanks: ['='],
         expected: 'function greet(name = \"Гость\") {\n  console.log(\"Привет, \" + name);\n}',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 4
+    {
+        id: 'js-29-challenge',
+        module: 'Функции',
+        title: '🏆 Контрольное: Калькулятор',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай функцию-калькулятор:<br>• Объявление функции (<code>function</code>)<br>• Параметры функции<br>• Возврат значения (<code>return</code>)<br>• Стрелочная функция (<code>=></code>)<br><br>Функции — основа программирования!',
+        task: 'Создай функцию multiply, которая возвращает произведение a и b, затем стрелочную версию',
+        hint: 'function с return, стрелочная функция =>',
+        template: '___ multiply(a, b) {\n  ___ a * b;\n}\n\nconst multiplyArrow = (a, b) ___ a * b;',
+        blanks: ['function', 'return', '=>'],
+        blankLabels: ['объявление', 'возврат', 'стрелка'],
+        expected: 'function multiply(a, b) {\n  return a * b;\n}\n\nconst multiplyArrow = (a, b) => a * b;',
+        xp: 50
     },
 
     // ===== Module 5: Arrays =====
@@ -559,6 +623,22 @@ const jsLevels = [
         expected: 'let fruits = [\"яблоко\", \"банан\"];\nlet hasBanana = fruits.includes(\"банан\");',
         xp: 10
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 5
+    {
+        id: 'js-39-challenge',
+        module: 'Массивы',
+        title: '🏆 Контрольное: Обработка данных',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Обработай массив чисел:<br>• Создание массива (<code>[]</code>)<br>• Фильтрация (<code>filter</code>)<br>• Преобразование (<code>map</code>)<br>• Добавление элемента (<code>push</code>)<br><br>Методы массивов — мощнейший инструмент!',
+        task: 'Отфильтруй числа > 5, удвой их через map, добавь 100 в конец',
+        hint: 'filter для фильтрации, map для преобразования, push для добавления',
+        template: 'let nums = [2, 6, 3, 8, 4, 10];\nlet big = nums.___(x => x > 5);\nlet doubled = big.___(x => x * 2);\ndoubled.___(100);',
+        blanks: ['filter', 'map', 'push'],
+        blankLabels: ['фильтр', 'преобраз.', 'добавить'],
+        expected: 'let nums = [2, 6, 3, 8, 4, 10];\nlet big = nums.filter(x => x > 5);\nlet doubled = big.map(x => x * 2);\ndoubled.push(100);',
+        xp: 50
+    },
 
     // ===== Module 6: Objects =====
     {
@@ -658,6 +738,22 @@ const jsLevels = [
         blanks: ['...'],
         expected: 'const user = { name: \"Космонавт\" };\nconst newUser = { ...user };',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 6
+    {
+        id: 'js-46-challenge',
+        module: 'Объекты',
+        title: '🏆 Контрольное: Профиль пользователя',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Работа с объектом пользователя:<br>• Создание объекта (<code>{}</code>)<br>• Метод объекта с <code>this</code><br>• Деструктуризация (<code>{ }</code>)<br>• Spread оператор (<code>...</code>)<br><br>Объекты — основа ООП в JavaScript!',
+        task: 'Создай объект с методом, который использует this, затем деструктуризируй и скопируй',
+        hint: 'this для доступа к свойствам, {} для деструктуризации, ... для spread',
+        template: 'const user = ___\n  name: \"Космонавт\",\n  greet() { return \"Привет, \" + ___.name; }\n___;\nconst ___ name ___ = user;\nconst copy = { ___user };',
+        blanks: ['{', 'this', '}', '{', '}', '...'],
+        blankLabels: ['начало', 'this', 'конец', 'дестр.', 'дестр.', 'spread'],
+        expected: 'const user = {\n  name: \"Космонавт\",\n  greet() { return \"Привет, \" + this.name; }\n};\nconst { name } = user;\nconst copy = { ...user };',
+        xp: 50
     },
 
     // ===== Module 7: DOM =====
@@ -773,6 +869,22 @@ const jsLevels = [
         expected: 'const box = document.querySelector(\".box\");\nbox.style.backgroundColor = \"blue\";',
         xp: 15
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 7
+    {
+        id: 'js-54-challenge',
+        module: 'DOM',
+        title: '🏆 Контрольное: Манипуляция DOM',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Полная работа с DOM:<br>• Поиск элемента (<code>querySelector</code>)<br>• Изменение текста (<code>textContent</code>)<br>• Добавление класса (<code>classList.add</code>)<br>• Изменение стилей (<code>style</code>)<br><br>DOM — связь JavaScript и HTML!',
+        task: 'Найди элемент .card, измени текст, добавь класс active, установи красный фон',
+        hint: 'querySelector, textContent, classList.add, style.backgroundColor',
+        template: 'const card = document.___(\"___\");\ncard.___ = \"Новый текст\";\ncard.classList.___(\"active\");\ncard.style.___ = \"red\";',
+        blanks: ['querySelector', '.card', 'textContent', 'add', 'backgroundColor'],
+        blankLabels: ['метод', 'селектор', 'текст', 'добавить', 'стиль'],
+        expected: 'const card = document.querySelector(\".card\");\ncard.textContent = \"Новый текст\";\ncard.classList.add(\"active\");\ncard.style.backgroundColor = \"red\";',
+        xp: 50
+    },
 
     // ===== Module 8: Events =====
     {
@@ -844,6 +956,22 @@ const jsLevels = [
         blanks: ['preventDefault'],
         expected: 'form.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  // обработка формы\n});',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 8
+    {
+        id: 'js-59-challenge',
+        module: 'События',
+        title: '🏆 Контрольное: Интерактивная форма',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай обработку формы:<br>• Подписка на событие (<code>addEventListener</code>)<br>• Отмена действия (<code>preventDefault</code>)<br>• Получение значения (<code>e.target</code>)<br>• Событие отправки (<code>submit</code>)<br><br>События — интерактивность веб-приложений!',
+        task: 'Подпишись на submit формы, отмени отправку, получи значение из e.target.email.value',
+        hint: 'addEventListener, submit, preventDefault, e.target',
+        template: 'form.___(\"___\", (e) => {\n  e.___();\n  const email = e.___.email.value;\n  console.log(email);\n});',
+        blanks: ['addEventListener', 'submit', 'preventDefault', 'target'],
+        blankLabels: ['метод', 'событие', 'отмена', 'цель'],
+        expected: 'form.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  const email = e.target.email.value;\n  console.log(email);\n});',
+        xp: 50
     },
 
     // ===== Module 9: Async =====
@@ -1000,6 +1128,22 @@ const jsLevels = [
         blanks: ['stringify'],
         expected: 'const user = { name: \"Космонавт\" };\nconst json = JSON.stringify(user);',
         xp: 15
+    },
+    // 🏆 ФИНАЛЬНОЕ КОНТРОЛЬНОЕ ЗАДАНИЕ JS
+    {
+        id: 'js-70-challenge',
+        module: 'Асинхронность',
+        title: '🏆 Финальное: API запрос',
+        difficulty: 5,
+        type: 'fill-blank',
+        description: '<strong>🏆 ФИНАЛЬНОЕ КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай полноценный API-запрос:<br>• Асинхронная функция (<code>async</code>)<br>• Ожидание результата (<code>await</code>)<br>• HTTP-запрос (<code>fetch</code>)<br>• Парсинг JSON (<code>.json()</code>)<br>• Обработка ошибок (<code>try/catch</code>)<br><br>🎉 Поздравляем с завершением курса JavaScript!',
+        task: 'Создай async функцию, которая делает fetch запрос, парсит JSON и обрабатывает ошибки',
+        hint: 'async, await, fetch, .json(), try/catch',
+        template: '___ function loadData() {\n  ___ {\n    const response = ___ ___(\"http://localhost:5000/api\");\n    const data = await response.___();\n    return data;\n  } catch (error) {\n    console.error(error);\n  }\n}',
+        blanks: ['async', 'try', 'await', 'fetch', 'json'],
+        blankLabels: ['асинхр.', 'попытка', 'ожидание', 'запрос', 'парсинг'],
+        expected: 'async function loadData() {\n  try {\n    const response = await fetch(\"http://localhost:5000/api\");\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error(error);\n  }\n}',
+        xp: 75
     }
 ];
 

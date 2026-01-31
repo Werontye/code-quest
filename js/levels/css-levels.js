@@ -119,6 +119,22 @@ const cssLevels = [
         expected: 'p {\n  font-size: 1.5em;\n}',
         xp: 15
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 1
+    {
+        id: 'css-08-challenge',
+        module: 'Основы CSS',
+        title: '🏆 Контрольное: Стилизация карточки',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Примени все знания из модуля "Основы CSS":<br>• Селектор класса (<code>.class</code>)<br>• Цвет текста (<code>color</code>)<br>• Цвет фона (<code>background-color</code>)<br>• Размер шрифта (<code>font-size</code>)<br><br>Создай стиль для карточки с классом .card!',
+        task: 'Стилизуй класс .card: белый текст, синий фон, размер шрифта 18px',
+        hint: 'Используй селектор .card с color, background-color и font-size',
+        template: '___card {\n  ___: white;\n  ___: blue;\n  ___: 18px;\n}',
+        blanks: ['.', 'color', 'background-color', 'font-size'],
+        blankLabels: ['точка', 'цвет текста', 'цвет фона', 'размер'],
+        expected: '.card {\n  color: white;\n  background-color: blue;\n  font-size: 18px;\n}',
+        xp: 50
+    },
 
     // ===== Module 2: Text & Fonts =====
     {
@@ -218,6 +234,22 @@ const cssLevels = [
         blanks: ['1.5'],
         expected: 'p {\n  line-height: 1.5;\n}',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 2
+    {
+        id: 'css-15-challenge',
+        module: 'Текст и шрифты',
+        title: '🏆 Контрольное: Типографика заголовка',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай стиль для красивого заголовка:<br>• Шрифт Arial (<code>font-family</code>)<br>• Жирный текст (<code>font-weight: bold</code>)<br>• Выравнивание по центру (<code>text-align: center</code>)<br>• Межстрочный интервал (<code>line-height</code>)<br><br>Типографика — ключ к читабельному дизайну!',
+        task: 'Стилизуй h1: шрифт Arial, жирный, по центру, интервал 1.4',
+        hint: 'font-family: Arial; font-weight: bold; text-align: center; line-height: 1.4',
+        template: 'h1 {\n  ___: Arial;\n  font-weight: ___;\n  ___: center;\n  line-height: ___;\n}',
+        blanks: ['font-family', 'bold', 'text-align', '1.4'],
+        blankLabels: ['шрифт', 'жирность', 'выравн.', 'интервал'],
+        expected: 'h1 {\n  font-family: Arial;\n  font-weight: bold;\n  text-align: center;\n  line-height: 1.4;\n}',
+        xp: 50
     },
 
     // ===== Module 3: Box Model =====
@@ -319,6 +351,22 @@ const cssLevels = [
         expected: 'div {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n}',
         xp: 15
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 3
+    {
+        id: 'css-22-challenge',
+        module: 'Блочная модель',
+        title: '🏆 Контрольное: Стильная карточка',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай красивую карточку с:<br>• Фиксированными размерами (<code>width</code>, <code>height</code>)<br>• Внутренними отступами (<code>padding</code>)<br>• Внешними отступами (<code>margin</code>)<br>• Границей (<code>border</code>)<br>• Скруглёнными углами (<code>border-radius</code>)<br><br>Box Model — основа любого дизайна!',
+        task: 'Карточка: 300px ширина, 20px padding, 10px margin, граница 2px solid gray, углы 8px',
+        hint: 'width, padding, margin, border, border-radius',
+        template: '.card {\n  ___: 300px;\n  ___: 20px;\n  ___: 10px;\n  border: 2px ___ gray;\n  ___: 8px;\n}',
+        blanks: ['width', 'padding', 'margin', 'solid', 'border-radius'],
+        blankLabels: ['ширина', 'внутр.отступ', 'внеш.отступ', 'стиль', 'скругление'],
+        expected: '.card {\n  width: 300px;\n  padding: 20px;\n  margin: 10px;\n  border: 2px solid gray;\n  border-radius: 8px;\n}',
+        xp: 50
+    },
 
     // ===== Module 4: Positioning =====
     {
@@ -404,6 +452,22 @@ const cssLevels = [
         blanks: ['z-index'],
         expected: 'div {\n  position: relative;\n  z-index: 10;\n}',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 4
+    {
+        id: 'css-28-challenge',
+        module: 'Позиционирование',
+        title: '🏆 Контрольное: Фиксированная кнопка',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай фиксированную кнопку "Наверх":<br>• Фиксированная позиция (<code>position: fixed</code>)<br>• В правом нижнем углу (<code>right</code>, <code>bottom</code>)<br>• Поверх всех элементов (<code>z-index</code>)<br><br>Такие кнопки часто используются на длинных страницах!',
+        task: 'Кнопка: фиксированная, right: 20px, bottom: 20px, z-index: 100',
+        hint: 'position: fixed; right; bottom; z-index',
+        template: '.scroll-top {\n  position: ___;\n  ___: 20px;\n  ___: 20px;\n  ___: 100;\n}',
+        blanks: ['fixed', 'right', 'bottom', 'z-index'],
+        blankLabels: ['позиция', 'справа', 'снизу', 'слой'],
+        expected: '.scroll-top {\n  position: fixed;\n  right: 20px;\n  bottom: 20px;\n  z-index: 100;\n}',
+        xp: 50
     },
 
     // ===== Module 5: Flexbox =====
@@ -505,6 +569,22 @@ const cssLevels = [
         expected: '.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}',
         xp: 15
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 5
+    {
+        id: 'css-35-challenge',
+        module: 'Flexbox',
+        title: '🏆 Контрольное: Адаптивная навигация',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай адаптивную навигацию с Flexbox:<br>• Flex-контейнер (<code>display: flex</code>)<br>• Элементы в строку с переносом (<code>flex-wrap</code>)<br>• Распределение с промежутками (<code>justify-content</code>)<br>• Отступы между элементами (<code>gap</code>)<br><br>Flexbox — мощнейший инструмент для макетов!',
+        task: 'Навигация: flex с wrap, space-between, выравнивание по центру, gap 20px',
+        hint: 'display: flex; flex-wrap: wrap; justify-content; align-items; gap',
+        template: '.nav {\n  display: ___;\n  flex-wrap: ___;\n  justify-content: ___;\n  align-items: ___;\n  ___: 20px;\n}',
+        blanks: ['flex', 'wrap', 'space-between', 'center', 'gap'],
+        blankLabels: ['дисплей', 'перенос', 'распред.', 'выравн.', 'отступы'],
+        expected: '.nav {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  align-items: center;\n  gap: 20px;\n}',
+        xp: 50
+    },
 
     // ===== Module 6: Grid =====
     {
@@ -548,6 +628,22 @@ const cssLevels = [
         blanks: ['15px'],
         expected: '.container {\n  display: grid;\n  gap: 15px;\n}',
         xp: 15
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 6
+    {
+        id: 'css-38-challenge',
+        module: 'Grid',
+        title: '🏆 Контрольное: Сетка галереи',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай сетку для фотогалереи:<br>• Grid-контейнер (<code>display: grid</code>)<br>• 3 равные колонки (<code>grid-template-columns: 1fr 1fr 1fr</code>)<br>• Промежутки (<code>gap</code>)<br><br>CSS Grid идеален для двумерных макетов!',
+        task: 'Галерея: grid, 3 колонки по 1fr, gap 10px',
+        hint: 'display: grid; grid-template-columns: 1fr 1fr 1fr; gap',
+        template: '.gallery {\n  display: ___;\n  ___: 1fr 1fr 1fr;\n  ___: 10px;\n}',
+        blanks: ['grid', 'grid-template-columns', 'gap'],
+        blankLabels: ['дисплей', 'колонки', 'отступы'],
+        expected: '.gallery {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 10px;\n}',
+        xp: 50
     },
 
     // ===== Module 7: Transitions & Animations =====
@@ -648,6 +744,22 @@ const cssLevels = [
         blanks: ['var'],
         expected: 'button {\n  background-color: var(--main-color);\n}',
         xp: 20
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 7
+    {
+        id: 'css-45-challenge',
+        module: 'Анимации',
+        title: '🏆 Контрольное: Анимированная кнопка',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай интерактивную кнопку с эффектами:<br>• Плавный переход (<code>transition</code>)<br>• Тень (<code>box-shadow</code>)<br>• Увеличение при наведении (<code>transform: scale</code>)<br>• Прозрачность (<code>opacity</code>)<br><br>Анимации делают интерфейс живым!',
+        task: 'Кнопка: transition 0.3s, тень с размытием 10px, при hover scale(1.1) и opacity 0.9',
+        hint: 'transition; box-shadow; :hover с transform и opacity',
+        template: '.btn {\n  ___: 0.3s;\n  box-shadow: 0 4px ___ rgba(0,0,0,0.3);\n}\n.btn:hover {\n  transform: ___(1.1);\n  ___: 0.9;\n}',
+        blanks: ['transition', '10px', 'scale', 'opacity'],
+        blankLabels: ['переход', 'размытие', 'масштаб', 'прозрачн.'],
+        expected: '.btn {\n  transition: 0.3s;\n  box-shadow: 0 4px 10px rgba(0,0,0,0.3);\n}\n.btn:hover {\n  transform: scale(1.1);\n  opacity: 0.9;\n}',
+        xp: 50
     },
 
     // Additional levels to reach 55
@@ -790,6 +902,22 @@ const cssLevels = [
         blanks: ['linear-gradient'],
         expected: '.header {\n  background: linear-gradient(to right, blue, purple);\n}',
         xp: 20
+    },
+    // 🏆 ФИНАЛЬНОЕ КОНТРОЛЬНОЕ ЗАДАНИЕ CSS
+    {
+        id: 'css-55-challenge',
+        module: 'Дополнительно',
+        title: '🏆 Финальное: Современная карточка',
+        difficulty: 5,
+        type: 'fill-blank',
+        description: '<strong>🏆 ФИНАЛЬНОЕ КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай современную карточку с:<br>• Ограничением ширины (<code>max-width</code>)<br>• Скрытием переполнения (<code>overflow</code>)<br>• Курсором-указателем (<code>cursor</code>)<br>• Обрезкой текста с многоточием (<code>text-overflow</code>)<br>• Градиентным фоном (<code>linear-gradient</code>)<br><br>🎉 Поздравляем с завершением курса CSS!',
+        task: 'Карточка: max-width 400px, overflow hidden, cursor pointer, text-overflow ellipsis, градиент',
+        hint: 'max-width, overflow, cursor, text-overflow, linear-gradient',
+        template: '.modern-card {\n  ___: 400px;\n  ___: hidden;\n  ___: pointer;\n  text-overflow: ___;\n  background: ___(to bottom, #667eea, #764ba2);\n}',
+        blanks: ['max-width', 'overflow', 'cursor', 'ellipsis', 'linear-gradient'],
+        blankLabels: ['макс.ширина', 'переполн.', 'курсор', 'обрезка', 'градиент'],
+        expected: '.modern-card {\n  max-width: 400px;\n  overflow: hidden;\n  cursor: pointer;\n  text-overflow: ellipsis;\n  background: linear-gradient(to bottom, #667eea, #764ba2);\n}',
+        xp: 75
     }
 ];
 

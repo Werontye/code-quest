@@ -21,7 +21,8 @@ const Storage = {
             js: { completed: [], current: 1 },
             ts: { completed: [], current: 1 },
             react: { completed: [], current: 1 },
-            node: { completed: [], current: 1 }
+            node: { completed: [], current: 1 },
+            figma: { completed: [], current: 1 }
         },
         achievements: [],
         weeklyXP: {},
@@ -322,6 +323,26 @@ const Storage = {
         } catch (e) {
             return false;
         }
+    },
+
+    /**
+     * Update streak on page load
+     */
+    updateStreak() {
+        const userData = this.getUserData();
+        const today = new Date().toDateString();
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+
+        // If last play was before yesterday, reset streak
+        if (userData.stats.lastPlayDate &&
+            userData.stats.lastPlayDate !== today &&
+            userData.stats.lastPlayDate !== yesterday.toDateString()) {
+            userData.stats.streakDays = 0;
+            this.saveUserData(userData);
+        }
+
+        return userData.stats.streakDays;
     },
 
     /**

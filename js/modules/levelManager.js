@@ -56,6 +56,7 @@ const LevelManager = {
             case 'ts': return window.tsLevels || [];
             case 'react': return window.reactLevels || [];
             case 'node': return window.nodeLevels || [];
+            case 'figma': return window.figmaLevels || [];
             default: return [];
         }
     },
@@ -100,7 +101,9 @@ const LevelManager = {
         document.getElementById('btnLevels').href = `levels.html?lang=${this.currentLang}`;
 
         // Setup editor based on level type
-        if (level.type === 'fill-blank') {
+        if (level.type === 'quiz') {
+            this.setupQuizMode();
+        } else if (level.type === 'fill-blank') {
             this.setupFillBlankMode();
         } else {
             this.setupFullEditorMode();
@@ -135,19 +138,30 @@ const LevelManager = {
         // Create template with input fields
         let template = level.template;
         let blankIndex = 0;
+        const namedBlanks = {}; // Track [[NAME]] patterns for pairing
 
         // Support both [[TAG]] and ___ patterns
         let html = template;
 
-        // Replace [[TAG]] or [[ANY]] patterns (same blank used twice for opening/closing tags)
-        html = html.replace(/\[\[([^\]]+)\]\]/g, () => {
-            const label = level.blankLabels && level.blankLabels[blankIndex] ? level.blankLabels[blankIndex] : '...';
-            const input = `<input type="text" class="blank-input" data-index="${blankIndex}" placeholder="${label}">`;
-            // Don't increment for paired tags - they share the same input value
-            return input;
+        // First pass: Replace [[NAME]] patterns
+        // Same [[NAME]] appearing multiple times share the same index (for opening/closing tags)
+        html = html.replace(/\[\[([^\]]+)\]\]/g, (match, name) => {
+            if (namedBlanks.hasOwnProperty(name)) {
+                // Reuse existing index for paired tags (opening/closing)
+                const existingIndex = namedBlanks[name];
+                const label = level.blankLabels && level.blankLabels[existingIndex] ? level.blankLabels[existingIndex] : '...';
+                return `<input type="text" class="blank-input" data-index="${existingIndex}" placeholder="${label}">`;
+            } else {
+                // New named blank - assign new index
+                namedBlanks[name] = blankIndex;
+                const label = level.blankLabels && level.blankLabels[blankIndex] ? level.blankLabels[blankIndex] : '...';
+                const input = `<input type="text" class="blank-input" data-index="${blankIndex}" placeholder="${label}">`;
+                blankIndex++;
+                return input;
+            }
         });
 
-        // Also support ___ pattern for backward compatibility
+        // Second pass: Replace ___ patterns (each gets unique index)
         html = html.replace(/___/g, () => {
             const label = level.blankLabels && level.blankLabels[blankIndex] ? level.blankLabels[blankIndex] : '...';
             const input = `<input type="text" class="blank-input" data-index="${blankIndex}" placeholder="${label}">`;
@@ -222,6 +236,54 @@ const LevelManager = {
     },
 
     /**
+     * Setup quiz mode for Figma-style multiple choice
+     */
+    setupQuizMode() {
+        const level = this.currentLevel;
+        const fillBlankEditor = document.getElementById('fillBlankEditor');
+        const fullEditor = document.getElementById('fullEditor');
+        const codeTemplate = document.getElementById('codeTemplate');
+
+        fillBlankEditor.classList.remove('hidden');
+        fullEditor.classList.add('hidden');
+
+        // Build quiz options HTML
+        const optionLetters = ['A', 'B', 'C', 'D'];
+        let optionsHtml = level.options.map((option, index) => `
+            <div class="quiz-option" data-index="${index}">
+                <span class="quiz-option-marker">${optionLetters[index]}</span>
+                <span class="quiz-option-text">${option}</span>
+            </div>
+        `).join('');
+
+        codeTemplate.innerHTML = `
+            <div class="quiz-editor">
+                <div class="quiz-question">${level.question}</div>
+                <div class="quiz-options">
+                    ${optionsHtml}
+                </div>
+            </div>
+        `;
+
+        // Store selected answer
+        this.selectedAnswer = null;
+
+        // Add click handlers for options
+        const options = codeTemplate.querySelectorAll('.quiz-option');
+        options.forEach((option, index) => {
+            option.addEventListener('click', () => {
+                if (this.isLevelCompleted) return;
+
+                // Deselect all
+                options.forEach(opt => opt.classList.remove('selected'));
+                // Select this one
+                option.classList.add('selected');
+                this.selectedAnswer = index;
+            });
+        });
+    },
+
+    /**
      * Setup full editor mode
      */
     setupFullEditorMode() {
@@ -288,6 +350,9 @@ const LevelManager = {
                 break;
             case 'node':
                 themeContent = this.getNodeVisual(level);
+                break;
+            case 'figma':
+                themeContent = this.getFigmaVisual(level);
                 break;
         }
 
@@ -488,6 +553,32 @@ const LevelManager = {
     },
 
     /**
+     * Get Figma themed visual
+     */
+    getFigmaVisual(level) {
+        return `
+            <div class="figma-canvas">
+                <div class="figma-toolbar">
+                    <div class="tool-icon active">V</div>
+                    <div class="tool-icon">F</div>
+                    <div class="tool-icon">R</div>
+                    <div class="tool-icon">O</div>
+                    <div class="tool-icon">T</div>
+                </div>
+                <div class="figma-frame">
+                    <div class="figma-logo-animated">
+                        <div class="figma-piece"></div>
+                        <div class="figma-piece"></div>
+                        <div class="figma-piece"></div>
+                        <div class="figma-piece"></div>
+                        <div class="figma-piece"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
      * Setup event listeners
      */
     setupEventListeners() {
@@ -576,7 +667,29 @@ const LevelManager = {
         const level = this.currentLevel;
         let result;
 
-        if (level.type === 'fill-blank') {
+        if (level.type === 'quiz') {
+            // Quiz mode - check selected answer
+            if (this.selectedAnswer === null) {
+                result = { success: false, message: 'Выберите ответ!' };
+            } else {
+                const isCorrect = this.selectedAnswer === level.correct;
+                result = {
+                    success: isCorrect,
+                    message: isCorrect ? 'Верно!' : 'Неверно, попробуйте ещё раз!'
+                };
+
+                // Update option styles
+                const options = document.querySelectorAll('.quiz-option');
+                options.forEach((option, index) => {
+                    option.classList.remove('selected');
+                    if (index === level.correct) {
+                        option.classList.add('correct');
+                    } else if (index === this.selectedAnswer && !isCorrect) {
+                        option.classList.add('incorrect');
+                    }
+                });
+            }
+        } else if (level.type === 'fill-blank') {
             // Collect unique blank inputs (by data-index)
             const inputs = document.querySelectorAll('.blank-input');
             const uniqueValues = {};
@@ -717,7 +830,13 @@ const LevelManager = {
         this.startTime = Date.now();
         this.isLevelCompleted = false;
 
-        if (this.currentLevel.type === 'fill-blank') {
+        if (this.currentLevel.type === 'quiz') {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            this.selectedAnswer = null;
+        } else if (this.currentLevel.type === 'fill-blank') {
             const inputs = document.querySelectorAll('.blank-input');
             inputs.forEach(input => {
                 input.value = '';

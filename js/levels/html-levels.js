@@ -125,6 +125,22 @@ const htmlLevels = [
         expected: 'Это <mark>выделенный</mark> текст.',
         xp: 10
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 1
+    {
+        id: 'html-08-challenge',
+        module: 'Основы HTML',
+        title: '🏆 Контрольное: Форматированный текст',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Это задание проверяет все знания из модуля "Основы HTML".<br><br>Тебе нужно создать структуру с:<br>• Заголовком второго уровня (<code>&lt;h2&gt;</code>)<br>• Параграфом (<code>&lt;p&gt;</code>) с жирным (<code>&lt;strong&gt;</code>) и выделенным (<code>&lt;mark&gt;</code>) текстом<br>• Переносом строки (<code>&lt;br&gt;</code>)<br><br>💡 Вспомни все теги, которые ты изучил в этом модуле!',
+        task: 'Создай заголовок h2, параграф с жирным и выделенным текстом, разделённые переносом строки',
+        hint: 'Используй теги: h2, p, strong, mark, br',
+        template: '<[[H]]>Мой блог</[[H]]><___><[[P]]>Это <[[S]]>важная</[[S]]> и <[[M]]>особая</[[M]]> информация.</[[P]]>',
+        blanks: ['h2', 'br', 'p', 'strong', 'mark'],
+        blankLabels: ['заголовок', 'перенос', 'параграф', 'жирный', 'выделение'],
+        expected: '<h2>Мой блог</h2><br><p>Это <strong>важная</strong> и <mark>особая</mark> информация.</p>',
+        xp: 50
+    },
 
     // ===== Module 2: Links and Images =====
     {
@@ -217,6 +233,22 @@ const htmlLevels = [
         expected: '<img src="photo.jpg" width="300" height="200">',
         xp: 20
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 2
+    {
+        id: 'html-14-challenge',
+        module: 'Ссылки и изображения',
+        title: '🏆 Контрольное: Галерея с ссылками',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай изображение-ссылку, которая:<br>• Оборачивает картинку в ссылку (<code>&lt;a&gt;</code>)<br>• Открывается в новой вкладке (<code>target="_blank"</code>)<br>• Изображение имеет путь и описание (<code>src</code>, <code>alt</code>)<br><br>Это типичная структура для галерей и карточек товаров!',
+        task: 'Создай ссылку на "#", открывающуюся в новой вкладке, с изображением внутри',
+        hint: 'Ссылка (a) с target="_blank" содержит изображение (img) с src и alt',
+        template: '<[[A]] href="#" ___="_blank"><___ ___="gallery.jpg" ___="Фото из галереи"></[[A]]>',
+        blanks: ['a', 'target', 'img', 'src', 'alt'],
+        blankLabels: ['ссылка', 'атрибут', 'картинка', 'путь', 'описание'],
+        expected: '<a href="#" target="_blank"><img src="gallery.jpg" alt="Фото из галереи"></a>',
+        xp: 50
+    },
 
     // ===== Module 3: Lists =====
     {
@@ -263,6 +295,22 @@ const htmlLevels = [
         blankLabels: ['тег'],
         expected: '<ul><li>Яблоко</li></ul>',
         xp: 10
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 3
+    {
+        id: 'html-17-challenge',
+        module: 'Списки',
+        title: '🏆 Контрольное: Вложенный список',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай структуру из двух типов списков:<br>• Нумерованный список (<code>&lt;ol&gt;</code>) — для шагов рецепта<br>• Маркированный список (<code>&lt;ul&gt;</code>) — вложенный, для ингредиентов<br>• Элементы списка (<code>&lt;li&gt;</code>)<br><br>Вложенные списки часто используются в документации и инструкциях!',
+        task: 'Создай нумерованный список с одним пунктом, внутри которого маркированный список',
+        hint: 'ol содержит li, внутри li находится ul с li',
+        template: '<[[OL]]><[[LI]]>Ингредиенты:<[[UL]]><[[LI2]]>Мука</[[LI2]]></[[UL]]></[[LI]]></[[OL]]>',
+        blanks: ['ol', 'li', 'ul', 'li'],
+        blankLabels: ['нумер.список', 'элемент', 'маркир.список', 'элемент'],
+        expected: '<ol><li>Ингредиенты:<ul><li>Мука</li></ul></li></ol>',
+        xp: 50
     },
 
     // ===== Module 4: Tables =====
@@ -340,6 +388,22 @@ const htmlLevels = [
         blankLabels: ['атрибут'],
         expected: '<table><tr><td colspan="2">Объединённая</td></tr></table>',
         xp: 20
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 4
+    {
+        id: 'html-22-challenge',
+        module: 'Таблицы',
+        title: '🏆 Контрольное: Таблица с заголовками',
+        difficulty: 4,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай полноценную таблицу с:<br>• Контейнером таблицы (<code>&lt;table&gt;</code>)<br>• Строкой (<code>&lt;tr&gt;</code>)<br>• Заголовками столбцов (<code>&lt;th&gt;</code>)<br>• Ячейками данных (<code>&lt;td&gt;</code>)<br><br>Таблицы используются для отображения структурированных данных!',
+        task: 'Создай таблицу: строка с двумя заголовками, строка с двумя ячейками данных',
+        hint: 'table > tr > th/td. Используй tr для строк, th для заголовков, td для данных',
+        template: '<[[TABLE]]><[[TR1]]><[[TH]]>Имя</[[TH]]><th>Возраст</th></[[TR1]]><[[TR2]]><[[TD]]>Анна</[[TD]]><td>25</td></[[TR2]]></[[TABLE]]>',
+        blanks: ['table', 'tr', 'th', 'tr', 'td'],
+        blankLabels: ['таблица', 'строка', 'заголовок', 'строка', 'ячейка'],
+        expected: '<table><tr><th>Имя</th><th>Возраст</th></tr><tr><td>Анна</td><td>25</td></tr></table>',
+        xp: 50
     },
 
     // ===== Module 5: Forms =====
@@ -463,6 +527,22 @@ const htmlLevels = [
         expected: '<textarea>Текст...</textarea>',
         xp: 15
     },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 5
+    {
+        id: 'html-30-challenge',
+        module: 'Формы',
+        title: '🏆 Контрольное: Форма регистрации',
+        difficulty: 5,
+        type: 'fill-blank',
+        description: '<strong>🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай форму регистрации с:<br>• Контейнером формы (<code>&lt;form&gt;</code>)<br>• Полем email (<code>type="email"</code>)<br>• Полем пароля (<code>type="password"</code>)<br>• Обязательными полями (<code>required</code>)<br>• Кнопкой отправки (<code>&lt;button&gt;</code>)<br><br>Это типичная структура формы авторизации на любом сайте!',
+        task: 'Создай форму с полем email (обязательное), полем пароля и кнопкой отправки',
+        hint: 'form содержит input type="email" required, input type="password", button',
+        template: '<[[FORM]]><___ type="___" ___><input type="___"><[[BTN]] type="submit">Войти</[[BTN]]></[[FORM]]>',
+        blanks: ['form', 'input', 'email', 'required', 'password', 'button'],
+        blankLabels: ['форма', 'поле', 'тип', 'обязат.', 'пароль', 'кнопка'],
+        expected: '<form><input type="email" required><input type="password"><button type="submit">Войти</button></form>',
+        xp: 50
+    },
 
     // ===== Module 6: Semantic HTML =====
     {
@@ -539,6 +619,22 @@ const htmlLevels = [
         blankLabels: ['шапка', 'контент', 'подвал'],
         expected: '<header>Шапка</header><main>Контент</main><footer>© 2024</footer>',
         xp: 30
+    },
+    // 🏆 КОНТРОЛЬНОЕ ЗАДАНИЕ МОДУЛЯ 6 (ФИНАЛЬНОЕ)
+    {
+        id: 'html-35-challenge',
+        module: 'Семантика',
+        title: '🏆 Финальное: Структура блога',
+        difficulty: 5,
+        type: 'fill-blank',
+        description: '<strong>🏆 ФИНАЛЬНОЕ КОНТРОЛЬНОЕ ЗАДАНИЕ</strong><br><br>Создай полноценную семантическую структуру блога:<br>• <code>&lt;header&gt;</code> с навигацией <code>&lt;nav&gt;</code><br>• <code>&lt;main&gt;</code> с статьёй <code>&lt;article&gt;</code><br>• <code>&lt;footer&gt;</code> с копирайтом<br><br>🎉 Это финальное задание курса HTML! Ты молодец!',
+        task: 'Создай структуру: header с nav и ссылкой, main с article, footer',
+        hint: 'header > nav > a, main > article, footer',
+        template: '<[[HEADER]]><[[NAV]]><[[A]] href="/">Главная</[[A]]></[[NAV]]></[[HEADER]]><[[MAIN]]><[[ART]]><h2>Статья</h2></[[ART]]></[[MAIN]]><[[FOOTER]]>© 2024</[[FOOTER]]>',
+        blanks: ['header', 'nav', 'a', 'main', 'article', 'footer'],
+        blankLabels: ['шапка', 'навигация', 'ссылка', 'контент', 'статья', 'подвал'],
+        expected: '<header><nav><a href="/">Главная</a></nav></header><main><article><h2>Статья</h2></article></main><footer>© 2024</footer>',
+        xp: 75
     }
 ];
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/themes/html-theme.css">
     <link rel="stylesheet" href="../css/themes/css-theme.css">
     <link rel="stylesheet" href="../css/themes/js-theme.css">
+    <link rel="stylesheet" href="../css/themes/figma-theme.css">
 </head>
 <body>
     <div class="app" id="app">
@@ -230,6 +231,25 @@
         .levels-page[data-lang="node"] .module-number {
             background: rgba(104, 160, 99, 0.15);
             color: #68a063;
+        }
+
+        /* Figma Theme */
+        .levels-page[data-lang="figma"] .language-icon {
+            background: rgba(162, 89, 255, 0.15);
+            color: #a259ff;
+        }
+
+        .levels-page[data-lang="figma"] .language-title {
+            color: #a259ff;
+        }
+
+        .levels-page[data-lang="figma"] .progress-fill {
+            background: linear-gradient(90deg, #f24e1e, #ff7262, #a259ff, #1abcfe, #0acf83);
+        }
+
+        .levels-page[data-lang="figma"] .module-number {
+            background: rgba(162, 89, 255, 0.15);
+            color: #a259ff;
         }
 
         /* Modules */
@@ -453,6 +473,7 @@
     <script src="../js/levels/ts-levels.js"></script>
     <script src="../js/levels/react-levels.js"></script>
     <script src="../js/levels/node-levels.js"></script>
+    <script src="../js/levels/figma-levels.js"></script>
     <script>
         // Levels Page Logic
         document.addEventListener('DOMContentLoaded', () => {
@@ -503,6 +524,13 @@
                     icon: '&#9881;',
                     levels: typeof nodeLevels !== 'undefined' ? nodeLevels : [],
                     total: 45
+                },
+                figma: {
+                    title: 'Figma',
+                    subtitle: 'Дизайнер',
+                    icon: '&#127912;',
+                    levels: typeof figmaLevels !== 'undefined' ? figmaLevels : [],
+                    total: 40
                 }
             };
 
@@ -601,7 +629,7 @@
                                         <div class="level-num">${globalIndex}</div>
                                         <div class="level-info">
                                             <div class="level-title">${level.title}</div>
-                                            <div class="level-type">${level.type === 'fill-blank' ? 'Заполни пропуски' : 'Редактор кода'}</div>
+                                            <div class="level-type">${level.type === 'quiz' ? 'Тест' : level.type === 'fill-blank' ? 'Заполни пропуски' : 'Редактор кода'}</div>
                                         </div>
                                         <div class="level-xp">+${level.xp || 10} XP</div>
                                         <span class="level-status"></span>
