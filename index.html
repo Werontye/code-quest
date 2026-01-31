@@ -7,8 +7,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>CodeQuest - Изучай Web-разработку играя</title>
-    <link rel="stylesheet" href="css/main.css?v=2.2.0.1769892444892">
-    <link rel="stylesheet" href="css/components/animations.css?v=2.2.0.1769892444892">
+    <link rel="stylesheet" href="css/main.css?v=2.2.0.1769893189690">
+    <link rel="stylesheet" href="css/components/animations.css?v=2.2.0.1769893189690">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -137,6 +137,43 @@
                     <div class="quick-stat-info">
                         <span class="quick-stat-value" id="totalLevelsHero">0</span>
                         <span class="quick-stat-label" data-i18n="stats.levels">Уровней пройдено</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Daily Challenge Section -->
+            <section class="daily-challenge-section fade-in-up" id="dailyChallengeSection">
+                <div class="daily-challenge-card" id="dailyChallengeCard">
+                    <div class="daily-badge">
+                        <span class="daily-badge-icon">&#128293;</span>
+                        <span class="daily-badge-text">Ежедневный челлендж</span>
+                        <span class="daily-xp-bonus">x2 XP</span>
+                    </div>
+                    <div class="daily-content">
+                        <div class="daily-info">
+                            <h3 class="daily-title" id="dailyTitle">Загрузка...</h3>
+                            <p class="daily-description" id="dailyDescription">Проверь свои навыки и получи двойной XP!</p>
+                            <div class="daily-meta">
+                                <span class="daily-lang" id="dailyLang">
+                                    <span class="lang-dot"></span>
+                                    <span class="lang-name">HTML</span>
+                                </span>
+                                <span class="daily-timer" id="dailyTimer">
+                                    <span class="timer-icon">&#9203;</span>
+                                    <span class="timer-text">Обновится через: 24:00:00</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="daily-action">
+                            <a href="#" class="btn-daily" id="dailyChallengeBtn">
+                                <span class="btn-daily-text">Играть</span>
+                                <span class="btn-daily-arrow">&#8594;</span>
+                            </a>
+                            <div class="daily-completed" id="dailyCompleted" style="display: none;">
+                                <span class="completed-icon">&#10004;</span>
+                                <span class="completed-text">Выполнено сегодня!</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -610,10 +647,10 @@
         </footer>
     </div>
 
-    <script src="js/version.js?v=2.2.0.1769892444892"></script>
-    <script src="js/modules/storage.js?v=2.2.0.1769892444892"></script>
-    <script src="js/modules/i18n.js?v=2.2.0.1769892444892"></script>
-    <script src="js/app.js?v=2.2.0.1769892444892"></script>
+    <script src="js/version.js?v=2.2.0.1769893189690"></script>
+    <script src="js/modules/storage.js?v=2.2.0.1769893189690"></script>
+    <script src="js/modules/i18n.js?v=2.2.0.1769893189690"></script>
+    <script src="js/app.js?v=2.2.0.1769893189690"></script>
     <script>
         // Page transition on load
         document.addEventListener('DOMContentLoaded', () => {
@@ -650,7 +687,77 @@
                 if (progressEl) progressEl.style.width = `${percent}%`;
                 if (completedEl) completedEl.textContent = completed;
             });
+
+            // Initialize Daily Challenge
+            initDailyChallenge();
         });
+
+        function initDailyChallenge() {
+            const today = new Date();
+            const dateString = today.toISOString().split('T')[0];
+            const seed = dateString.split('-').reduce((acc, val) => acc + parseInt(val), 0);
+
+            // Course configuration
+            const courses = [
+                { id: 'html', name: 'HTML', color: '#e44d26', icon: '&#128679;' },
+                { id: 'css', name: 'CSS', color: '#264de4', icon: '&#127912;' },
+                { id: 'js', name: 'JavaScript', color: '#f7df1e', icon: '&#128640;' },
+                { id: 'python', name: 'Python', color: '#3776ab', icon: '&#128013;' },
+                { id: 'git', name: 'Git', color: '#f05032', icon: '&#128736;' },
+                { id: 'figma', name: 'Figma', color: '#a259ff', icon: '&#127912;' }
+            ];
+
+            const levelCounts = { html: 35, css: 55, js: 70, python: 38, git: 25, figma: 40 };
+
+            // Select course and level based on date
+            const courseIndex = seed % courses.length;
+            const course = courses[courseIndex];
+            const levelNum = ((seed * 7) % levelCounts[course.id]) + 1;
+
+            // Update UI
+            document.getElementById('dailyTitle').textContent = `${course.name} - Уровень ${levelNum}`;
+            document.getElementById('dailyDescription').textContent = `Пройди уровень ${levelNum} курса ${course.name} и получи двойной XP!`;
+
+            const langDot = document.querySelector('.daily-lang .lang-dot');
+            const langName = document.querySelector('.daily-lang .lang-name');
+            if (langDot) langDot.style.background = course.color;
+            if (langName) langName.textContent = course.name;
+
+            // Set link
+            const btn = document.getElementById('dailyChallengeBtn');
+            btn.href = `pages/game.html?lang=${course.id}&level=${levelNum}&daily=true`;
+
+            // Check if completed
+            const userData = Storage.getUserData();
+            const isCompleted = userData.lastDailyChallenge === dateString;
+
+            if (isCompleted) {
+                document.getElementById('dailyCompleted').style.display = 'flex';
+                btn.style.display = 'none';
+                document.getElementById('dailyChallengeCard').classList.add('completed');
+            }
+
+            // Update timer
+            updateDailyTimer();
+            setInterval(updateDailyTimer, 1000);
+        }
+
+        function updateDailyTimer() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+
+            const diff = tomorrow - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const timerText = document.querySelector('.timer-text');
+            if (timerText) {
+                timerText.textContent = `Обновится через: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
     </script>
 </body>
 </html>

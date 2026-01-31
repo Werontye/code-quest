@@ -1091,6 +1091,221 @@ button {
 }
 
 /* ===================================
+   Daily Challenge Section
+   =================================== */
+.daily-challenge-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.daily-challenge-card {
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, #1e1e3f 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.daily-challenge-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    z-index: -1;
+    margin: -2px;
+    border-radius: inherit;
+    animation: gradientBorder 3s ease infinite;
+    background-size: 300% 300%;
+}
+
+@keyframes gradientBorder {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.daily-challenge-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(255, 107, 107, 0.2);
+}
+
+.daily-challenge-card.completed {
+    opacity: 0.8;
+}
+
+.daily-challenge-card.completed::before {
+    background: linear-gradient(135deg, #00d26a, #48dbfb);
+    animation: none;
+}
+
+.daily-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(255, 107, 107, 0.15);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-md);
+}
+
+.daily-badge-icon {
+    font-size: 1.2rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.daily-badge-text {
+    font-weight: 600;
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.daily-xp-bonus {
+    background: linear-gradient(135deg, #feca57, #ff9f43);
+    color: #000;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.daily-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.daily-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.daily-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.daily-description {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.daily-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.daily-lang {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+.lang-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.daily-timer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+.timer-icon {
+    font-size: 1rem;
+}
+
+.daily-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.btn-daily {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: var(--transition-normal);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-daily:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+}
+
+.btn-daily-arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-daily:hover .btn-daily-arrow {
+    transform: translateX(5px);
+}
+
+.daily-completed {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-success);
+    font-weight: 600;
+}
+
+.completed-icon {
+    font-size: 1.5rem;
+    background: rgba(0, 210, 106, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .daily-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .daily-meta {
+        justify-content: center;
+    }
+
+    .daily-info {
+        min-width: auto;
+    }
+}
+
+/* ===================================
    Section Headers
    =================================== */
 .section-header {
