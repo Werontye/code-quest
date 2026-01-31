@@ -491,51 +491,73 @@ const LevelManager = {
      * Setup event listeners
      */
     setupEventListeners() {
-        // Run button
-        document.getElementById('btnRun').addEventListener('click', () => {
-            // Prevent checking if level is already completed
-            if (!this.isLevelCompleted) {
-                this.checkAnswer();
-            }
-        });
+        // Run button (Check answer)
+        const btnRun = document.getElementById('btnRun');
+        if (btnRun) {
+            btnRun.addEventListener('click', () => {
+                if (!this.isLevelCompleted) {
+                    this.checkAnswer();
+                }
+            });
+        }
 
         // Reset button
-        document.getElementById('btnReset').addEventListener('click', () => {
-            this.resetLevel();
-        });
+        const btnReset = document.getElementById('btnReset');
+        if (btnReset) {
+            btnReset.addEventListener('click', () => {
+                this.resetLevel();
+            });
+        }
 
         // Hint button
-        document.getElementById('btnHint').addEventListener('click', () => {
-            this.showHint();
-        });
+        const btnHint = document.getElementById('btnHint');
+        if (btnHint) {
+            btnHint.addEventListener('click', () => {
+                this.showHint();
+            });
+        }
 
         // Navigation
-        document.getElementById('btnPrev').addEventListener('click', () => {
-            this.goToPrevLevel();
-        });
+        const btnPrev = document.getElementById('btnPrev');
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                this.goToPrevLevel();
+            });
+        }
 
-        document.getElementById('btnNext').addEventListener('click', () => {
-            this.goToNextLevel();
-        });
+        const btnNext = document.getElementById('btnNext');
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                this.goToNextLevel();
+            });
+        }
 
         // Success overlay buttons
-        document.getElementById('btnNextLevel').addEventListener('click', () => {
-            this.goToNextLevel();
-        });
+        const btnNextLevel = document.getElementById('btnNextLevel');
+        if (btnNextLevel) {
+            btnNextLevel.addEventListener('click', () => {
+                this.goToNextLevel();
+            });
+        }
 
-        document.getElementById('btnRetry').addEventListener('click', () => {
-            this.hideSuccess();
-            this.resetLevel();
-        });
+        const btnRetry = document.getElementById('btnRetry');
+        if (btnRetry) {
+            btnRetry.addEventListener('click', () => {
+                this.hideSuccess();
+                this.resetLevel();
+            });
+        }
 
         // Code input events
         const codeInput = document.getElementById('codeInput');
-        codeInput.addEventListener('input', () => {
-            this.updateLineNumbers();
-            this.updatePreview();
-        });
+        if (codeInput) {
+            codeInput.addEventListener('input', () => {
+                this.updateLineNumbers();
+                this.updatePreview();
+            });
+        }
 
-        // Keyboard shortcuts
+        // Keyboard shortcuts (Ctrl+Enter to check)
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'Enter') {
                 e.preventDefault();
