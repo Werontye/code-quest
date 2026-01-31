@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/themes/css-theme.css">
     <link rel="stylesheet" href="../css/themes/js-theme.css">
     <link rel="stylesheet" href="../css/themes/figma-theme.css">
+    <link rel="stylesheet" href="../css/themes/python-theme.css">
+    <link rel="stylesheet" href="../css/themes/git-theme.css">
 </head>
 <body>
     <div class="app" id="app">
@@ -474,6 +476,8 @@
     <script src="../js/levels/react-levels.js"></script>
     <script src="../js/levels/node-levels.js"></script>
     <script src="../js/levels/figma-levels.js"></script>
+    <script src="../js/levels/python-levels.js"></script>
+    <script src="../js/levels/git-levels.js"></script>
     <script>
         // Levels Page Logic
         document.addEventListener('DOMContentLoaded', () => {
@@ -531,6 +535,20 @@
                     icon: '&#127912;',
                     levels: typeof figmaLevels !== 'undefined' ? figmaLevels : [],
                     total: 40
+                },
+                python: {
+                    title: 'Python',
+                    subtitle: 'Укротитель змей',
+                    icon: '&#128013;',
+                    levels: typeof pythonLevels !== 'undefined' ? pythonLevels : [],
+                    total: 38
+                },
+                git: {
+                    title: 'Git',
+                    subtitle: 'Хранитель версий',
+                    icon: '&#128736;',
+                    levels: typeof gitLevels !== 'undefined' ? gitLevels : [],
+                    total: 25
                 }
             };
 

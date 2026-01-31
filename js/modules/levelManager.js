@@ -8,6 +8,7 @@ const LevelManager = {
     attempts: 0,
     startTime: null,
     isLevelCompleted: false,
+    hintUsed: false,
 
     /**
      * Initialize level manager on game page
@@ -37,6 +38,7 @@ const LevelManager = {
             this.attempts = 0;
             this.startTime = Date.now();
             this.isLevelCompleted = false;
+            this.hintUsed = false;
             this.renderLevel();
             this.setupEventListeners();
             this.updateUI();
@@ -56,6 +58,8 @@ const LevelManager = {
             case 'ts': return window.tsLevels || [];
             case 'react': return window.reactLevels || [];
             case 'node': return window.nodeLevels || [];
+            case 'python': return window.pythonLevels || [];
+            case 'git': return window.gitLevels || [];
             case 'figma': return window.figmaLevels || [];
             default: return [];
         }
@@ -785,6 +789,18 @@ const LevelManager = {
         if (isFirstTry) xp += 10;
         if (isFast) xp += 5;
 
+        // Check if this is daily challenge (x2 XP)
+        const dailyChallenge = Storage.getDailyChallenge();
+        const isDailyChallenge = dailyChallenge &&
+            dailyChallenge.course === this.currentLang &&
+            dailyChallenge.levelId === level.id &&
+            !Storage.isDailyChallengeCompleted();
+
+        if (isDailyChallenge) {
+            xp *= 2;
+            Storage.completeDailyChallenge();
+        }
+
         // Save progress
         const isNewCompletion = !Storage.isLevelCompleted(this.currentLang, level.id);
 
@@ -852,6 +868,7 @@ const LevelManager = {
         this.attempts = 0;
         this.startTime = Date.now();
         this.isLevelCompleted = false;
+        this.hintUsed = false;
 
         if (this.currentLevel.type === 'quiz') {
             const options = document.querySelectorAll('.quiz-option');
@@ -885,11 +902,60 @@ const LevelManager = {
     },
 
     /**
-     * Show hint
+     * Show hint (costs 5 XP if not already shown)
      */
     showHint() {
         const hintBox = document.getElementById('hintBox');
-        hintBox.classList.toggle('hidden');
+
+        // If hint is already visible, just hide it
+        if (!hintBox.classList.contains('hidden')) {
+            hintBox.classList.add('hidden');
+            return;
+        }
+
+        // If hint was already used this level, show for free
+        if (this.hintUsed) {
+            hintBox.classList.remove('hidden');
+            return;
+        }
+
+        // Check if user has enough XP
+        const userData = Storage.getUserData();
+        const hintCost = 5;
+
+        if (userData.xp < hintCost) {
+            // Not enough XP - show hint for free but notify
+            hintBox.classList.remove('hidden');
+            this.hintUsed = true;
+            return;
+        }
+
+        // Deduct XP and show hint
+        const result = Storage.useHint(hintCost);
+        if (result.success) {
+            this.hintUsed = true;
+            hintBox.classList.remove('hidden');
+
+            // Update header XP display
+            document.getElementById('headerXP').textContent = result.newXP + ' XP';
+
+            // Show cost notification
+            this.showHintCostAnimation(hintCost);
+        }
+    },
+
+    /**
+     * Show hint cost animation
+     */
+    showHintCostAnimation(cost) {
+        const el = document.createElement('div');
+        el.className = 'hint-cost-animation';
+        el.textContent = '-' + cost + ' XP';
+        document.body.appendChild(el);
+
+        setTimeout(() => {
+            el.remove();
+        }, 1500);
     },
 
     /**

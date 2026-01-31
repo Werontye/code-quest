@@ -22,7 +22,9 @@ const Storage = {
             ts: { completed: [], current: 1 },
             react: { completed: [], current: 1 },
             node: { completed: [], current: 1 },
-            figma: { completed: [], current: 1 }
+            figma: { completed: [], current: 1 },
+            python: { completed: [], current: 1 },
+            git: { completed: [], current: 1 }
         },
         achievements: [],
         weeklyXP: {},
@@ -379,6 +381,90 @@ const Storage = {
             console.error('Error importing data:', e);
             return false;
         }
+    },
+
+    /**
+     * Get daily challenge - returns a consistent level for today
+     */
+    getDailyChallenge() {
+        const today = new Date();
+        const dateString = today.toISOString().split('T')[0];
+
+        // Create a seed from the date
+        const seed = dateString.split('-').reduce((acc, val) => acc + parseInt(val), 0);
+
+        // Get all available courses and their levels
+        const courses = ['html', 'css', 'js', 'figma'];
+        const courseIndex = seed % courses.length;
+        const selectedCourse = courses[courseIndex];
+
+        // Get levels for selected course
+        const levels = this.getLevelsForCourse(selectedCourse);
+        if (!levels || levels.length === 0) return null;
+
+        // Select a level based on seed
+        const levelIndex = (seed * 7) % levels.length;
+        const selectedLevel = levels[levelIndex];
+
+        return {
+            course: selectedCourse,
+            levelId: selectedLevel.id,
+            levelIndex: levelIndex + 1,
+            levelTitle: selectedLevel.title,
+            xpMultiplier: 2,
+            date: dateString
+        };
+    },
+
+    /**
+     * Get levels for a course (helper)
+     */
+    getLevelsForCourse(course) {
+        switch (course) {
+            case 'html': return window.htmlLevels || [];
+            case 'css': return window.cssLevels || [];
+            case 'js': return window.jsLevels || [];
+            case 'ts': return window.tsLevels || [];
+            case 'react': return window.reactLevels || [];
+            case 'node': return window.nodeLevels || [];
+            case 'figma': return window.figmaLevels || [];
+            case 'python': return window.pythonLevels || [];
+            case 'git': return window.gitLevels || [];
+            default: return [];
+        }
+    },
+
+    /**
+     * Check if daily challenge is completed today
+     */
+    isDailyChallengeCompleted() {
+        const userData = this.getUserData();
+        const today = new Date().toISOString().split('T')[0];
+        return userData.lastDailyChallenge === today;
+    },
+
+    /**
+     * Mark daily challenge as completed
+     */
+    completeDailyChallenge() {
+        const userData = this.getUserData();
+        userData.lastDailyChallenge = new Date().toISOString().split('T')[0];
+        userData.stats.dailyChallengesCompleted = (userData.stats.dailyChallengesCompleted || 0) + 1;
+        this.saveUserData(userData);
+    },
+
+    /**
+     * Use hint (costs XP)
+     */
+    useHint(cost = 5) {
+        const userData = this.getUserData();
+        if (userData.xp >= cost) {
+            userData.xp -= cost;
+            userData.stats.hintsUsed = (userData.stats.hintsUsed || 0) + 1;
+            this.saveUserData(userData);
+            return { success: true, newXP: userData.xp };
+        }
+        return { success: false, message: 'Недостаточно XP для подсказки' };
     }
 };
 

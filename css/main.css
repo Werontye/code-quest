@@ -368,6 +368,38 @@ button {
     box-shadow: 0 8px 30px rgba(104, 160, 99, 0.3);
 }
 
+/* Python Card */
+.language-card--python::before {
+    background: linear-gradient(90deg, #3776AB, #FFD43B);
+}
+
+.language-card--python:hover {
+    border-color: #3776AB;
+    box-shadow: 0 8px 30px rgba(55, 118, 171, 0.3);
+}
+
+.language-card--python .card__title { color: #3776AB; }
+.language-card--python .progress-fill { background: linear-gradient(90deg, #3776AB, #FFD43B); }
+.language-card--python .card__glow {
+    background: radial-gradient(circle at center, rgba(55, 118, 171, 0.1) 0%, transparent 70%);
+}
+
+/* Git Card */
+.language-card--git::before {
+    background: linear-gradient(90deg, #F05032, #f8f8f8);
+}
+
+.language-card--git:hover {
+    border-color: #F05032;
+    box-shadow: 0 8px 30px rgba(240, 80, 50, 0.3);
+}
+
+.language-card--git .card__title { color: #F05032; }
+.language-card--git .progress-fill { background: #F05032; }
+.language-card--git .card__glow {
+    background: radial-gradient(circle at center, rgba(240, 80, 50, 0.1) 0%, transparent 70%);
+}
+
 /* Card Icon */
 .card__icon {
     width: 120px;
@@ -1239,6 +1271,70 @@ button {
 .server-light.green {
     background: var(--color-node-light);
     box-shadow: 0 0 8px var(--color-node-light);
+}
+
+/* Python Icon */
+.python-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.python-logo-half {
+    flex: 1;
+    width: 100%;
+}
+
+.python-logo-half.python-blue {
+    background: linear-gradient(135deg, #3776AB 0%, #4B8BBE 100%);
+}
+
+.python-logo-half.python-yellow {
+    background: linear-gradient(135deg, #FFD43B 0%, #FFE873 100%);
+}
+
+.python-icon::after {
+    content: '🐍';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+/* Git Icon */
+.git-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.git-branch-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.git-node {
+    width: 16px;
+    height: 16px;
+    background: #F05032;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(240, 80, 50, 0.5);
+}
+
+.git-line {
+    width: 3px;
+    height: 12px;
+    background: rgba(240, 80, 50, 0.6);
+    border-radius: 2px;
 }
 
 /* ===================================

@@ -359,6 +359,69 @@
                             <span class="progress-text"><span id="figmaCompleted">0</span>/40 <span data-i18n="languages.levels">уровней</span></span>
                         </div>
                         <div class="card__footer">
+                            <span class="card__badge">40 уровней</span>
+                            <span class="card__action"><span data-i18n="languages.start">Начать</span> &#8594;</span>
+                        </div>
+                    </a>
+
+                    <!-- Python Card -->
+                    <a href="pages/levels.html?lang=python" class="language-card language-card--python glow-hover">
+                        <div class="card__glow"></div>
+                        <div class="card__icon">
+                            <div class="python-icon">
+                                <div class="python-logo-half python-blue"></div>
+                                <div class="python-logo-half python-yellow"></div>
+                            </div>
+                        </div>
+                        <h3 class="card__title">Python</h3>
+                        <p class="card__subtitle">&#128013; Укротитель змей</p>
+                        <p class="card__description">Универсальный язык для всего: веб, AI, автоматизация!</p>
+                        <div class="card__tags">
+                            <span class="card__tag">Синтаксис</span>
+                            <span class="card__tag">Списки</span>
+                            <span class="card__tag">Функции</span>
+                        </div>
+                        <div class="card__progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="pythonProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text"><span id="pythonCompleted">0</span>/38 <span data-i18n="languages.levels">уровней</span></span>
+                        </div>
+                        <div class="card__footer">
+                            <span class="card__badge card__badge--new">НОВЫЙ</span>
+                            <span class="card__action"><span data-i18n="languages.start">Начать</span> &#8594;</span>
+                        </div>
+                    </a>
+
+                    <!-- Git Card -->
+                    <a href="pages/levels.html?lang=git" class="language-card language-card--git glow-hover">
+                        <div class="card__glow"></div>
+                        <div class="card__icon">
+                            <div class="git-icon">
+                                <div class="git-branch-visual">
+                                    <div class="git-node"></div>
+                                    <div class="git-line"></div>
+                                    <div class="git-node"></div>
+                                    <div class="git-line"></div>
+                                    <div class="git-node"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="card__title">Git</h3>
+                        <p class="card__subtitle">&#128736; Хранитель версий</p>
+                        <p class="card__description">Контроль версий для командной работы. Must-have навык!</p>
+                        <div class="card__tags">
+                            <span class="card__tag">Commit</span>
+                            <span class="card__tag">Branch</span>
+                            <span class="card__tag">Merge</span>
+                        </div>
+                        <div class="card__progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="gitProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text"><span id="gitCompleted">0</span>/25 <span data-i18n="languages.levels">уровней</span></span>
+                        </div>
+                        <div class="card__footer">
                             <span class="card__badge card__badge--new">НОВЫЙ</span>
                             <span class="card__action"><span data-i18n="languages.start">Начать</span> &#8594;</span>
                         </div>
@@ -568,8 +631,8 @@
             document.getElementById('streakDays').textContent = updatedData.stats?.streakDays || 0;
 
             // Update progress bars for all languages
-            const languages = ['html', 'css', 'js', 'ts', 'react', 'node', 'figma'];
-            const levelCounts = { html: 35, css: 55, js: 70, ts: 53, react: 45, node: 46, figma: 40 };
+            const languages = ['html', 'css', 'js', 'ts', 'react', 'node', 'figma', 'python', 'git'];
+            const levelCounts = { html: 35, css: 55, js: 70, ts: 53, react: 45, node: 46, figma: 40, python: 38, git: 25 };
 
             languages.forEach(lang => {
                 const progress = userData.progress?.[lang] || { completed: [] };
