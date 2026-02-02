@@ -8,9 +8,9 @@
     <meta http-equiv="Expires" content="0">
     <title>Профиль - CodeQuest</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1769919967280">
-    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1769919967280">
-    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1769919967280">
+    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770040937409">
+    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1770040937409">
+    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1770040937409">
 </head>
 <body>
     <!-- Animated Background -->
@@ -472,10 +472,10 @@
         </div>
     </div>
 
-    <script src="../js/version.js?v=2.2.0.1769919967280"></script>
-    <script src="../js/modules/storage.js?v=2.2.0.1769919967280"></script>
-    <script src="../js/modules/i18n.js?v=2.2.0.1769919967280"></script>
-    <script src="../js/modules/achievements.js?v=2.2.0.1769919967280"></script>
+    <script src="../js/version.js?v=2.2.0.1770040937409"></script>
+    <script src="../js/modules/storage.js?v=2.2.0.1770040937409"></script>
+    <script src="../js/modules/i18n.js?v=2.2.0.1770040937409"></script>
+    <script src="../js/modules/achievements.js?v=2.2.0.1770040937409"></script>
     <script>
         // Initialize profile page
         document.addEventListener('DOMContentLoaded', () => {
@@ -521,35 +521,37 @@
             document.getElementById('firstTryCount').textContent = userData.stats?.firstTryCount || 0;
             document.getElementById('fastCompletions').textContent = userData.stats?.fastCompletions || 0;
 
-            // Course progress
-            const htmlCompleted = userData.progress?.html?.completed?.length || 0;
-            const cssCompleted = userData.progress?.css?.completed?.length || 0;
-            const jsCompleted = userData.progress?.js?.completed?.length || 0;
-            const tsCompleted = userData.progress?.ts?.completed?.length || 0;
-            const reactCompleted = userData.progress?.react?.completed?.length || 0;
-            const nodeCompleted = userData.progress?.node?.completed?.length || 0;
-            const figmaCompleted = userData.progress?.figma?.completed?.length || 0;
+            // Course progress - cap at maximum to avoid showing more than exists
+            const levelCounts = { html: 35, css: 55, js: 70, ts: 53, react: 45, node: 46, figma: 40, python: 38, git: 25 };
+
+            const htmlCompleted = Math.min(userData.progress?.html?.completed?.length || 0, levelCounts.html);
+            const cssCompleted = Math.min(userData.progress?.css?.completed?.length || 0, levelCounts.css);
+            const jsCompleted = Math.min(userData.progress?.js?.completed?.length || 0, levelCounts.js);
+            const tsCompleted = Math.min(userData.progress?.ts?.completed?.length || 0, levelCounts.ts);
+            const reactCompleted = Math.min(userData.progress?.react?.completed?.length || 0, levelCounts.react);
+            const nodeCompleted = Math.min(userData.progress?.node?.completed?.length || 0, levelCounts.node);
+            const figmaCompleted = Math.min(userData.progress?.figma?.completed?.length || 0, levelCounts.figma);
 
             document.getElementById('htmlCompleted').textContent = htmlCompleted;
-            document.getElementById('htmlProgressFill').style.width = (htmlCompleted / 35 * 100) + '%';
+            document.getElementById('htmlProgressFill').style.width = Math.min(htmlCompleted / 35 * 100, 100) + '%';
 
             document.getElementById('cssCompleted').textContent = cssCompleted;
-            document.getElementById('cssProgressFill').style.width = (cssCompleted / 55 * 100) + '%';
+            document.getElementById('cssProgressFill').style.width = Math.min(cssCompleted / 55 * 100, 100) + '%';
 
             document.getElementById('jsCompleted').textContent = jsCompleted;
-            document.getElementById('jsProgressFill').style.width = (jsCompleted / 70 * 100) + '%';
+            document.getElementById('jsProgressFill').style.width = Math.min(jsCompleted / 70 * 100, 100) + '%';
 
             document.getElementById('tsCompleted').textContent = tsCompleted;
-            document.getElementById('tsProgressFill').style.width = (tsCompleted / 53 * 100) + '%';
+            document.getElementById('tsProgressFill').style.width = Math.min(tsCompleted / 53 * 100, 100) + '%';
 
             document.getElementById('reactCompleted').textContent = reactCompleted;
-            document.getElementById('reactProgressFill').style.width = (reactCompleted / 45 * 100) + '%';
+            document.getElementById('reactProgressFill').style.width = Math.min(reactCompleted / 45 * 100, 100) + '%';
 
             document.getElementById('nodeCompleted').textContent = nodeCompleted;
-            document.getElementById('nodeProgressFill').style.width = (nodeCompleted / 46 * 100) + '%';
+            document.getElementById('nodeProgressFill').style.width = Math.min(nodeCompleted / 46 * 100, 100) + '%';
 
             document.getElementById('figmaCompleted').textContent = figmaCompleted;
-            document.getElementById('figmaProgressFill').style.width = (figmaCompleted / 40 * 100) + '%';
+            document.getElementById('figmaProgressFill').style.width = Math.min(figmaCompleted / 40 * 100, 100) + '%';
 
             // Update milestones
             updateMilestones(htmlCompleted, cssCompleted, jsCompleted, reactCompleted);
@@ -676,9 +678,10 @@
             let rowsHTML = '';
 
             courses.forEach(course => {
-                const completed = userData.progress?.[course.id]?.completed?.length || 0;
-                const remaining = course.total - completed;
-                const percent = Math.round((completed / course.total) * 100);
+                const rawCompleted = userData.progress?.[course.id]?.completed?.length || 0;
+                const completed = Math.min(rawCompleted, course.total); // Cap at maximum
+                const remaining = Math.max(course.total - completed, 0);
+                const percent = Math.min(Math.round((completed / course.total) * 100), 100);
                 const xpEarned = completed * 15; // Average XP per level
 
                 totalCompleted += completed;
