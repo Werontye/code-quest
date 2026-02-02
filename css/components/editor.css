@@ -69,7 +69,7 @@
     color: var(--color-text-muted);
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    line-height: 1.6;
+    line-height: 1.9;
     text-align: right;
     user-select: none;
     min-width: 40px;
@@ -96,7 +96,7 @@
     color: var(--color-text);
     font-family: var(--font-mono);
     font-size: 0.9rem;
-    line-height: 1.6;
+    line-height: 1.9;
     resize: none;
     outline: none;
     white-space: pre-wrap;
@@ -118,7 +118,7 @@
     padding: var(--spacing-md);
     font-family: var(--font-mono);
     font-size: 0.9rem;
-    line-height: 1.6;
+    line-height: 1.9;
     white-space: pre-wrap;
     overflow-wrap: break-word;
     word-wrap: break-word;
