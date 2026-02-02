@@ -99,8 +99,9 @@
     line-height: 1.6;
     resize: none;
     outline: none;
-    white-space: pre;
-    overflow-wrap: normal;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .code-input::placeholder {
@@ -118,7 +119,9 @@
     font-family: var(--font-mono);
     font-size: 0.9rem;
     line-height: 1.6;
-    white-space: pre;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     pointer-events: none;
     overflow: hidden;
 }
