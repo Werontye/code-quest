@@ -152,7 +152,7 @@
 .code-template {
     font-family: var(--font-mono);
     font-size: 1.1rem;
-    line-height: 2.2;
+    line-height: 3;
     white-space: pre-wrap;
     color: var(--color-text);
     width: 100%;
@@ -172,7 +172,7 @@
     text-align: center;
     outline: none;
     transition: var(--transition-fast);
-    margin: 0 4px;
+    margin: 6px 4px;
 }
 
 .blank-input::placeholder {
