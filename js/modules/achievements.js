@@ -8,40 +8,30 @@ const Achievements = {
         // Getting Started
         {
             id: 'first-steps',
-            name: 'Первые шаги',
-            description: 'Пройди свой первый уровень',
             icon: '&#128095;',
             xp: 50,
             condition: (stats) => stats.totalLevels >= 1
         },
         {
             id: 'getting-started',
-            name: 'Начало пути',
-            description: 'Пройди 5 уровней',
             icon: '&#127939;',
             xp: 100,
             condition: (stats) => stats.totalLevels >= 5
         },
         {
             id: 'dedicated',
-            name: 'Целеустремлённый',
-            description: 'Пройди 25 уровней',
             icon: '&#128170;',
             xp: 200,
             condition: (stats) => stats.totalLevels >= 25
         },
         {
             id: 'veteran',
-            name: 'Ветеран',
-            description: 'Пройди 50 уровней',
             icon: '&#127942;',
             xp: 300,
             condition: (stats) => stats.totalLevels >= 50
         },
         {
             id: 'master',
-            name: 'Мастер',
-            description: 'Пройди 100 уровней',
             icon: '&#128081;',
             xp: 500,
             condition: (stats) => stats.totalLevels >= 100
@@ -50,48 +40,36 @@ const Achievements = {
         // Language specific
         {
             id: 'html-starter',
-            name: 'HTML Ученик',
-            description: 'Пройди 10 уровней HTML',
             icon: '&#127959;',
             xp: 100,
             condition: (stats, progress) => (progress.html?.completed?.length || 0) >= 10
         },
         {
             id: 'html-master',
-            name: 'HTML Строитель',
-            description: 'Пройди все уровни HTML',
             icon: '&#127959;',
             xp: 300,
             condition: (stats, progress) => (progress.html?.completed?.length || 0) >= 35
         },
         {
             id: 'css-starter',
-            name: 'CSS Ученик',
-            description: 'Пройди 10 уровней CSS',
             icon: '&#127912;',
             xp: 100,
             condition: (stats, progress) => (progress.css?.completed?.length || 0) >= 10
         },
         {
             id: 'css-master',
-            name: 'CSS Художник',
-            description: 'Пройди все уровни CSS',
             icon: '&#127912;',
             xp: 400,
             condition: (stats, progress) => (progress.css?.completed?.length || 0) >= 55
         },
         {
             id: 'js-starter',
-            name: 'JS Ученик',
-            description: 'Пройди 10 уровней JavaScript',
             icon: '&#128640;',
             xp: 100,
             condition: (stats, progress) => (progress.js?.completed?.length || 0) >= 10
         },
         {
             id: 'js-master',
-            name: 'JS Космонавт',
-            description: 'Пройди все уровни JavaScript',
             icon: '&#128640;',
             xp: 500,
             condition: (stats, progress) => (progress.js?.completed?.length || 0) >= 70
@@ -100,8 +78,6 @@ const Achievements = {
         // Polyglot
         {
             id: 'polyglot',
-            name: 'Полиглот',
-            description: 'Пройди по 10 уровней каждого языка',
             icon: '&#127760;',
             xp: 250,
             condition: (stats, progress) => {
@@ -113,8 +89,6 @@ const Achievements = {
         },
         {
             id: 'full-stack',
-            name: 'Fullstack разработчик',
-            description: 'Пройди все уровни всех языков',
             icon: '&#128187;',
             xp: 1000,
             condition: (stats, progress) => {
@@ -128,16 +102,12 @@ const Achievements = {
         // Speed achievements
         {
             id: 'quick-learner',
-            name: 'Быстрый ученик',
-            description: 'Пройди 5 уровней менее чем за минуту каждый',
             icon: '&#9889;',
             xp: 150,
             condition: (stats) => stats.fastCompletions >= 5
         },
         {
             id: 'speed-demon',
-            name: 'Скорострел',
-            description: 'Пройди 20 уровней менее чем за минуту каждый',
             icon: '&#128165;',
             xp: 300,
             condition: (stats) => stats.fastCompletions >= 20
@@ -146,16 +116,12 @@ const Achievements = {
         // Accuracy achievements
         {
             id: 'accurate',
-            name: 'Меткий',
-            description: 'Пройди 10 уровней с первой попытки',
             icon: '&#127919;',
             xp: 150,
             condition: (stats) => stats.firstTryCount >= 10
         },
         {
             id: 'perfectionist',
-            name: 'Перфекционист',
-            description: 'Пройди 30 уровней с первой попытки',
             icon: '&#128175;',
             xp: 400,
             condition: (stats) => stats.firstTryCount >= 30
@@ -164,32 +130,24 @@ const Achievements = {
         // XP achievements
         {
             id: 'xp-100',
-            name: 'Начинающий',
-            description: 'Набери 100 XP',
             icon: '&#11088;',
             xp: 0,
             condition: (stats, progress, xp) => xp >= 100
         },
         {
             id: 'xp-500',
-            name: 'Опытный',
-            description: 'Набери 500 XP',
             icon: '&#11088;',
             xp: 0,
             condition: (stats, progress, xp) => xp >= 500
         },
         {
             id: 'xp-1000',
-            name: 'Коллекционер',
-            description: 'Набери 1000 XP',
             icon: '&#127775;',
             xp: 0,
             condition: (stats, progress, xp) => xp >= 1000
         },
         {
             id: 'xp-2500',
-            name: 'Легенда',
-            description: 'Набери 2500 XP',
             icon: '&#128142;',
             xp: 0,
             condition: (stats, progress, xp) => xp >= 2500
@@ -198,24 +156,18 @@ const Achievements = {
         // Streak achievements
         {
             id: 'streak-3',
-            name: 'В ритме',
-            description: 'Занимайся 3 дня подряд',
             icon: '&#128293;',
             xp: 100,
             condition: (stats) => stats.streakDays >= 3
         },
         {
             id: 'streak-7',
-            name: 'Недельный марафон',
-            description: 'Занимайся 7 дней подряд',
             icon: '&#128293;',
             xp: 200,
             condition: (stats) => stats.streakDays >= 7
         },
         {
             id: 'streak-30',
-            name: 'Железная воля',
-            description: 'Занимайся 30 дней подряд',
             icon: '&#128293;',
             xp: 500,
             condition: (stats) => stats.streakDays >= 30
@@ -224,29 +176,37 @@ const Achievements = {
         // Rank achievements
         {
             id: 'rank-developer',
-            name: 'Разработчик',
-            description: 'Достигни ранга "Разработчик"',
             icon: '&#128187;',
             xp: 0,
             condition: (stats, progress, xp) => Storage.calculateRank(xp) >= 4
         },
         {
             id: 'rank-expert',
-            name: 'Эксперт',
-            description: 'Достигни ранга "Эксперт"',
             icon: '&#127942;',
             xp: 0,
             condition: (stats, progress, xp) => Storage.calculateRank(xp) >= 6
         },
         {
             id: 'rank-legend',
-            name: 'Легенда кода',
-            description: 'Достигни максимального ранга',
             icon: '&#128081;',
             xp: 0,
             condition: (stats, progress, xp) => Storage.calculateRank(xp) >= 8
         }
     ],
+
+    /**
+     * Get localized name for achievement
+     */
+    getName(id) {
+        return i18n.t(`ach.${id}.name`);
+    },
+
+    /**
+     * Get localized description for achievement
+     */
+    getDescription(id) {
+        return i18n.t(`ach.${id}.desc`);
+    },
 
     /**
      * Check for newly earned achievements
@@ -271,7 +231,11 @@ const Achievements = {
                     Storage.addXP(achievement.xp);
                 }
 
-                newAchievements.push(achievement);
+                newAchievements.push({
+                    ...achievement,
+                    name: this.getName(achievement.id),
+                    description: this.getDescription(achievement.id)
+                });
             }
         }
 
@@ -282,7 +246,15 @@ const Achievements = {
      * Get achievement by ID
      */
     getById(id) {
-        return this.list.find(a => a.id === id);
+        const ach = this.list.find(a => a.id === id);
+        if (ach) {
+            return {
+                ...ach,
+                name: this.getName(id),
+                description: this.getDescription(id)
+            };
+        }
+        return null;
     },
 
     /**
@@ -293,6 +265,8 @@ const Achievements = {
 
         return this.list.map(achievement => ({
             ...achievement,
+            name: this.getName(achievement.id),
+            description: this.getDescription(achievement.id),
             unlocked: userData.achievements.includes(achievement.id)
         }));
     },
@@ -350,6 +324,8 @@ const Achievements = {
             if (percent > 0 && percent < 100) {
                 progress.push({
                     ...achievement,
+                    name: this.getName(achievement.id),
+                    description: this.getDescription(achievement.id),
                     percent
                 });
             }
@@ -369,7 +345,7 @@ const Achievements = {
         const nameEl = popup.querySelector('#achievementName');
         const iconEl = popup.querySelector('.achievement-icon');
 
-        if (nameEl) nameEl.textContent = achievement.name;
+        if (nameEl) nameEl.textContent = achievement.name || this.getName(achievement.id);
         if (iconEl) iconEl.innerHTML = achievement.icon;
 
         // Reset animation classes

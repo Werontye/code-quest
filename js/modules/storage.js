@@ -151,6 +151,9 @@ const Storage = {
      * Get rank name
      */
     getRankName(rank) {
+        if (typeof i18n !== 'undefined') {
+            return i18n.getRankName(rank);
+        }
         const names = {
             1: 'Новичок',
             2: 'Ученик',
@@ -304,13 +307,15 @@ const Storage = {
             return settings ? JSON.parse(settings) : {
                 sound: true,
                 theme: 'auto',
-                fontSize: 'medium'
+                fontSize: 'medium',
+                language: 'ru'
             };
         } catch (e) {
             return {
                 sound: true,
                 theme: 'auto',
-                fontSize: 'medium'
+                fontSize: 'medium',
+                language: 'ru'
             };
         }
     },
@@ -461,7 +466,7 @@ const Storage = {
             this.saveUserData(userData);
             return { success: true, newXP: userData.xp };
         }
-        return { success: false, message: 'Недостаточно XP для подсказки' };
+        return { success: false, message: (typeof i18n !== 'undefined') ? i18n.t('notification.not_enough_xp') : 'Недостаточно XP для подсказки' };
     }
 };
 

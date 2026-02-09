@@ -8,8 +8,8 @@
     <meta http-equiv="Expires" content="0">
     <title>Теория - CodeQuest</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1770053946876">
+    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1770667891442">
 </head>
 <body>
     <div class="animated-bg">
@@ -46,6 +46,9 @@
                 </a>
             </div>
             <nav class="header__nav">
+                <button class="lang-toggle" id="langToggle" title="RU / EN">
+                    <span id="langFlag">RU</span>
+                </button>
                 <a href="profile.html" class="nav-link">
                     <span class="nav-icon">&#9733;</span>
                     <span class="nav-xp" id="headerXP">0 XP</span>
@@ -92,12 +95,12 @@
     &lt;meta name="keywords" content="ключевые, слова"&gt;
     &lt;meta name="author" content="Автор"&gt;
     &lt;title&gt;Заголовок страницы&lt;/title&gt;
-    &lt;link rel="stylesheet" href="styles.css?v=2.2.0.1770053946876"&gt;
+    &lt;link rel="stylesheet" href="styles.css?v=2.2.0.1770667891442"&gt;
     &lt;link rel="icon" href="favicon.ico"&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;!-- Видимое содержимое страницы --&gt;
-    &lt;script src="script.js?v=2.2.0.1770053946876"&gt;&lt;/script&gt;
+    &lt;script src="script.js?v=2.2.0.1770667891442"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
@@ -750,7 +753,7 @@
                     <h3 class="theory-card-title">&#128204; Способы подключения CSS</h3>
                     <div class="theory-content">
                         <pre class="code-block"><code>&lt;!-- 1. Внешний файл (рекомендуется) --&gt;
-&lt;link rel="stylesheet" href="styles.css?v=2.2.0.1770053946876"&gt;
+&lt;link rel="stylesheet" href="styles.css?v=2.2.0.1770667891442"&gt;
 
 &lt;!-- 2. Внутренние стили в head --&gt;
 &lt;style&gt;
@@ -2889,7 +2892,7 @@ import("./utils.js").then(module => {
 });
 
 // HTML: подключение модуля
-// &lt;script type="module" src="main.js?v=2.2.0.1770053946876"&gt;&lt;/script&gt;</code></div>
+// &lt;script type="module" src="main.js?v=2.2.0.1770667891442"&gt;&lt;/script&gt;</code></div>
                     </div>
                 </div>
 
@@ -4430,10 +4433,15 @@ process.nextTick(() => console.log('Перед следующей итераци
         </footer>
     </div>
 
-    <script src="../js/version.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/modules/storage.js?v=2.2.0.1770053946876"></script>
+    <script src="../js/version.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/storage.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/i18n.js?v=2.2.0.1770667891442"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            i18n.init();
+            i18n.updatePage();
+            i18n.setupToggle();
+
             const userData = Storage.getUserData();
             document.getElementById('headerXP').textContent = (userData.xp || 0) + ' XP';
 
@@ -4454,6 +4462,10 @@ process.nextTick(() => console.log('Перед следующей итераци
                 });
             });
 
+        });
+
+        window.addEventListener('languageChanged', () => {
+            i18n.updatePage();
         });
     </script>
 

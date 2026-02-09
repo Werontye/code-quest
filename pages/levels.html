@@ -8,14 +8,14 @@
     <meta http-equiv="Expires" content="0">
     <title>Выбор уровня - CodeQuest</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/themes/html-theme.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/themes/css-theme.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/themes/js-theme.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/themes/figma-theme.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/themes/python-theme.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/themes/git-theme.css?v=2.2.0.1770053946876">
+    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/themes/html-theme.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/themes/css-theme.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/themes/js-theme.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/themes/figma-theme.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/themes/python-theme.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/themes/git-theme.css?v=2.2.0.1770667891442">
 </head>
 <body>
     <div class="app" id="app">
@@ -28,9 +28,12 @@
                 </a>
             </div>
             <nav class="header__nav">
+                <button class="lang-toggle" id="langToggle" title="RU / EN">
+                    <span id="langFlag">RU</span>
+                </button>
                 <a href="theory.html" class="nav-link nav-link--theory">
                     <span class="nav-icon">&#128218;</span>
-                    <span>Теория</span>
+                    <span data-i18n="nav.theory">Теория</span>
                 </a>
                 <a href="profile.html" class="nav-link">
                     <span class="nav-icon">&#9733;</span>
@@ -65,7 +68,7 @@
             <section class="search-section">
                 <div class="search-box">
                     <span class="search-icon">&#128269;</span>
-                    <input type="text" id="levelSearch" class="search-input" placeholder="Поиск по уровням...">
+                    <input type="text" id="levelSearch" class="search-input" data-i18n-placeholder="levels.search" placeholder="Поиск по уровням...">
                     <button class="search-clear hidden" id="searchClear">&times;</button>
                 </div>
             </section>
@@ -550,117 +553,135 @@
         }
     </style>
 
-    <script src="../js/version.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/modules/storage.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/html-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/css-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/js-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/ts-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/react-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/node-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/figma-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/python-levels.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/levels/git-levels.js?v=2.2.0.1770053946876"></script>
+    <script src="../js/version.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/storage.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/i18n.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/html-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/css-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/js-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/ts-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/react-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/node-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/figma-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/python-levels.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/levels/git-levels.js?v=2.2.0.1770667891442"></script>
     <script>
         // Levels Page Logic
+        let currentLang, currentConfig, currentProgress;
+
         document.addEventListener('DOMContentLoaded', () => {
+            i18n.init();
+            i18n.updatePage();
+            i18n.setupToggle();
+
             // Get language from URL
             const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang') || 'html';
+            currentLang = urlParams.get('lang') || 'html';
 
-            // Language configurations
-            const langConfig = {
+            initLevelsPage();
+        });
+
+        window.addEventListener('languageChanged', () => {
+            i18n.updatePage();
+            renderModules();
+        });
+
+        function getLangConfig() {
+            return {
                 html: {
                     title: 'HTML',
-                    subtitle: 'Строитель',
+                    subtitle: i18n.t('course.html.subtitle'),
                     icon: '&#127959;',
                     levels: typeof htmlLevels !== 'undefined' ? htmlLevels : [],
                     total: 35
                 },
                 css: {
                     title: 'CSS',
-                    subtitle: 'Художник',
+                    subtitle: i18n.t('course.css.subtitle'),
                     icon: '&#127912;',
                     levels: typeof cssLevels !== 'undefined' ? cssLevels : [],
                     total: 55
                 },
                 js: {
                     title: 'JavaScript',
-                    subtitle: 'Космонавт',
+                    subtitle: i18n.t('course.js.subtitle'),
                     icon: '&#128640;',
                     levels: typeof jsLevels !== 'undefined' ? jsLevels : [],
                     total: 70
                 },
                 ts: {
                     title: 'TypeScript',
-                    subtitle: 'Инженер',
+                    subtitle: i18n.t('course.ts.subtitle'),
                     icon: '&#128196;',
                     levels: typeof tsLevels !== 'undefined' ? tsLevels : [],
                     total: 50
                 },
                 react: {
                     title: 'React',
-                    subtitle: 'Архитектор',
+                    subtitle: i18n.t('course.react.subtitle'),
                     icon: '&#9883;',
                     levels: typeof reactLevels !== 'undefined' ? reactLevels : [],
                     total: 45
                 },
                 node: {
                     title: 'Node.js',
-                    subtitle: 'Backend Инженер',
+                    subtitle: i18n.t('course.node.subtitle'),
                     icon: '&#9881;',
                     levels: typeof nodeLevels !== 'undefined' ? nodeLevels : [],
                     total: 45
                 },
                 figma: {
                     title: 'Figma',
-                    subtitle: 'Дизайнер',
+                    subtitle: i18n.t('course.figma.subtitle'),
                     icon: '&#127912;',
                     levels: typeof figmaLevels !== 'undefined' ? figmaLevels : [],
                     total: 40
                 },
                 python: {
                     title: 'Python',
-                    subtitle: 'Укротитель змей',
+                    subtitle: i18n.t('course.python.subtitle'),
                     icon: '&#128013;',
                     levels: typeof pythonLevels !== 'undefined' ? pythonLevels : [],
                     total: 38
                 },
                 git: {
                     title: 'Git',
-                    subtitle: 'Хранитель версий',
+                    subtitle: i18n.t('course.git.subtitle'),
                     icon: '&#128736;',
                     levels: typeof gitLevels !== 'undefined' ? gitLevels : [],
                     total: 25
                 }
             };
+        }
 
-            const config = langConfig[lang];
-            if (!config) {
+        function initLevelsPage() {
+            const langConfig = getLangConfig();
+            currentConfig = langConfig[currentLang];
+            if (!currentConfig) {
                 window.location.href = '../index.html';
                 return;
             }
 
             // Set page data
             const levelsPage = document.querySelector('.levels-page');
-            levelsPage.setAttribute('data-lang', lang);
+            levelsPage.setAttribute('data-lang', currentLang);
 
             // Update header
-            document.getElementById('languageTitle').textContent = config.title;
-            document.getElementById('languageSubtitle').textContent = config.subtitle;
-            document.getElementById('languageIcon').innerHTML = config.icon;
-            document.getElementById('totalCount').textContent = config.total;
+            document.getElementById('languageTitle').textContent = currentConfig.title;
+            document.getElementById('languageSubtitle').textContent = currentConfig.subtitle;
+            document.getElementById('languageIcon').innerHTML = currentConfig.icon;
+            document.getElementById('totalCount').textContent = currentConfig.total;
 
             // Get user progress
             const userData = Storage.getUserData();
-            const progress = userData.progress[lang] || { completed: [], current: 1 };
+            currentProgress = userData.progress[currentLang] || { completed: [], current: 1 };
             // Cap completed at maximum to avoid showing more than exists
-            const rawCompleted = progress.completed.length;
-            const completedCount = Math.min(rawCompleted, config.total);
+            const rawCompleted = currentProgress.completed.length;
+            const completedCount = Math.min(rawCompleted, currentConfig.total);
 
             // Update progress display
             document.getElementById('completedCount').textContent = completedCount;
-            const progressPercent = Math.min(Math.round((completedCount / config.total) * 100), 100);
+            const progressPercent = Math.min(Math.round((completedCount / currentConfig.total) * 100), 100);
             document.getElementById('progressPercent').textContent = progressPercent + '%';
             document.getElementById('progressFill').style.width = progressPercent + '%';
 
@@ -668,11 +689,23 @@
             document.getElementById('headerXP').textContent = userData.xp + ' XP';
 
             // Render modules and levels
-            renderModules(config.levels, progress, lang);
-        });
+            renderModules();
+        }
 
-        function renderModules(levels, progress, lang) {
+        function renderModules() {
+            // Re-evaluate config to pick up language changes
+            const langConfig = getLangConfig();
+            currentConfig = langConfig[currentLang];
+            if (!currentConfig) return;
+
+            // Update subtitle on re-render
+            document.getElementById('languageSubtitle').textContent = currentConfig.subtitle;
+
+            const levels = currentConfig.levels;
+            const progress = currentProgress;
+            const lang = currentLang;
             const modulesList = document.getElementById('modulesList');
+            modulesList.innerHTML = '';
 
             // Group levels by module
             const modules = {};
@@ -732,7 +765,7 @@
                                         <div class="level-num">${globalIndex}</div>
                                         <div class="level-info">
                                             <div class="level-title">${level.title}</div>
-                                            <div class="level-type">${level.type === 'quiz' ? 'Тест' : level.type === 'fill-blank' ? 'Заполни пропуски' : 'Редактор кода'}</div>
+                                            <div class="level-type">${level.type === 'quiz' ? i18n.t('levels.quiz') : level.type === 'fill-blank' ? i18n.t('levels.fill_blank') : i18n.t('levels.code_editor')}</div>
                                         </div>
                                         <div class="level-xp">+${level.xp || 10} XP</div>
                                         <span class="level-status"></span>

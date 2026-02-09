@@ -8,9 +8,9 @@
     <meta http-equiv="Expires" content="0">
     <title>Профиль - CodeQuest</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1770053946876">
-    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1770053946876">
+    <link rel="stylesheet" href="../css/main.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/components/animations.css?v=2.2.0.1770667891442">
+    <link rel="stylesheet" href="../css/components/progress.css?v=2.2.0.1770667891442">
 </head>
 <body>
     <!-- Animated Background -->
@@ -33,9 +33,12 @@
                 </a>
             </div>
             <nav class="header__nav">
+                <button class="lang-toggle" id="langToggle" title="RU / EN">
+                    <span id="langFlag">RU</span>
+                </button>
                 <a href="theory.html" class="nav-link nav-link--theory">
                     <span class="nav-icon">&#128218;</span>
-                    <span>Теория</span>
+                    <span data-i18n="nav.theory">Теория</span>
                 </a>
                 <a href="profile.html" class="nav-link active">
                     <span class="nav-icon">&#9733;</span>
@@ -66,7 +69,7 @@
                 </div>
                 <div class="profile-actions">
                     <button class="btn-edit-profile" id="editProfile">
-                        &#9998; Редактировать
+                        &#9998; <span data-i18n="profile.edit">Редактировать</span>
                     </button>
                 </div>
             </section>
@@ -89,34 +92,34 @@
 
             <!-- Stats Grid -->
             <section class="profile-stats fade-in-up">
-                <h2 class="section-title">Статистика</h2>
+                <h2 class="section-title" data-i18n="profile.stats">Статистика</h2>
                 <div class="stats-grid">
                     <div class="stat-card stat-card--primary">
                         <div class="stat-icon">&#128293;</div>
                         <div class="stat-info">
                             <span class="stat-value" id="streakDays">0</span>
-                            <span class="stat-label">Дней подряд</span>
+                            <span class="stat-label" data-i18n="profile.streak">Дней подряд</span>
                         </div>
                     </div>
                     <div class="stat-card stat-card--success">
                         <div class="stat-icon">&#127942;</div>
                         <div class="stat-info">
                             <span class="stat-value" id="totalLevels">0</span>
-                            <span class="stat-label">Уровней пройдено</span>
+                            <span class="stat-label" data-i18n="profile.levels_done">Уровней пройдено</span>
                         </div>
                     </div>
                     <div class="stat-card stat-card--warning">
                         <div class="stat-icon">&#127919;</div>
                         <div class="stat-info">
                             <span class="stat-value" id="firstTryCount">0</span>
-                            <span class="stat-label">С первой попытки</span>
+                            <span class="stat-label" data-i18n="profile.first_try">С первой попытки</span>
                         </div>
                     </div>
                     <div class="stat-card stat-card--info">
                         <div class="stat-icon">&#9889;</div>
                         <div class="stat-info">
                             <span class="stat-value" id="fastCompletions">0</span>
-                            <span class="stat-label">Быстрых решений</span>
+                            <span class="stat-label" data-i18n="profile.fast">Быстрых решений</span>
                         </div>
                     </div>
                 </div>
@@ -124,7 +127,7 @@
 
             <!-- Course Progress -->
             <section class="course-progress fade-in-up">
-                <h2 class="section-title">Прогресс по курсам</h2>
+                <h2 class="section-title" data-i18n="profile.course_progress">Прогресс по курсам</h2>
                 <div class="courses-grid">
                     <!-- HTML -->
                     <div class="course-card course-card--html">
@@ -139,7 +142,7 @@
                                 <span id="htmlCompleted">0</span> / 35 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=html" class="course-action">Продолжить &#8594;</a>
+                        <a href="levels.html?lang=html" class="course-action"><span data-i18n="profile.continue">Продолжить</span> &#8594;</a>
                     </div>
 
                     <!-- CSS -->
@@ -155,7 +158,7 @@
                                 <span id="cssCompleted">0</span> / 55 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=css" class="course-action">Продолжить &#8594;</a>
+                        <a href="levels.html?lang=css" class="course-action"><span data-i18n="profile.continue">Продолжить</span> &#8594;</a>
                     </div>
 
                     <!-- JavaScript -->
@@ -171,7 +174,7 @@
                                 <span id="jsCompleted">0</span> / 70 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=js" class="course-action">Продолжить &#8594;</a>
+                        <a href="levels.html?lang=js" class="course-action"><span data-i18n="profile.continue">Продолжить</span> &#8594;</a>
                     </div>
 
                     <!-- TypeScript -->
@@ -187,7 +190,7 @@
                                 <span id="tsCompleted">0</span> / 53 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=ts" class="course-action">Начать &#8594;</a>
+                        <a href="levels.html?lang=ts" class="course-action"><span data-i18n="profile.start">Начать</span> &#8594;</a>
                     </div>
 
                     <!-- React -->
@@ -203,7 +206,7 @@
                                 <span id="reactCompleted">0</span> / 45 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=react" class="course-action">Начать &#8594;</a>
+                        <a href="levels.html?lang=react" class="course-action"><span data-i18n="profile.start">Начать</span> &#8594;</a>
                     </div>
 
                     <!-- Node.js -->
@@ -219,7 +222,7 @@
                                 <span id="nodeCompleted">0</span> / 46 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=node" class="course-action">Начать &#8594;</a>
+                        <a href="levels.html?lang=node" class="course-action"><span data-i18n="profile.start">Начать</span> &#8594;</a>
                     </div>
 
                     <!-- Figma -->
@@ -235,14 +238,14 @@
                                 <span id="figmaCompleted">0</span> / 40 уровней
                             </p>
                         </div>
-                        <a href="levels.html?lang=figma" class="course-action">Начать &#8594;</a>
+                        <a href="levels.html?lang=figma" class="course-action"><span data-i18n="profile.start">Начать</span> &#8594;</a>
                     </div>
                 </div>
             </section>
 
             <!-- Achievements -->
             <section class="achievements-section fade-in-up">
-                <h2 class="section-title">Достижения</h2>
+                <h2 class="section-title" data-i18n="profile.achievements">Достижения</h2>
                 <p class="achievements-count">
                     Получено: <span id="achievementsCount">0</span> / <span id="achievementsTotal">30</span>
                 </p>
@@ -253,7 +256,7 @@
 
             <!-- Weekly Progress Chart -->
             <section class="weekly-progress fade-in-up">
-                <h2 class="section-title">Прогресс за неделю</h2>
+                <h2 class="section-title" data-i18n="profile.weekly">Прогресс за неделю</h2>
                 <div class="weekly-chart-container">
                     <div class="weekly-goal-info">
                         <span class="goal-label">Дневная цель:</span>
@@ -265,15 +268,15 @@
                     <div class="weekly-summary">
                         <div class="summary-item">
                             <span class="summary-value" id="weeklyTotal">0</span>
-                            <span class="summary-label">XP за неделю</span>
+                            <span class="summary-label" data-i18n="profile.weekly_total">XP за неделю</span>
                         </div>
                         <div class="summary-item">
                             <span class="summary-value" id="weeklyAvg">0</span>
-                            <span class="summary-label">Среднее в день</span>
+                            <span class="summary-label" data-i18n="profile.weekly_avg">Среднее в день</span>
                         </div>
                         <div class="summary-item">
                             <span class="summary-value" id="goalsReached">0/7</span>
-                            <span class="summary-label">Целей достигнуто</span>
+                            <span class="summary-label" data-i18n="profile.goals_reached">Целей достигнуто</span>
                         </div>
                     </div>
                 </div>
@@ -281,15 +284,15 @@
 
             <!-- Detailed Progress Table -->
             <section class="progress-table-section fade-in-up">
-                <h2 class="section-title">Детальная статистика</h2>
+                <h2 class="section-title" data-i18n="profile.detail_stats">Детальная статистика</h2>
                 <div class="progress-table-wrapper">
                     <table class="progress-table" id="progressTable">
                         <thead>
                             <tr>
-                                <th>Курс</th>
-                                <th>Пройдено</th>
-                                <th>Осталось</th>
-                                <th>Прогресс</th>
+                                <th data-i18n="table.course">Курс</th>
+                                <th data-i18n="table.completed">Пройдено</th>
+                                <th data-i18n="table.remaining">Осталось</th>
+                                <th data-i18n="table.progress">Прогресс</th>
                                 <th>XP</th>
                             </tr>
                         </thead>
@@ -311,7 +314,7 @@
 
             <!-- Recent Activity -->
             <section class="activity-section fade-in-up">
-                <h2 class="section-title">Недавняя активность</h2>
+                <h2 class="section-title" data-i18n="profile.recent">Недавняя активность</h2>
                 <div class="activity-list" id="activityList">
                     <!-- Activity items will be inserted by JS -->
                 </div>
@@ -319,7 +322,7 @@
 
             <!-- Learning Path Progress -->
             <section class="learning-path-progress fade-in-up">
-                <h2 class="section-title">Путь к Junior разработчику</h2>
+                <h2 class="section-title" data-i18n="profile.learning_path">Путь к Junior разработчику</h2>
                 <div class="path-milestones">
                     <div class="milestone" id="milestone1">
                         <div class="milestone-icon">&#127959;</div>
@@ -380,11 +383,11 @@
         <div class="modal-overlay"></div>
         <div class="modal-content modal-content--large">
             <button class="modal-close" id="closeEditModal">&times;</button>
-            <h2 class="modal-title">Редактировать профиль</h2>
+            <h2 class="modal-title" data-i18n="profile.edit_profile">Редактировать профиль</h2>
             <form class="edit-profile-form" id="editProfileForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Имя</label>
+                        <label data-i18n="profile.name">Имя</label>
                         <input type="text" id="editName" class="auth-input" placeholder="Ваше имя" maxlength="30">
                     </div>
                     <div class="form-group">
@@ -393,12 +396,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>О себе</label>
+                    <label data-i18n="profile.about">О себе</label>
                     <textarea id="editBio" class="auth-input auth-textarea" placeholder="Расскажите о себе..." maxlength="200"></textarea>
                     <span class="char-counter"><span id="bioCharCount">0</span>/200</span>
                 </div>
                 <div class="form-group">
-                    <label>Дневная цель XP</label>
+                    <label data-i18n="profile.daily_goal">Дневная цель XP</label>
                     <div class="goal-selector" id="goalSelector">
                         <button type="button" class="goal-option" data-goal="50">50 XP<span>Легкая</span></button>
                         <button type="button" class="goal-option" data-goal="100">100 XP<span>Стандарт</span></button>
@@ -424,22 +427,22 @@
                     </div>
                 </div>
                 <div class="data-management">
-                    <h4 class="data-management-title">Управление данными</h4>
+                    <h4 class="data-management-title" data-i18n="profile.data_mgmt">Управление данными</h4>
                     <div class="data-management-buttons">
                         <button type="button" class="btn-export" id="exportDataBtn">
-                            &#128190; Экспорт
+                            &#128190; <span data-i18n="profile.export">Экспорт</span>
                         </button>
                         <button type="button" class="btn-import" id="importDataBtn">
-                            &#128194; Импорт
+                            &#128194; <span data-i18n="profile.import">Импорт</span>
                         </button>
                         <button type="button" class="btn-reset-progress" id="resetProgressBtn">
-                            &#128465; Сброс
+                            &#128465; <span data-i18n="profile.reset">Сброс</span>
                         </button>
                     </div>
                 </div>
                 <div class="form-actions">
                     <div></div>
-                    <button type="submit" class="auth-submit">Сохранить</button>
+                    <button type="submit" class="auth-submit" data-i18n="profile.save">Сохранить</button>
                 </div>
             </form>
         </div>
@@ -453,7 +456,7 @@
             <p class="modal-text">Вставьте JSON данные, которые вы ранее экспортировали:</p>
             <textarea id="importTextarea" class="import-textarea" placeholder='{"userData": {...}, "settings": {...}}'></textarea>
             <div class="modal-actions">
-                <button class="btn-cancel" id="cancelImport">Отмена</button>
+                <button class="btn-cancel" id="cancelImport" data-i18n="profile.cancel">Отмена</button>
                 <button class="btn-primary" id="confirmImport">Импортировать</button>
             </div>
         </div>
@@ -466,25 +469,37 @@
             <h2 class="modal-title modal-title--danger">&#9888; Сбросить прогресс?</h2>
             <p class="modal-text">Это действие удалит весь ваш прогресс, XP и достижения. Это нельзя отменить!</p>
             <div class="modal-actions">
-                <button class="btn-cancel" id="cancelReset">Отмена</button>
+                <button class="btn-cancel" id="cancelReset" data-i18n="profile.cancel">Отмена</button>
                 <button class="btn-danger" id="confirmReset">Да, сбросить</button>
             </div>
         </div>
     </div>
 
-    <script src="../js/version.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/modules/storage.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/modules/i18n.js?v=2.2.0.1770053946876"></script>
-    <script src="../js/modules/achievements.js?v=2.2.0.1770053946876"></script>
+    <script src="../js/version.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/storage.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/i18n.js?v=2.2.0.1770667891442"></script>
+    <script src="../js/modules/achievements.js?v=2.2.0.1770667891442"></script>
     <script>
         // Initialize profile page
         document.addEventListener('DOMContentLoaded', () => {
+            i18n.init();
+            i18n.updatePage();
+            i18n.setupToggle();
             loadProfileData();
             loadAchievements();
             loadWeeklyProgress();
             loadProgressTable();
             loadRecentActivity();
             setupEventListeners();
+        });
+
+        window.addEventListener('languageChanged', () => {
+            i18n.updatePage();
+            loadProfileData();
+            loadAchievements();
+            loadWeeklyProgress();
+            loadProgressTable();
+            loadRecentActivity();
         });
 
         function loadProfileData() {
@@ -727,7 +742,7 @@
                 activityList.innerHTML = `
                     <div class="activity-empty">
                         <span class="activity-empty-icon">&#128203;</span>
-                        <p>Начни проходить уровни, чтобы увидеть свою активность!</p>
+                        <p>${i18n.t('profile.no_activity')}</p>
                     </div>
                 `;
                 return;
@@ -752,7 +767,7 @@
                     <div class="activity-item">
                         <div class="activity-icon">&#10003;</div>
                         <div class="activity-content">
-                            <span class="activity-text">Пройден уровень <strong>${activity.levelTitle || activity.levelId}</strong> в курсе ${courseName}</span>
+                            <span class="activity-text">${i18n.t('profile.level_passed')} <strong>${activity.levelTitle || activity.levelId}</strong> ${i18n.t('profile.in_course')} ${courseName}</span>
                             <span class="activity-xp">+${activity.xp} XP</span>
                         </div>
                         <span class="activity-time">${timeAgo}</span>
@@ -765,10 +780,10 @@
             const now = new Date();
             const diff = Math.floor((now - date) / 1000);
 
-            if (diff < 60) return 'только что';
-            if (diff < 3600) return Math.floor(diff / 60) + ' мин. назад';
-            if (diff < 86400) return Math.floor(diff / 3600) + ' ч. назад';
-            if (diff < 604800) return Math.floor(diff / 86400) + ' дн. назад';
+            if (diff < 60) return i18n.t('time.just_now');
+            if (diff < 3600) return Math.floor(diff / 60) + ' ' + i18n.t('time.min_ago');
+            if (diff < 86400) return Math.floor(diff / 3600) + ' ' + i18n.t('time.hours_ago');
+            if (diff < 604800) return Math.floor(diff / 86400) + ' ' + i18n.t('time.days_ago');
             return date.toLocaleDateString('ru-RU');
         }
 

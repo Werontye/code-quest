@@ -113,7 +113,7 @@ const App = {
             if (newAchievements.length > 0) {
                 // Show notification for first new achievement
                 this.showNotification(
-                    `Новое достижение: ${newAchievements[0].name}!`,
+                    `${i18n.t('notification.new_achievement')} ${newAchievements[0].name}!`,
                     'success'
                 );
             }
@@ -205,9 +205,9 @@ const App = {
      * Format time (seconds to readable string)
      */
     formatTime(seconds) {
-        if (seconds < 60) return `${seconds} сек`;
-        if (seconds < 3600) return `${Math.floor(seconds / 60)} мин`;
-        return `${Math.floor(seconds / 3600)} ч`;
+        if (seconds < 60) return `${seconds} ${i18n.t('time.sec')}`;
+        if (seconds < 3600) return `${Math.floor(seconds / 60)} ${i18n.t('time.min')}`;
+        return `${Math.floor(seconds / 3600)} ${i18n.t('time.hour')}`;
     },
 
     /**
@@ -215,7 +215,8 @@ const App = {
      */
     formatDate(dateString) {
         const date = new Date(dateString);
-        return date.toLocaleDateString('ru-RU', {
+        const locale = i18n.currentLang === 'en' ? 'en-US' : 'ru-RU';
+        return date.toLocaleDateString(locale, {
             day: 'numeric',
             month: 'long',
             year: 'numeric'
