@@ -66,43 +66,56 @@ const i18n = {
             // TypeScript
             'ts.title': 'TypeScript',
             'ts.subtitle': 'Инженер',
-            'ts.description': 'Типизируй свой код для надёжности и масштабируемости',
+            'ts.description': 'Типизируй свой код. Меньше багов, больше уверенности!',
 
             // React
             'react.title': 'React',
             'react.subtitle': 'Архитектор',
-            'react.description': 'Создавай мощные интерфейсы с компонентным подходом',
+            'react.description': 'Создавай интерфейсы из компонентов. UI - твоя суперсила!',
 
             // Node.js
             'node.title': 'Node.js',
-            'node.subtitle': 'Backend Инженер',
-            'node.description': 'Построй серверную часть приложений на JavaScript',
+            'node.subtitle': 'Backend',
+            'node.description': 'Создавай серверы и API. Полный стек в твоих руках!',
 
             // Figma
             'figma.title': 'Figma',
             'figma.subtitle': 'Дизайнер',
-            'figma.description': 'Создавай красивые макеты и прототипы',
+            'figma.description': 'Освой инструмент №1 для UI/UX дизайна. Теория + тесты!',
+            'figma.prototypes': 'Прототипы',
 
             // Python
             'python.title': 'Python',
             'python.subtitle': 'Укротитель змей',
-            'python.description': 'Освой универсальный язык для любых задач',
+            'python.description': 'Универсальный язык для всего: веб, AI, автоматизация!',
+            'python.syntax': 'Синтаксис',
+            'python.lists': 'Списки',
+            'python.functions': 'Функции',
 
             // Git
             'git.title': 'Git',
             'git.subtitle': 'Хранитель версий',
-            'git.description': 'Управляй версиями кода как профессионал',
+            'git.description': 'Контроль версий для командной работы. Must-have навык!',
+
+            // Common card labels
+            'card.new': 'НОВЫЙ',
 
             // Learning Path
             'path.title': 'Путь обучения',
             'path.subtitle': 'Структурированный курс от основ до мастерства',
             'path.html.title': 'HTML Основы',
-            'path.html.desc': 'Изучи структуру веб-страниц, теги и семантику',
+            'path.html.desc': 'Изучи структуру веб-страниц',
             'path.css.title': 'CSS Стилизация',
-            'path.css.desc': 'Научись оформлять страницы, освой Flexbox и Grid',
+            'path.css.desc': 'Оформляй страницы красиво',
             'path.js.title': 'JavaScript Логика',
-            'path.js.desc': 'Добавь интерактивность, работай с DOM и API',
-            'path.final.title': 'Fullstack Разработчик',
+            'path.js.desc': 'Добавь интерактивность',
+            'path.ts.title': 'TypeScript',
+            'path.ts.desc': 'Типизируй свой код',
+            'path.react.title': 'React',
+            'path.react.desc': 'Создавай UI компоненты',
+            'path.node.title': 'Node.js',
+            'path.node.desc': 'Строй серверы и API',
+            'path.final.title': 'Fullstack Developer',
             'path.final.desc': 'Создавай полноценные веб-приложения!',
 
             // Features
@@ -258,6 +271,7 @@ const i18n = {
             'profile.no_activity': 'Начни проходить уровни, чтобы увидеть свою активность!',
             'profile.level_passed': 'Пройден уровень',
             'profile.in_course': 'в курсе',
+            'profile.earned': 'Получено',
 
             // Table headers
             'table.course': 'Курс',
@@ -400,42 +414,55 @@ const i18n = {
             // TypeScript
             'ts.title': 'TypeScript',
             'ts.subtitle': 'Engineer',
-            'ts.description': 'Type your code for reliability and scalability',
+            'ts.description': 'Type your code. Fewer bugs, more confidence!',
 
             // React
             'react.title': 'React',
             'react.subtitle': 'Architect',
-            'react.description': 'Build powerful interfaces with component-based approach',
+            'react.description': 'Build interfaces from components. UI is your superpower!',
 
             // Node.js
             'node.title': 'Node.js',
-            'node.subtitle': 'Backend Engineer',
-            'node.description': 'Build server-side applications with JavaScript',
+            'node.subtitle': 'Backend',
+            'node.description': 'Create servers and APIs. Full stack in your hands!',
 
             // Figma
             'figma.title': 'Figma',
             'figma.subtitle': 'Designer',
-            'figma.description': 'Create beautiful mockups and prototypes',
+            'figma.description': 'Master the #1 tool for UI/UX design. Theory + quizzes!',
+            'figma.prototypes': 'Prototypes',
 
             // Python
             'python.title': 'Python',
             'python.subtitle': 'Snake Tamer',
-            'python.description': 'Master the universal language for any task',
+            'python.description': 'Universal language for everything: web, AI, automation!',
+            'python.syntax': 'Syntax',
+            'python.lists': 'Lists',
+            'python.functions': 'Functions',
 
             // Git
             'git.title': 'Git',
             'git.subtitle': 'Version Keeper',
-            'git.description': 'Manage code versions like a pro',
+            'git.description': 'Version control for teamwork. A must-have skill!',
+
+            // Common card labels
+            'card.new': 'NEW',
 
             // Learning Path
             'path.title': 'Learning Path',
             'path.subtitle': 'Structured course from basics to mastery',
             'path.html.title': 'HTML Basics',
-            'path.html.desc': 'Learn web page structure, tags and semantics',
+            'path.html.desc': 'Learn web page structure',
             'path.css.title': 'CSS Styling',
-            'path.css.desc': 'Learn to style pages, master Flexbox and Grid',
+            'path.css.desc': 'Style your pages beautifully',
             'path.js.title': 'JavaScript Logic',
-            'path.js.desc': 'Add interactivity, work with DOM and API',
+            'path.js.desc': 'Add interactivity',
+            'path.ts.title': 'TypeScript',
+            'path.ts.desc': 'Type your code',
+            'path.react.title': 'React',
+            'path.react.desc': 'Build UI components',
+            'path.node.title': 'Node.js',
+            'path.node.desc': 'Build servers and APIs',
             'path.final.title': 'Fullstack Developer',
             'path.final.desc': 'Build full-fledged web applications!',
 
@@ -592,6 +619,7 @@ const i18n = {
             'profile.no_activity': 'Start completing levels to see your activity!',
             'profile.level_passed': 'Completed level',
             'profile.in_course': 'in course',
+            'profile.earned': 'Earned',
 
             // Table headers
             'table.course': 'Course',
